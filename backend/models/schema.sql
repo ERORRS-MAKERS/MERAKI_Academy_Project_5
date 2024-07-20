@@ -87,15 +87,15 @@ CREATE TABLE doctors_request (
 
 -- Create a table called **medical_reports** in the database
 CREATE TABLE medical_reports (
-    id SERIAL PRIMARY KEY,
-    user_id INT NOT NULL,
-    doctor_id INT NOT LL,
-    title VARCHAR(255) NOT NULL,
-    description TEXT NOT NULL,
-    image_url VARCHAR(255),
-    time TIMESTAMP NOT NULL
-    FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (doctor_id) REFERENCES doctors(id),
+  id SERIAL PRIMARY KEY,
+  user_id INT NOT NULL,
+  doctor_id INT NOT LL,
+  title VARCHAR(255) NOT NULL,
+  description TEXT NOT NULL,
+  image_url VARCHAR(255),
+  time TIMESTAMP NOT NULL
+  FOREIGN KEY (user_id) REFERENCES users(id),
+  FOREIGN KEY (doctor_id) REFERENCES doctors(id),
 );
 
 -- Create a table called **medical_reports** in the database
