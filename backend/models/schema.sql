@@ -30,9 +30,9 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
-    age INTEGER,
+    age INT,
     email VARCHAR(100) UNIQUE NOT NULL,
-    role_id INTEGER REFERENCES roles(id),
+    role_id INT REFERENCES roles(id),
     is_deleted SMALLINT DEFAULT 0,
     FOREIGN KEY (role_id) REFERENCES roles(id),
  );
@@ -112,7 +112,7 @@ CREATE TABLE prescription(
     pharmacist_id INT,
     title VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
-    quantity INTEGER NOT NULL,
+    quantity INT NOT NULL,
     status BOOLEAN NOT NULL DEFAULT FALSE
     FOREIGN KEY (user_id) REFERENCES users(id),
     FOREIGN KEY (doctor_id) REFERENCES doctors(id),
