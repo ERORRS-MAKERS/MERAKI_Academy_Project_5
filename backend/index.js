@@ -6,13 +6,18 @@ require("./models/db");
 //routers
 const app = express();
 
+
+const usersRouter = require("./routes/users");
+
 //built-in middleware
 app.use(express.json());
 app.use(cors());
 
-// router middleware
-const usersRouter = require("./routes/users");
-// router middleware
+
+
+
+
+
 app.use("/users", usersRouter);
 
 const PORT = process.env.PORT || 5000;
