@@ -6,18 +6,33 @@ require('./models/db');
 //routers
 const app = express();
 
-const appointmentsRouter = require('./routes/appointments');
-const prescriptionRouter = require('./routes/prescription');
+
 const doctorsRouter=require("./routes/doctors")
+
+
+
+
+
+
 
 //built-in middleware
 app.use(express.json());
 app.use(cors());
 
-// router middleware
+
+
 app.use('/appointments', appointmentsRouter);
 app.use('/prescription', prescriptionRouter);
 app.use("/doctors",doctorsRouter)
+
+
+
+
+
+
+
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
