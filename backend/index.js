@@ -11,6 +11,9 @@ app.use(express.json());
 app.use(cors());
 
 // router middleware
+const usersRouter = require("./routes/users");
+// router middleware
+app.use("/users", usersRouter);
 
 const PORT = process.env.PORT || 5000;
 
