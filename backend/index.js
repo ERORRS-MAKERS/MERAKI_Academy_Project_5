@@ -7,8 +7,12 @@ require('./models/db');
 const app = express();
 
 
+const doctorsRouter=require("./routes/doctors")
 
-const usersRouter = require("./routes/users");
+
+
+
+
 
 
 //built-in middleware
@@ -17,11 +21,17 @@ app.use(cors());
 
 
 
+app.use('/appointments', appointmentsRouter);
+app.use('/prescription', prescriptionRouter);
+app.use("/doctors",doctorsRouter)
 
 
 
 
-app.use("/users", usersRouter);
+
+
+
+
 
 const PORT = process.env.PORT || 5000;
 
