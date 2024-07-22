@@ -1,10 +1,8 @@
 const pool = require("../models/db");
 
 const getAllReports = (req, res) => {
-  // const quer=`SELECT * FROM medical_reports WHERE user_id AND doctor_id `
   pool
     .query(`SELECT * FROM medical_reports `)
-
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -12,7 +10,7 @@ const getAllReports = (req, res) => {
         result: result.rows,
       });
     })
-    .catch((error) => {
+   .catch((error) => {
       res.status(500).json({
         success: false,
         message: "Server Error",
@@ -21,6 +19,42 @@ const getAllReports = (req, res) => {
       console.log(error);
     });
 };
-module.exports = {
-  getAllReports,
+
+   
+ 
+
+const createMedicalReport=(req,res)=>{
+    const { user_id, doctor_id,title,description,image_url,time} = req.body;
+   
+    const query = `INSERT INTO medical_reports (user_id, doctor_id,title,description,image_url,time) VALUES ($1,$2,$3,$4,$5,$6)`;
+    const data = [
+        user_id,
+        doctor_id,
+        title,
+        description,
+        image_url,
+        time,
+    ];
+    
+    pool
+      .query(query, data)
+      .then((result) => {
+        res.status(200).json({
+          success: true,
+          message: 'report created successfully',
+        });
+      })
+      .catch((err) => {
+        res.status(500).json({
+          success: false,
+          message: 'Server Error',
+          err:err.message
+        });
+      });
+}
+
+module.exports={
+    getAllReports,
+    createMedicalReport
+
 };

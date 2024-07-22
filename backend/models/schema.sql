@@ -45,6 +45,7 @@ CREATE TABLE departments (
     salary INT,
     description TEXT,
     is_deleted SMALLINT DEFAULT 0,
+    --drop salary 
 
 );
 
@@ -96,6 +97,7 @@ CREATE TABLE medical_reports (
   time TIMESTAMP NOT NULL
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (doctor_id) REFERENCES doctors(id),
+  -- check time stamp
 );
 
 -- Create a table called **medical_reports** in the database
