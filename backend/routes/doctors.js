@@ -1,14 +1,16 @@
-const express = require("express");
+const express = require('express');
 const {
   addNewDoctor,
   getAllDoctors,
   updatedoctorById,
-} = require("../controllers/doctors");
+  deleteDoctorById,
+} = require('../controllers/doctors');
 
 const doctorsRouter = express.Router();
 
-doctorsRouter.post("/", addNewDoctor);
-doctorsRouter.get("/", getAllDoctors);
-doctorsRouter.put("/:id", updatedoctorById);
+doctorsRouter.post('/', addNewDoctor);
+doctorsRouter.get('/', getAllDoctors);
+doctorsRouter.put('/:id', updatedoctorById);
+doctorsRouter.delete('/:id', deleteDoctorById);
 
 module.exports = doctorsRouter;

@@ -4,8 +4,8 @@ const updateAppointmentById = (req, res) => {
   const id = req.params.id;
   let { time } = req.body;
 
-  const query = `UPDATE appointments SET time = COALESCE($1,time) WHERE id=$2 RETURNING *;`;
-  const data = [time || null, id];
+  const query = `UPDATE appointments SET time = COALESCE($1) WHERE id=$2 RETURNING *;`;
+  const data = [time, id];
 
   pool
     .query(query, data)
