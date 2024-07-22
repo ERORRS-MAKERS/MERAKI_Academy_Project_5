@@ -10,6 +10,7 @@ const prescriptionRouter = require('./routes/prescription');
 const usersRouter = require('./routes/users');
 const reportRouter=require('./routes/report')
 const doctorsRouter = require('./routes/doctors');
+const departmentsRouter=require('./routes/departments')
 
 //built-in middleware
 app.use(express.json());
@@ -20,7 +21,7 @@ app.use('/prescription', prescriptionRouter);
 app.use('/doctors', doctorsRouter);
 app.use('/users', usersRouter);
 app.use('/reports',reportRouter);
-
+app.use('/departments',departmentsRouter)
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
