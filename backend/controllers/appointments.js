@@ -31,7 +31,7 @@ const updateAppointmentById = (req, res) => {
 const getAllAppointments = (req, res) => {
 
   pool
-    .query('SELECT * FROM appointments WHERE is_deleted=0;')
+    .query('SELECT * FROM appointments ')
     .then((result) => {
       res.status(200).json({
         success: true,
