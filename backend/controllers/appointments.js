@@ -28,5 +28,24 @@ const updateAppointmentById = (req, res) => {
       });
     });
 };
+const getAllAppointments = (req, res) => {
 
-module.exports = { updateAppointmentById };
+  pool
+    .query('SELECT * FROM appointments WHERE is_deleted=0;')
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: 'all appointments',
+        result: result.rows
+      })
+    }).catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message
+      })
+    })
+
+}
+
+module.exports = { updateAppointmentById, getAllAppointments };
