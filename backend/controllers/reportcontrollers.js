@@ -1,24 +1,19 @@
-const pool = require("../models/db");
+const pool = require('../models/db');
 
 const getAllReports = (req, res) => {
-
- 
-
- 
-
-   pool
-    .query(`SELECT * FROM medical_reports `
+  pool
+    .query(`SELECT * FROM medical_reports `)
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: "All The Reports",
+        message: 'All The Reports',
         result: result.rows,
       });
     })
     .catch((error) => {
       res.status(500).json({
         success: false,
-        message: "Server Error",
+        message: 'Server Error',
         error: error.message,
       });
       console.log(error);
@@ -36,34 +31,20 @@ const createMedicalReport = (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: "report created successfully",
+        message: 'report created successfully',
       });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server Error",
+        message: 'Server Error',
         err: err.message,
       });
     });
 };
-   })
-   .catch((error) => {
-      res.status(500).json({
-        success: false,
-        message: "Server Error",
-        error: error.message,
-      });
-      console.log(error);
-    });
-};
-
-
-
 
 const getReportsByNationalId = (req, res) => {
   const id = req.params.national_id;
-  console.log(id);
   const query = `SELECT users.first_name,users.last_name,national_id,medical_reports.* 
   FROM medical_reports
   INNER JOIN users ON users.id=medical_reports.user_id WHERE users.national_id=($1)`;
@@ -79,22 +60,19 @@ const getReportsByNationalId = (req, res) => {
           result: result.rows,
         });
       } else {
-        throw new Error("Error happened while getting reports");
+        throw new Error('Error happened while getting reports');
       }
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server error",
+        message: 'Server error',
         err: err,
       });
-
     });
 };
 module.exports = {
   getAllReports,
   createMedicalReport,
   getReportsByNationalId,
-
-}
-
+};
