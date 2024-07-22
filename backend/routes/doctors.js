@@ -1,15 +1,14 @@
 const express = require("express");
 const {
-    addNewDoctor,
-    getAllDoctors,
+  addNewDoctor,
+  getAllDoctors,
+  updatedoctorById,
 } = require("../controllers/doctors");
 
+const doctorsRouter = express.Router();
 
-const doctorsRouter=express.Router()
+doctorsRouter.post("/", addNewDoctor);
+doctorsRouter.get("/", getAllDoctors);
+doctorsRouter.put("/:id", updatedoctorById);
 
-doctorsRouter.post("/",addNewDoctor)
-doctorsRouter.get("/",getAllDoctors)
-
-
-
-module.exports=doctorsRouter
+module.exports = doctorsRouter;
