@@ -43,7 +43,45 @@ const getAllDepartment = (req, res) => {
     });
 };
 
+const updateDepartmentById = (req, res) => {
+  const id = req.params.id;
+  let { name, description } = req.body;
+
+  const query = `UPDATE departments SET 
+  name = COALESCE ($1,name),
+    description = COALESCE($2, description)
+  WHERE id=$3 AND is_deleted = 0  RETURNING *;
+   `;
+
+  const data = [name, description, id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: `Department with id: ${id} not found`,
+        });
+      }
+
+      res.status(200).json({
+        success: true,
+        message: `Department with id: ${id} updated successfully`,
+        doctor: result.rows[0],
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        err: err.message,
+      });
+    });
+};
+
 module.exports = {
   addNewDepartment,
   getAllDepartment,
+  updateDepartmentById,
 };
