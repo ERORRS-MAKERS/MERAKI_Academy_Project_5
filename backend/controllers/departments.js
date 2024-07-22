@@ -80,8 +80,33 @@ const updateDepartmentById = (req, res) => {
     });
 };
 
+const deleteDepartmentById = async (req, res) => {
+  const id = req.params.id;
+  const query = await `UPDATE departments SET is_deleted=1 WHERE id=$1 RETURNING *;`;
+  const data = [id];
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `Department with id: ${id} deleted successfully`,
+        });
+      } else {
+        throw new Error("Error happened while deleting departments");
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        err: err.message,
+      });
+    });
+};
 module.exports = {
   addNewDepartment,
   getAllDepartment,
   updateDepartmentById,
+  deleteDepartmentById,
 };
