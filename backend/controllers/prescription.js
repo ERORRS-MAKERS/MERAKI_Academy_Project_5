@@ -23,6 +23,35 @@ const getAllPrescription = (req, res) => {
     });
 };
 
+const getPrescriptionByNationalId = (req, res) => {
+  const id = req.params.national_id;
+  const query = `SELECT users.first_name,users.last_name,national_id,prescription.* 
+  FROM prescription
+  INNER JOIN users ON users.id=prescription.user_id WHERE users.national_id=($1)`;
+  const data = [id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `The reports with national_id: ${id}`,
+          result: result.rows,
+        });
+      } else {
+        throw new Error('Error happened while getting reports');
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Server error',
+        err: err.message,
+      });
+    });
+};
+
 const SendPrescriptionRequest = (req, res) => {
   const { doctor_id, user_id, pharmacist_id, title, description, quantity } =
     req.body;
@@ -91,4 +120,5 @@ module.exports = {
   getAllPrescription,
   SendPrescriptionRequest,
   updatePrescriptionStatus,
+  getPrescriptionByNationalId,
 };
