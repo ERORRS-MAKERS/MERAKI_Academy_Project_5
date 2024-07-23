@@ -4,7 +4,7 @@ const updateAppointmentById = (req, res) => {
   const id = req.params.id;
   let { time } = req.body;
 
-  const query = `UPDATE appointments SET time = COALESCE($1) WHERE id=$2 RETURNING *;`;
+  const query = `UPDATE appointments SET time = $1 WHERE id=$2 RETURNING *;`;
   const data = [time, id];
 
   pool
@@ -29,23 +29,22 @@ const updateAppointmentById = (req, res) => {
     });
 };
 const getAllAppointments = (req, res) => {
-
   pool
-    .query('SELECT * FROM appointments ')
+    .query('SELECT * FROM appointments')
     .then((result) => {
       res.status(200).json({
         success: true,
         message: 'all appointments',
-        result: result.rows
-      })
-    }).catch((error) => {
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
       res.status(500).json({
         success: false,
         message: 'server error',
-        error: error.message
-      })
-    })
-
-}
+        error: error.message,
+      });
+    });
+};
 
 module.exports = { updateAppointmentById, getAllAppointments };

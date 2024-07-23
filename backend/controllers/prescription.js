@@ -58,4 +58,37 @@ const SendPrescriptionRequest = (req, res) => {
     });
 };
 
-module.exports = { getAllPrescription, SendPrescriptionRequest };
+const updatePrescriptionStatus = (req, res) => {
+  const id = req.params.id;
+  let { status } = req.body;
+
+  const query = `UPDATE prescription SET status = $1 WHERE id=$2 RETURNING *;`;
+  const data = [status, id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `prescription Status with id: ${id} updated successfully`,
+          result: result.rows[0],
+        });
+      } else {
+        throw new Error('Error happened while updating article');
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Server error',
+        err: err,
+      });
+    });
+};
+
+module.exports = {
+  getAllPrescription,
+  SendPrescriptionRequest,
+  updatePrescriptionStatus,
+};
