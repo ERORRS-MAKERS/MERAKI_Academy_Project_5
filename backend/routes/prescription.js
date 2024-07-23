@@ -4,11 +4,13 @@ const {
   getAllPrescription,
   SendPrescriptionRequest,
   updatePrescriptionStatus,
+  getPrescriptionByNationalId,
 } = require('../controllers/prescription');
 
 const prescriptionRouter = express.Router();
 
 prescriptionRouter.get('/:id', getAllPrescription);
+prescriptionRouter.get('/search_1/:national_id', getPrescriptionByNationalId);
 prescriptionRouter.post('/', SendPrescriptionRequest);
 prescriptionRouter.put('/search/:id', updatePrescriptionStatus);
 
