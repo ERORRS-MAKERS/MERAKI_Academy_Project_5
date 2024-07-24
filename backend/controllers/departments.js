@@ -65,6 +65,8 @@ const updateDepartmentById = (req, res) => {
         });
       }
 
+
+
       res.status(200).json({
         success: true,
         message: `Department with id: ${id} updated successfully`,
@@ -109,4 +111,4 @@ module.exports = {
   getAllDepartment,
   updateDepartmentById,
   deleteDepartmentById,
-};
+
