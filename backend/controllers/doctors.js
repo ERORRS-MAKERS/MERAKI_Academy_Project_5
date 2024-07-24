@@ -52,7 +52,7 @@ const getAllDoctors = (req, res) => {
     });
 };
 
-const updatedoctorById = (req, res) => {
+const updateDoctorById = (req, res) => {
   const id = req.params.id;
   let { name, department_id, specialist, description } = req.body;
 
@@ -119,6 +119,6 @@ const deleteDoctorById = (req, res) => {
 module.exports = {
   addNewDoctor,
   getAllDoctors,
-  updatedoctorById,
+  updateDoctorById,
   deleteDoctorById,
 };
