@@ -31,4 +31,5 @@ const addNewDepartment =  (req, res) => {
 
   module.exports={
     addNewDepartment
+   
   }
