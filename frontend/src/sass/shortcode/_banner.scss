@@ -1,0 +1,420 @@
+/*--------------------------------------------------------------
+14. Banner
+----------------------------------------------------------------*/
+.cs_banner.cs_style_1 {
+  position: relative;
+  padding: 100px 90px;
+  border-radius: 25px;
+  margin-top: 165px;
+  @media (max-width: 1700px) {
+    margin-top: 85px;
+  }
+  @media (max-width: 1199px) {
+    margin-top: 0px;
+  }
+  @media (max-width: 991px) {
+    padding: 70px 30px;
+  }
+  .cs_banner_title {
+    max-width: 800px;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    @media (max-width: 1700px) {
+      max-width: 650px;
+    }
+  }
+  .cs_banner_subtitle {
+    max-width: 500px;
+    position: relative;
+    z-index: 1;
+  }
+  .cs_banner_img {
+    position: absolute;
+    bottom: -30px;
+    right: -15px;
+    @media (max-width: 1700px) {
+      max-width: 535px;
+    }
+    @media (max-width: 1199px) {
+      max-height: 100%;
+      bottom: 0;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+}
+.cs_banner.cs_style_2 {
+  padding: 200px 9% 200px 43%;
+  @media (max-width: 1700px) {
+    padding: 150px 9% 150px 43%;
+  }
+  @media (max-width: 1400px) {
+    padding: 150px 5% 150px 40%;
+  }
+  @media (max-width: 1199px) {
+    padding: 120px 4% 120px 36%;
+  }
+  @media (max-width: 991px) {
+    padding: 80px 30px 80px 25%;
+  }
+  @media (max-width: 767px) {
+    padding: 80px 30px;
+    background-position: right center;
+    br {
+      display: none;
+    }
+  }
+}
+.cs_banner.cs_style_3,
+.cs_banner.cs_style_5 {
+  padding: 225px 0 155px;
+  min-height: 700px;
+  position: relative;
+  @media (max-width: 1700px) {
+    min-height: 600px;
+  }
+  @media (max-width: 1199px) {
+    min-height: 500px;
+    padding: 160px 0 125px;
+    .container {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 991px) {
+    padding: 155px 0 100px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container {
+      max-width: 720px;
+    }
+  }
+  @media (max-width: 767px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  .cs_banner_title {
+    margin-bottom: 25px;
+    @media (max-width: 1199px) {
+      font-size: 50px;
+    }
+    @media (max-width: 575px) {
+      font-size: 48px;
+    }
+  }
+  .cs_banner_img {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 110px;
+    img {
+      max-height: 100%;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+  .cs_banner_text {
+    position: relative;
+    z-index: 1;
+    width: 50%;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 1400px) {
+    .cs_fs_20 {
+      font-size: 18px;
+    }
+  }
+  @media (max-width: 991px) {
+    .cs_fs_20 {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 575px) {
+    br {
+      display: none;
+    }
+  }
+}
+.cs_banner.cs_style_3 {
+  .cs_banner_img {
+    left: 0;
+    width: 50%;
+    padding-left: 6%;
+    padding-right: 12px;
+    @media (max-width: 1700px) {
+      padding-left: 12px;
+    }
+  }
+  .cs_banner_subtitle {
+    max-width: 550px;
+    @media (max-width: 991px) {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  @media (min-width: 991px) {
+    .cs_banner_text {
+      margin-left: auto;
+    }
+  }
+}
+.cs_banner.cs_style_4 {
+  position: relative;
+  box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  padding: 280px 130px 340px;
+  border-radius: 30px 30px 0 0;
+  @media (max-width: 1700px) {
+    padding: 140px 130px 340px;
+  }
+  @media (max-width: 991px) {
+    padding: 120px 30px 250px;
+  }
+  @media (max-width: 767px) {
+    br {
+      display: none;
+    }
+  }
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+  .cs_banner_title {
+    margin-bottom: 12px;
+  }
+}
+.cs_banner.cs_style_5 {
+  .cs_banner_img {
+    right: 0;
+    width: 50%;
+    padding-left: 12px;
+    padding-right: 5%;
+    @media (max-width: 1700px) {
+      padding-right: 12px;
+    }
+    @media (max-width: 1199px) {
+      width: 56%;
+    }
+  }
+  // .cs_banner_subtitle {
+  //   @media (max-width: 1700px) {
+  //     max-width: 500px;
+  //     // br {
+  //     //   display: none;
+  //     // }
+  //   }
+  //   @media (max-width: 1400px) {
+  //     max-width: 450px;
+  //   }
+  //   @media (max-width: 991px) {
+  //     max-width: 100%;
+  //   }
+  // }
+
+  // @media (max-width: 991px) {
+  //   br {
+  //     display: none;
+  //   }
+  // }
+}
+.cs_banner.cs_style_6 {
+  position: relative;
+  padding: 86px 70px 350px 50.4%;
+  box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  margin-top: 100px;
+  @media (max-width: 1700px) {
+    margin-top: 35px;
+  }
+  @media (max-width: 1400px) {
+    padding: 86px 70px 350px 44%;
+    margin-top: 0;
+  }
+  @media (max-width: 1199px) {
+    padding: 80px 30px 340px 36%;
+  }
+  @media (max-width: 991px) {
+    padding: 70px 30px 240px 30px;
+  }
+  @media (max-width: 767px) {
+    br {
+      display: none;
+    }
+  }
+  .cs_banner_title {
+    margin-bottom: 22px;
+    position: relative;
+    z-index: 1;
+  }
+  .cs_banner_subtitle {
+    position: relative;
+    z-index: 1;
+  }
+  .cs_banner_img {
+    left: -10px;
+    bottom: 30px;
+    position: absolute;
+    @media (max-width: 1700px) {
+      max-width: 670px;
+    }
+    @media (max-width: 1400px) {
+      max-width: 610px;
+      left: -100px;
+    }
+    @media (max-width: 1199px) {
+      max-width: 560px;
+      left: -130px;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+}
+.cs_banner.cs_style_7 {
+  padding: 77px 50px 405px;
+  box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  position: relative;
+  margin-top: 390px;
+  @media (max-width: 991px) {
+    padding: 70px 25px 245px;
+    margin-top: 305px;
+  }
+  @media (max-width: 767px) {
+    margin-top: 0;
+    br {
+      display: none;
+    }
+  }
+  .cs_banner_img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -390px;
+    z-index: -1;
+    @media (max-width: 991px) {
+      top: -310px;
+    }
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+}
+.cs_banner_8_wrap {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 50%;
+    width: 100%;
+    background-color: #fff;
+  }
+}
+.cs_banner.cs_style_8 {
+  position: relative;
+  padding: 127px 100px 146px;
+  z-index: 2;
+  margin-top: 75px;
+  @media (max-width: 1700px) {
+    margin-top: 0;
+    padding: 110px 80px 110px;
+  }
+  @media (max-width: 1400px) {
+    margin-top: 0;
+    padding: 90px 60px 90px;
+  }
+  @media (max-width: 767px) {
+    padding: 70px 30px 70px;
+  }
+  .cs_banner_title {
+    margin-bottom: 17px;
+  }
+  .cs_banner_in {
+    max-width: 540px;
+    position: relative;
+    z-index: 2;
+  }
+  .cs_banner_img {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 62%;
+    @media (max-width: 1700px) {
+      width: 58%;
+    }
+    @media (max-width: 1400px) {
+      width: 55%;
+    }
+    @media (max-width: 1199px) {
+      width: 52%;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+}
+.cs_banner.cs_style_9 {
+  position: relative;
+  box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  padding: 183px 0 382px 130px;
+  margin-top: 130px;
+  @media (max-width: 1700px) {
+    padding: 140px 0 350px 110px;
+    margin-top: 80px;
+  }
+  @media (max-width: 1199px) {
+    padding: 100px 0 350px 50px;
+    margin-top: 0;
+  }
+  @media (max-width: 991px) {
+    padding: 100px 0 250px 30px;
+  }
+  @media (max-width: 767px) {
+    br {
+      display: none;
+    }
+  }
+  .cs_banner_img {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    @media (max-width: 1700px) {
+      max-width: 500px;
+    }
+    @media (max-width: 1199px) {
+      max-width: 400px;
+    }
+    @media (max-width: 991px) {
+      display: none;
+    }
+  }
+  .cs_banner_title {
+    margin-bottom: 22px;
+  }
+  &.cs_type_1 {
+    padding: 150px 60px 340px 50%;
+    margin: 0;
+    @media (max-width: 1199px) {
+      padding: 90px 60px 340px 50%;
+    }
+    @media (max-width: 991px) {
+      padding: 90px 30px 240px 30px;
+    }
+    .cs_banner_img {
+      right: initial;
+      left: 0;
+      max-width: 48%;
+    }
+  }
+}

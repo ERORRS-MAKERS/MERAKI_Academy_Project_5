@@ -1,0 +1,64 @@
+/*--------------------------------------------------------------
+19. Departments
+----------------------------------------------------------------*/
+.cs_departments.cs_style_1 {
+  padding-top: 100px;
+  position: relative;
+  .cs_department_list {
+    position: relative;
+    z-index: 1;
+    padding: 0 25px;
+    @media (max-width: 991px) {
+      padding: 0 15px;
+    }
+    @media (max-width: 575px) {
+      .cs_slider_navigation.cs_style_1 {
+        margin-top: 0;
+      }
+    }
+  }
+  .cs_section_heading {
+    position: relative;
+    z-index: 1;
+  }
+  .cs_department {
+    flex: 1;
+    text-align: center;
+    padding: 30px 30px;
+    height: 290px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @media (max-width: 991px) {
+      height: 250px;
+    }
+    @media (max-width: 400px) {
+      padding: 30px 20%;
+    }
+    &:hover {
+      transform: translateY(-20px);
+      background-color: $accent;
+      img {
+        filter: brightness(0) invert(1);
+      }
+      .cs_heading_color {
+        color: #fff;
+      }
+    }
+  }
+  svg {
+    transition: all 0.4s ease;
+  }
+  .cs_department_title {
+    margin-top: 20px;
+    transition: all 0.4s ease;
+  }
+  .cs_departments_bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: calc(100% - 122px);
+  }
+}

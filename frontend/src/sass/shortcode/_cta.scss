@@ -1,0 +1,19 @@
+.cs_cta.cs_style_1 {
+  padding: 125px 60px 140px 50%;
+  @media (max-width: 1199px) {
+    padding: 95px 30px 100px 45%;
+  }
+  @media (max-width: 767px) {
+    padding: 95px 30px 100px 35%;
+  }
+  @media (max-width: 575px) {
+    padding: 100px 24px 90px;
+  }
+  .cs_cta_title,
+  .cs_cta_subtitle {
+    margin-bottom: 38px;
+  }
+  .cs_cta_subtitle {
+    max-width: 600px;
+  }
+}

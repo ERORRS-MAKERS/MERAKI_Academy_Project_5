@@ -1,0 +1,52 @@
+/*--------------------------------------------------------------
+>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+1. Typography
+2. Preloader
+3. Spacing
+4. General
+5. Slider
+6. Video Popup
+7. Header
+8. Footer
+9. Sidebar
+10. Isotope
+11. Hero
+12. Iconbox
+13. Posts
+14. Banner
+15. Testimonial
+16. Portfolio
+17. Brands
+18. Accordians
+19. Departments
+20. About
+21. Team
+22. Funfact
+---------------------------------------------------------------*/
+@import 'default/color_variable';
+@import 'default/typography';
+@import 'common/preloader';
+@import 'common/spacing';
+@import 'common/general';
+@import 'common/slider';
+@import 'common/video-modal';
+@import 'common/header';
+@import 'common/footer';
+@import 'common/sidebar';
+@import 'common/isotope';
+@import 'shortcode/hero';
+@import 'shortcode/iconbox';
+@import 'shortcode/post';
+@import 'shortcode/banner';
+@import 'shortcode/testimonial';
+@import 'shortcode/portfolio';
+@import 'shortcode/brands';
+@import 'shortcode/accordion';
+@import 'shortcode/department';
+@import 'shortcode/about';
+@import 'shortcode/team';
+@import 'shortcode/funfact';
+@import 'shortcode/cta';
+@import 'shortcode/pricing_card';
+@import 'custom';
