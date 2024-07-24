@@ -1,4 +1,4 @@
-const pool = require("../models/db");
+const pool = require('../models/db');
 
 const addNewDepartment = (req, res) => {
   const { name, description } = req.body;
@@ -10,13 +10,13 @@ const addNewDepartment = (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: "Department added successfully",
+        message: 'Department added successfully',
       });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server Error",
+        message: 'Server Error',
         err: err.message,
       });
     });
@@ -30,14 +30,14 @@ const getAllDepartment = (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: "All departments",
+        message: 'All departments',
         result: result.rows,
       });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server error",
+        message: 'Server error',
         err: err.message,
       });
     });
@@ -65,8 +65,6 @@ const updateDepartmentById = (req, res) => {
         });
       }
 
-
-
       res.status(200).json({
         success: true,
         message: `Department with id: ${id} updated successfully`,
@@ -76,7 +74,7 @@ const updateDepartmentById = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server error",
+        message: 'Server error',
         err: err.message,
       });
     });
@@ -84,7 +82,8 @@ const updateDepartmentById = (req, res) => {
 
 const deleteDepartmentById = async (req, res) => {
   const id = req.params.id;
-  const query = await `UPDATE departments SET is_deleted=1 WHERE id=$1 RETURNING *;`;
+  const query =
+    await `UPDATE departments SET is_deleted=1 WHERE id=$1 RETURNING *;`;
   const data = [id];
   pool
     .query(query, data)
@@ -95,13 +94,13 @@ const deleteDepartmentById = async (req, res) => {
           message: `Department with id: ${id} deleted successfully`,
         });
       } else {
-        throw new Error("Error happened while deleting departments");
+        throw new Error('Error happened while deleting departments');
       }
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: "Server error",
+        message: 'Server error',
         err: err.message,
       });
     });
@@ -111,4 +110,4 @@ module.exports = {
   getAllDepartment,
   updateDepartmentById,
   deleteDepartmentById,
-
+};
