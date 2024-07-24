@@ -1,0 +1,137 @@
+/*--------------------------------------------------------------
+9. Sidebar
+----------------------------------------------------------------*/
+.cs_sidebar {
+  padding-left: 100px;
+  @media (max-width: 1700px) {
+    padding-left: 40px;
+  }
+  @media (max-width: 1400px) {
+    padding-left: 0px;
+  }
+  @media (max-width: 1199px) {
+    .cs_btn.cs_style_1 {
+      padding: 12px 30px;
+    }
+  }
+  @media (max-width: 991px) {
+    padding-top: 80px;
+  }
+}
+.cs_sidebar_item {
+  border-radius: 6px;
+  background-color: #fff;
+  box-shadow: 0px 6px 31px 0px rgba(65, 91, 245, 0.06);
+  padding: 50px;
+  @media (max-width: 1700px) {
+    padding: 40px 35px;
+  }
+  @media (max-width: 1400px) {
+    padding: 40px 25px;
+  }
+  &:not(:last-child) {
+    margin-bottom: 70px;
+    @media (max-width: 1700px) {
+      margin-bottom: 40px;
+    }
+  }
+}
+.widget_categories {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.5em;
+    color: $accent;
+    font-weight: 500;
+    @media (max-width: 1700px) {
+      font-size: 18px;
+    }
+    li {
+      position: relative;
+      padding-left: 45px;
+      &:not(:last-child) {
+        margin-bottom: 32px;
+        @media (max-width: 1700px) {
+          margin-bottom: 22px;
+        }
+      }
+      &::before {
+        content: '';
+        height: 27px;
+        width: 26px;
+        display: inline-block;
+        background-image: url(../../../public/images/icons/category.svg);
+        background-size: contain;
+        background-position: center;
+        position: absolute;
+        left: 0;
+        top: 2px;
+      }
+    }
+  }
+}
+.cs_sidebar_widget_title {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.5em;
+  margin-bottom: 30px;
+  @media (max-width: 1700px) {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+}
+.cs_popular_posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  > li {
+    &:not(:last-child) {
+      margin-bottom: 40px;
+      @media (max-width: 1700px) {
+        margin-bottom: 30px;
+      }
+    }
+  }
+}
+
+.cs_popular_post_title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5em;
+  color: $accent;
+  margin-bottom: 15px;
+  @media (max-width: 1700px) {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  a {
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.cs_popular_post_meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 15px;
+  justify-content: space-between;
+  li {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    &.cs_posted_author {
+      a {
+        color: $primary;
+        &:hover {
+          color: $accent;
+        }
+      }
+    }
+  }
+}

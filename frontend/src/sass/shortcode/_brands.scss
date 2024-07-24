@@ -1,0 +1,47 @@
+/*--------------------------------------------------------------
+17. Brands
+----------------------------------------------------------------*/
+.cs_brands.cs_style_1 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 60px 30px;
+  @media (max-width: 1700px) {
+    gap: 40px 120px;
+  }
+  @media (max-width: 991px) {
+    gap: 20px 60px;
+  }
+  @media (max-width: 767px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (max-width: 575px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 420px) {
+    gap: 20px 30px;
+  }
+}
+.cs_brands.cs_style_2 {
+  padding: 0 20px;
+  text-align: center;
+  height: 136px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cs_brands.cs_style_3 {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 30px 70px;
+  background-color: #fff;
+  box-shadow: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
+  padding: 70px;
+  @media (max-width: 1400px) {
+    justify-content: center;
+  }
+  @media (max-width: 575px) {
+    gap: 30px;
+    padding: 70px 40px;
+  }
+}

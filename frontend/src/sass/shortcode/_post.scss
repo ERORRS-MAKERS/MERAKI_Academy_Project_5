@@ -1,0 +1,209 @@
+/*--------------------------------------------------------------
+13. Posts
+----------------------------------------------------------------*/
+.cs_post.cs_style_1 {
+  box-shadow: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
+  border-radius: 20px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.4s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    transform: translateY(-20px);
+    box-shadow: 6px 4px 70px 8px rgba(48, 123, 196, 0.09);
+  }
+  .cs_post_thumb {
+    display: block;
+    width: 100%;
+    img {
+      width: 100%;
+      border-radius: 20px;
+    }
+  }
+  .cs_post_info {
+    padding: 30px 40px 40px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @media (max-width: 991px) {
+      padding: 30px 25px 30px;
+    }
+  }
+  .cs_post_social {
+    display: flex;
+    gap: 10px;
+    a {
+      height: 30px;
+      width: 30px;
+      border: 1px solid $accent;
+      color: $accent;
+      font-size: 14px;
+      &:hover {
+        background-color: $accent;
+        color: #fff;
+      }
+    }
+  }
+  .cs_post_meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+  .cs_post_title {
+    margin-bottom: 18px;
+  }
+  .cs_post_btn {
+    display: inline-block;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.cs_type_1 {
+    padding: 28px 28px 0;
+    @media (max-width: 1400px) {
+      padding: 15px 15px 0;
+    }
+    .cs_post_title {
+      margin: 0;
+    }
+    .cs_post_info {
+      padding: 25px 15px 56px;
+      @media (max-width: 1400px) {
+        padding: 25px 0px 30px 10px;
+      }
+    }
+  }
+  &.cs_type_2 {
+    height: initial;
+    display: block;
+    .cs_post_thumb {
+      img {
+        border-radius: 20px 20px 0 0;
+      }
+    }
+    .cs_post_title {
+      margin-bottom: 20px;
+    }
+    .cs_post_info {
+      padding: 45px 40px 45px;
+      > div {
+        display: flex;
+        flex-direction: column-reverse;
+      }
+      @media (max-width: 480px) {
+        padding: 30px 25px;
+      }
+    }
+    .cs_post_meta {
+      margin-bottom: 0;
+    }
+    .cs_post_thumb {
+      height: 381px;
+      @media (max-width: 1700px) {
+        height: 396px;
+      }
+      @media (max-width: 991px) {
+        height: initial;
+      }
+      img {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.cs_post.cs_style_2 {
+  display: flex;
+  box-shadow: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
+  transition: all 0.5s ease;
+  &:hover {
+    transform: scale(1.03);
+  }
+  @media (max-width: 380px) {
+    flex-direction: column;
+  }
+  // &:not(:last-child) {
+  //   margin-bottom: 20px;
+  // }
+  .cs_post_title {
+    margin-bottom: 12px;
+  }
+  .cs_post_info {
+    padding: 15px 15px 15px 60px;
+    display: flex;
+    align-items: center;
+    @media (max-width: 1700px) {
+      padding-left: 30px;
+    }
+    @media (max-width: 575px) {
+      padding-left: 20px;
+    }
+  }
+  .cs_post_thumb {
+    flex: none;
+    width: 190px;
+    min-height: 188px;
+    img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 575px) {
+      width: 150px;
+      min-height: 150px;
+    }
+    @media (max-width: 380px) {
+      height: 180px;
+      width: 180px;
+      border-radius: 0 0 20px 0;
+      overflow: hidden;
+    }
+  }
+}
+.cs_post.cs_style_3 {
+  transition: all 0.4s ease;
+  &:hover {
+    box-shadow: 0px 4px 21px 1px rgba(48, 123, 196, 0.1);
+  }
+  .cs_post_thumb {
+    display: block;
+  }
+  .cs_post_category {
+    display: inline-flex;
+    border: 1px solid $accent;
+    padding: 6px 19px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    &:hover {
+      background-color: $accent;
+      color: #fff;
+    }
+  }
+  .cs_post_title {
+    margin-bottom: 18px;
+  }
+  .cs_posted_by {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $primary;
+    i {
+      font-size: 18px;
+      color: $accent;
+      display: flex;
+    }
+  }
+  .cs_post_info {
+    padding: 35px 40px;
+    @media (max-width: 1700px) {
+      padding: 25px 24px;
+    }
+  }
+}

@@ -1,0 +1,77 @@
+/*--------------------------------------------------------------
+16. Portfolio
+----------------------------------------------------------------*/
+.cs_portfolio.cs_style_1 {
+  height: 429px;
+  @media (max-width: 991px) {
+    height: 350px;
+  }
+  .cs_portfolio_img {
+    height: 100%;
+    border-radius: inherit;
+    position: relative;
+    &::before {
+      content: '';
+      background: $accent;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      transition: all 0.3s ease;
+    }
+  }
+  .cs_link_hover {
+    position: absolute;
+    z-index: 2;
+    top: -100px;
+    right: 50px;
+    width: 60px;
+    height: 200px;
+    background: $accent;
+    border-radius: 0 0 40px 40px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    font-size: 20px;
+    i {
+      color: $accent;
+      background-color: #fff;
+      height: 50px;
+      width: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin-bottom: 5px;
+      opacity: 0;
+      transform: scale(0.5) rotate(180deg);
+      transition: all 0.3s ease;
+    }
+  }
+  &:hover {
+    .cs_link_hover {
+      opacity: 1;
+      top: 0px;
+      i {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+        transition-delay: 0.15s;
+      }
+    }
+    .cs_portfolio_img {
+      &::before {
+        opacity: 0.4;
+      }
+    }
+  }
+  &.cs_size_1 {
+    height: 716px;
+    @media (max-width: 991px) {
+      height: 607px;
+    }
+  }
+}
