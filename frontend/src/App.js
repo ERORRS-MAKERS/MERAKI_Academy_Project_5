@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from 'react-router-dom';
+// import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './components/Layout';
 import Layout2 from './components/Layout/Layout2';
 import Layout3 from './components/Layout/Layout3';
@@ -25,47 +25,52 @@ import Layout5 from './components/Layout/Layout5';
 import HomeStyle5 from './components/Pages/HomeStyle5';
 import HomeStyle6 from './components/Pages/HomeStyle6';
 
-function App() {
-  const { pathname } = useLocation();
+import { RouterProvider } from 'react-router-dom';
+import { router } from './routes/router';
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+function App() {
+  // const { pathname } = useLocation();
+
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [pathname]);
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="about" element={<About />} />
-        <Route path="doctors" element={<Doctors />} />
-        <Route path="doctors/:doctorId" element={<DoctorDetails />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="blog/:blogId" element={<BlogDetails />} />
-        <Route path="appointments" element={<Appointments />} />
-        <Route path="departments" element={<Departments />} />
-        <Route
-          path="departments/:departmentId"
-          element={<DepartmentDetails />}
-        />
-        <Route path="pricing-plan" element={<PricingPlan />} />
-        <Route path="gallery" element={<Gallery />} />
-        <Route path="timetable" element={<Timetable />} />
-        <Route path="contact" element={<Contact />} />
-      </Route>
-      <Route element={<Layout2 />}>
-        <Route path="home-v2" element={<HomeStyle2 />} />
-        <Route path="home-v6" element={<HomeStyle6 />} />
-      </Route>
-      <Route path="home-v3" element={<Layout3 />}>
-        <Route index element={<HomeStyle3 />} />
-      </Route>
-      <Route path="home-v4" element={<Layout4 />}>
-        <Route index element={<HomeStyle4 />} />
-      </Route>
-      <Route path="home-v5" element={<Layout5 />}>
-        <Route index element={<HomeStyle5 />} />
-      </Route>
-      <Route path="*" element={<ErrorPage />} />
-    </Routes>
+    <RouterProvider router={router} />
+
+    // <Routes>
+    //   <Route path="/" element={<Layout />}>
+    //     <Route index element={<Home />} />
+    //     <Route path="about" element={<About />} />
+    //     <Route path="doctors" element={<Doctors />} />
+    //     <Route path="doctors/:doctorId" element={<DoctorDetails />} />
+    //     <Route path="blog" element={<Blog />} />
+    //     <Route path="blog/:blogId" element={<BlogDetails />} />
+    //     <Route path="appointments" element={<Appointments />} />
+    //     <Route path="departments" element={<Departments />} />
+    //     <Route
+    //       path="departments/:departmentId"
+    //       element={<DepartmentDetails />}
+    //     />
+    //     <Route path="pricing-plan" element={<PricingPlan />} />
+    //     <Route path="gallery" element={<Gallery />} />
+    //     <Route path="timetable" element={<Timetable />} />
+    //     <Route path="contact" element={<Contact />} />
+    //   </Route>
+    //   <Route element={<Layout2 />}>
+    //     <Route path="home-v2" element={<HomeStyle2 />} />
+    //     <Route path="home-v6" element={<HomeStyle6 />} />
+    //   </Route>
+    //   <Route path="home-v3" element={<Layout3 />}>
+    //     <Route index element={<HomeStyle3 />} />
+    //   </Route>
+    //   <Route path="home-v4" element={<Layout4 />}>
+    //     <Route index element={<HomeStyle4 />} />
+    //   </Route>
+    //   <Route path="home-v5" element={<Layout5 />}>
+    //     <Route index element={<HomeStyle5 />} />
+    //   </Route>
+    //   <Route path="*" element={<ErrorPage />} />
+    // </Routes>
   );
 }
 

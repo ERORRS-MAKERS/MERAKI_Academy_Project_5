@@ -1,4 +1,5 @@
 const pool = require('../models/db');
+// 0
 
 const updateAppointmentById = (req, res) => {
   const id = req.params.id;
