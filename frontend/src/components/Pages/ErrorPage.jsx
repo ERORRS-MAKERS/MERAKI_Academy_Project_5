@@ -11,7 +11,7 @@ export default function ErrorPage() {
       <div className="container">
         <SectionHeading
           title="This page could <br> not be found."
-          titleUp="404 Errro"
+          titleUp="404 ERROR"
           variantColor="cs_white_color"
         />
         <Spacing lg="30" md="30" />
