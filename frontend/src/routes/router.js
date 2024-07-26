@@ -14,6 +14,7 @@ import Gallery from '../components/Pages/Gallery';
 import Timetable from '../components/Pages/Timetable';
 import Contact from '../components/Pages/Contact';
 import ErrorPage from '../components/Pages/ErrorPage';
+import { departmentLoader } from '../service/api/department';
 
 export const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
       {
         path: 'departments',
         element: <Departments />,
+        loader:departmentLoader,
       },
       {
         path: 'departments/department-details',
