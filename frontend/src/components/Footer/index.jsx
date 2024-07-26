@@ -10,7 +10,7 @@ const menuDataOne = [
   { title: 'Doctors', href: '/doctors' },
   { title: 'Timetable', href: '/timetable' },
   { title: 'Appointment', href: '/appointments' },
-  { title: 'Testimonials', href: '/' },
+  // { title: 'Testimonials', href: '/' },
 ];
 const menuDataTwo = [
   { title: 'Blog', href: '/blog' },
