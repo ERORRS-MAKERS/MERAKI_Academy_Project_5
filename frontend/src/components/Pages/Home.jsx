@@ -82,24 +82,25 @@ const faqData = [
 ];
 const blogData = [
   {
-    title: 'The Benefits of Mindfulness Meditation for Stress and Anxiety',
-    thumbUrl: 'images/home_1/post_1.jpeg',
+    title: 'Healthy Eating on a Budget: Tips and Strategies',
+    thumbUrl: 'https://prohealth-react.vercel.app/images/home_1/post_2.jpeg',
     date: 'May 1, 2023',
     btnText: 'Learn More',
     href: '/blog/blog-details',
     socialShare: true,
   },
   {
-    title: 'Healthy Eating on a Budget: Tips and Strategies',
-    thumbUrl: 'images/home_1/post_2.jpeg',
+    title:
+      'The Importance of Mental Health: Understanding and Managing Anxiety Disorders',
+    thumbUrl: 'https://prohealth-react.vercel.app/images/blog/post_1.jpeg',
     date: 'May 4, 2023',
     btnText: 'Learn More',
     href: '/blog/blog-details',
     socialShare: true,
   },
   {
-    title: 'The Importance of Regular Cancer Screenings and Early Detection',
-    thumbUrl: 'images/home_1/post_3.jpeg',
+    title: 'Managing Chronic Pain: Treatment Options and Strategies',
+    thumbUrl: 'https://prohealth-react.vercel.app/images/blog/post_4.jpeg',
     date: 'May 1, 2023',
     btnText: 'Learn More',
     href: '/blog/blog-details',
@@ -173,23 +174,23 @@ export default function Home() {
         title="Your Partner in Health and Wellness"
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
         bgUrl="/images/home_1/hero_bg.jpeg"
-        imgUrl="/images/home_1/hero_img.png"
+        imgUrl="https://prohealth-react.vercel.app/images/home_1/hero_img.png"
         videoBtnText="See how we work"
         videoUrl="https://www.youtube.com/embed/VcaAVWtP48A"
         infoList={[
           {
             title: 'Hotline',
-            subTitle: '123-456-7890',
+            subTitle: '079-000-0000',
             iconUrl: '/images/contact/icon_1.svg',
           },
           {
             title: 'Ambulance',
-            subTitle: '876-256-876',
+            subTitle: '079-000-0000',
             iconUrl: '/images/icons/ambulance.svg',
           },
           {
             title: 'Location',
-            subTitle: 'New York, US',
+            subTitle: 'Amman, Jordan',
             iconUrl: '/images/icons/pin.svg',
           },
         ]}
@@ -211,7 +212,7 @@ export default function Home() {
       {/* Start About Section */}
       <Section>
         <AboutSection
-          imgUrl="/images/home_1/about.png"
+          imgUrl="https://prohealth-react.vercel.app/images/home_1/about.png"
           spiningImgUrl="/images/home_1/about_mini.svg"
           title="About Us"
           subTitle="PRO HEALTH"
@@ -260,7 +261,7 @@ export default function Home() {
       <Section>
         <Banner
           bgUrl="images/home_1/cta_bg.svg"
-          imgUrl="images/home_1/cta_img.png"
+          imgUrl="https://prohealth-react.vercel.app/images/home_1/cta_img.png"
           title="Don’t Let Your Health Take a Backseat!"
           subTitle="Schedule an appointment with one of our experienced medical professionals today!"
         />
@@ -280,7 +281,7 @@ export default function Home() {
         <AppointmentSection
           sectionTitle="Appointment"
           sectionTitleUp="BOOK AN"
-          imgUrl="/images/home_1/appointment.jpeg"
+          imgUrl="https://prohealth-react.vercel.app/images/home_1/appointment.jpeg"
         />
       </Section>
       {/* End Appointment Section */}
@@ -294,7 +295,7 @@ export default function Home() {
       </Section>
       {/* End FAQ Section */}
       {/* Start Brand Section */}
-      <Section
+      {/* <Section
         topMd={200}
         topLg={150}
         topXl={110}
@@ -303,7 +304,7 @@ export default function Home() {
         bottomXl={110}
       >
         <BrandsSection data={brandData} />
-      </Section>
+      </Section> */}
       {/* End Brand Section */}
     </>
   );

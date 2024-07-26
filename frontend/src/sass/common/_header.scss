@@ -806,20 +806,3 @@
   }
 }
 /*End Demo Menu*/
-.cs_site_header.cs_style1 {
-  &.cs_color_2 {
-    background-color: #fff;
-  }
-  .cs_btn.cs_style_1 {
-    @media (max-width: 420px) {
-      padding: 7px 15px;
-      font-size: 14px;
-      i {
-        display: none;
-      }
-    }
-    @media (max-width: 350px) {
-      display: none;
-    }
-  }
-}

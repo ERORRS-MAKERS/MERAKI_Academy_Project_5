@@ -511,7 +511,7 @@ input::-ms-input-placeholder,
   i {
     position: absolute;
     top: 30px;
-    right: 30px;
+    left: 30px;
     color: $accent;
     font-size: 20px;
     pointer-events: none;
@@ -519,6 +519,13 @@ input::-ms-input-placeholder,
     @media (max-width: 1700px) {
       top: 20px;
       left: 20px;
+    }
+  }
+  .cs_form_field,
+  .react-datepicker-wrapper input {
+    padding-left: 60px;
+    @media (max-width: 1700px) {
+      padding-left: 50px;
     }
   }
 }

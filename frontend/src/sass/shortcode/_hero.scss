@@ -175,7 +175,6 @@
   justify-content: space-between;
   flex-direction: column;
   align-items: center;
-  background-color: #35546c;
   @media (max-width: 1700px) {
     padding: 190px 0 0;
   }
@@ -198,7 +197,7 @@
       margin-bottom: 40px;
     }
   }
-  > .container {
+  .container {
     &:first-child {
       flex: 1;
       position: relative;
@@ -245,7 +244,6 @@
     position: absolute;
     top: -75px;
     right: 0;
-    z-index: 1;
     animation: anim-y 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
     @media (max-width: 1380px) {
       top: -40px;
@@ -312,83 +310,7 @@
     }
   }
 }
-.cs_hero.cs_style_2.cs_type_1 {
-  background: linear-gradient(
-    -89deg,
-    #274760 0.95%,
-    rgba(39, 71, 96, 0.59) 98.78%
-  );
-  .cs_hero_funfact {
-    background-color: rgba(39, 71, 96, 0.9);
-    width: 100%;
-    padding: 57px 60px 73px 60px;
-    gap: 0 30px;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom: 0;
-    border-radius: 25px 25px 0px 0px;
-    @media (max-width: 1700px) {
-      padding: 40px 50px 50px 50px;
-    }
-    @media (max-width: 1199px) {
-      padding: 30px 30px 35px 30px;
-    }
-    @media (max-width: 991px) {
-      padding: 30px 0px 35px 0px;
-      gap: 30px 0px;
-    }
-    &:before {
-      display: none;
-    }
-  }
-  .cs_hero_text {
-    padding-left: 50%;
-    @media (max-width: 1400px) {
-      padding-left: 42%;
-    }
-    @media (max-width: 1199px) {
-      padding-left: 0%;
-    }
-    @media (max-width: 420px) {
-      .cd-headline {
-        display: block;
-      }
-    }
-  }
-  .cs_hero_img {
-    position: absolute;
-    bottom: 0;
-    width: 50%;
-    left: 0;
-    text-align: center;
-    padding-top: 8%;
-    height: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-    @media (max-width: 1400px) {
-      width: 42%;
-    }
-    @media (max-width: 1199px) {
-      width: 100%;
-      position: initial;
-      max-width: 600px;
-      padding-top: 0;
-    }
-    img {
-      max-height: 100%;
-    }
-  }
-  .cs_hero_btn {
-    flex: none;
-  }
-  .cs_hero_title {
-    span {
-      color: $accent;
-    }
-  }
-}
+
 .cs_hero.cs_style_3 {
   height: calc(100vh + 235px);
   max-height: 1350px;

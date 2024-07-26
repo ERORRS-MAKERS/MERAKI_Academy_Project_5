@@ -40,7 +40,7 @@ export default function AppointmentForm() {
         <div className="cs_with_icon_input">
           <DatePicker
             selected={selectedDate}
-            onChange={date => setSelectedDate(date)}
+            onChange={(date) => setSelectedDate(date)}
             dateFormat="dd/MM/yyyy"
             minDate={new Date()}
             isClearable

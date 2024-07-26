@@ -3,7 +3,7 @@ import Rating from '../Rating';
 
 export default function Testimonial() {
   const [activeTab, setActiveTab] = useState(2);
-  const handleTabClick = tabNumber => {
+  const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
   return (
@@ -12,10 +12,13 @@ export default function Testimonial() {
         <li className={activeTab === 1 ? 'active' : ''}>
           <div className="cs_tab_link_in" onClick={() => handleTabClick(1)}>
             <div className="cs_testimonial_1_avatar">
-              <img src="/images/home_1/avatar_1.png" alt="Avatar" />
+              <img
+                src="https://prohealth-react.vercel.app/images/home_1/avatar_1.png"
+                alt="Avatar"
+              />
               <div className="cs_testimonial_1_avatar_right">
                 <h3 className="cs_fs_24 cs_semibold mb-0">PAULO HUBERT</h3>
-                <p className="cs_heading_color mb-0">New York, USA</p>
+                <p className="cs_heading_color mb-0">Irbid, Jordan</p>
               </div>
             </div>
           </div>
@@ -23,10 +26,13 @@ export default function Testimonial() {
         <li className={activeTab === 2 ? 'active' : ''}>
           <div className="cs_tab_link_in" onClick={() => handleTabClick(2)}>
             <div className="cs_testimonial_1_avatar">
-              <img src="/images/home_1/avatar_2.png" alt="Avatar" />
+              <img
+                src="https://prohealth-react.vercel.app/images/home_1/avatar_2.png"
+                alt="Avatar"
+              />
               <div className="cs_testimonial_1_avatar_right">
                 <h3 className="cs_fs_24 cs_semibold mb-0">LAURENCE VENDETTA</h3>
-                <p className="cs_heading_color mb-0">California, USA</p>
+                <p className="cs_heading_color mb-0">Amman, Jordan</p>
               </div>
             </div>
           </div>
@@ -34,10 +40,13 @@ export default function Testimonial() {
         <li className={activeTab === 3 ? 'active' : ''}>
           <div className="cs_tab_link_in" onClick={() => handleTabClick(3)}>
             <div className="cs_testimonial_1_avatar">
-              <img src="/images/home_1/avatar_3.png" alt="Avatar" />
+              <img
+                src="https://prohealth-react.vercel.app/images/home_1/avatar_3.png"
+                alt="Avatar"
+              />
               <div className="cs_testimonial_1_avatar_right">
                 <h3 className="cs_fs_24 cs_semibold mb-0">CASSANDRA RAUL</h3>
-                <p className="cs_heading_color mb-0">Florida</p>
+                <p className="cs_heading_color mb-0">Zarqa, Jordan</p>
               </div>
             </div>
           </div>
