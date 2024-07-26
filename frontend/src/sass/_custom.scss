@@ -343,10 +343,3 @@
 .cs_nav .cs_nav_list .cs_munu_dropdown_toggle.active + ul {
   display: block;
 }
-input[type='date']::-webkit-inner-spin-button,
-input[type='date']::-webkit-calendar-picker-indicator,
-input[type='time']::-webkit-inner-spin-button,
-input[type='time']::-webkit-calendar-picker-indicator {
-  display: none;
-  -webkit-appearance: none;
-}
