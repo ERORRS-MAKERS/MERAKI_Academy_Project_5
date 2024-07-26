@@ -45,27 +45,8 @@ export default function Header({ logoSrc, variant }) {
                       mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
                     }`}
                   >
-                    <li className="menu-item-has-children">
+                    <li>
                       <Link to="/">Home</Link>
-                      <DropDown>
-                        <ul>
-                          <li>
-                            <Link to="/">Home Version-1</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v2">Home Version-2</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v3">Home Version-3</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v4">Home Version-4</Link>
-                          </li>
-                          <li>
-                            <Link to="/home-v5">Home Version-5</Link>
-                          </li>
-                        </ul>
-                      </DropDown>
                     </li>
                     <li>
                       <Link to="/about">About</Link>
@@ -87,20 +68,7 @@ export default function Header({ logoSrc, variant }) {
                             <Link to="/departments">Departments</Link>
                           </li>
                           <li>
-                            <Link to="/departments/department-details">
-                              Department Details
-                            </Link>
-                          </li>
-                          <li>
                             <Link to="/doctors">Doctors</Link>
-                          </li>
-                          <li>
-                            <Link to="doctors/doctor-details">
-                              Doctor Details
-                            </Link>
-                          </li>
-                          <li>
-                            <Link to="/pricing-plan">Pricing Plan</Link>
                           </li>
                           <li>
                             <Link to="/gallery">Gallery</Link>
