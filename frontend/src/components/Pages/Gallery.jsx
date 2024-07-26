@@ -5,13 +5,34 @@ import Section from '../Section';
 import GallerySectionStyle2 from '../Section/GallerySection/GallerySectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
 const galleryData = [
-  { imgUrl: '/images/about/portfolio_4_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_5_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_2_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_3_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_5_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_5_lg.jpeg' },
-  { imgUrl: '/images/about/portfolio_4_lg.jpeg' },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_4_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_5_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_2_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_3_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_5_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_5_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_4_lg.jpeg',
+  },
 ];
 
 export default function Gallery() {
@@ -20,7 +41,7 @@ export default function Gallery() {
     <>
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
-        imgUrl="/images/about/banner_img.png"
+        imgUrl="https://prohealth-react.vercel.app/images/about/banner_img.png"
         title="Welcome to <br>ProHealth Gallery"
         subTitle="The special moment of our hospital"
       />
@@ -38,7 +59,7 @@ export default function Gallery() {
         <BannerSectionStyle9
           title="Don’t Let Your Health <br />Take a Backseat!"
           subTitle="Schedule an appointment with one of our experienced <br />medical professionals today!"
-          imgUrl="images/doctors/banner_img_3.png"
+          imgUrl="https://prohealth-react.vercel.app/images/doctors/banner_img_3.png"
         />
       </Section>
     </>

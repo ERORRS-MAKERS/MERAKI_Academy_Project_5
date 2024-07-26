@@ -1,9 +1,9 @@
 import React from 'react';
 import AppointmentForm from '../../AppointmentForm';
 const contactInfo = [
-  { title: 'Phone', subTitle: '123-456-7890' },
-  { title: 'Email Us', subTitle: 'hellocallcenter@gmail.com' },
-  { title: 'Our Location', subTitle: '123 Anywhere St., Any City, 12345' },
+  { title: 'Phone', subTitle: '079-0000-0000' },
+  { title: 'Email Us', subTitle: 'hellocallcenter@ProHealth.com' },
+  { title: 'Our Location', subTitle: '123 Queen Rania St., Amman City, 12345' },
 ];
 
 export default function AppointmentWithContactInfoSection() {
@@ -20,7 +20,7 @@ export default function AppointmentWithContactInfoSection() {
           <h2 className="cs_fs_40 cs_medium mb-0">Contact Info</h2>
           <div className="cs_height_60 cs_height_xl_40" />
           <img
-            src="/images/appointments/appointment_img.jpeg"
+            src="https://prohealth-react.vercel.app/images/appointments/appointment_img.jpeg"
             alt="Appointment"
             className="cs_radius_25 w-100"
           />

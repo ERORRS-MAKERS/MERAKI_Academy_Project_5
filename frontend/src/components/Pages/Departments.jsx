@@ -69,7 +69,7 @@ export default function Departments() {
     <>
       <BannerSectionStyle5
         bgUrl="/images/departments/banner_bg.svg"
-        imgUrl="/images/departments/banner_img.png"
+        imgUrl="https://prohealth-react.vercel.app/images/departments/banner_img.png"
         title="Get to Know <br>ProHealth Departments"
         subTitle="At ProHealth, we offer a wide range of medical and healthcare services that are designed to meet your individual needs and help you achieve optimal health."
       />
@@ -78,7 +78,7 @@ export default function Departments() {
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle6
-          imgUrl="/images/departments/banner_img_2.png"
+          imgUrl="https://prohealth-react.vercel.app/images/departments/banner_img_2.png"
           title="Don’t Let Your Health Take a Backseat!"
           subTitle="Schedule an appointment with one of our <br />experienced medical professionals today!"
         />
