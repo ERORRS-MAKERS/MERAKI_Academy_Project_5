@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import BannerSectionStyle3 from '../Section/BannerSection/BannerSectionStyle3';
 import BannerSectionStyle4 from '../Section/BannerSection/BannerSectionStyle4';
 import Section from '../Section';
@@ -145,6 +145,9 @@ const awardData = [
 ];
 
 export default function About() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   pageTitle('About');
   return (
     <>

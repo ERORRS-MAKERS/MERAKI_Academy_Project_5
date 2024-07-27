@@ -8,15 +8,19 @@ export default function TeamSectionStyle2({ data }) {
   const [active, setActive] = useState('all');
   const [filteredData, setFilteredData] = useState(data);
   // Extracting unique categories from teamData
-  const uniqueCategories = [...new Set(data.map(doctor => doctor.category))];
-  const handleFilter = category => {
-    if (category === 'all') {
+  const uniqueCategories = [
+    ...new Set(data.map((doctor) => doctor.department_name)),
+  ];
+  const handleFilter = (department_name) => {
+    if (department_name === 'all') {
       setFilteredData(data);
     } else {
-      const filtered = data.filter(doctor => doctor.category === category);
+      const filtered = data.filter(
+        (doctor) => doctor.department_name === department_name
+      );
       setFilteredData(filtered);
     }
-    setActive(category);
+    setActive(department_name);
   };
 
   return (
@@ -28,7 +32,7 @@ export default function TeamSectionStyle2({ data }) {
             <li className={active === 'all' ? 'active' : ''}>
               <span onClick={() => handleFilter('all')}>All</span>
             </li>
-            {uniqueCategories?.map(item => (
+            {uniqueCategories?.map((item) => (
               <li className={active === item ? 'active' : ''} key={item}>
                 <span onClick={() => handleFilter(item)}>{item}</span>
               </li>
