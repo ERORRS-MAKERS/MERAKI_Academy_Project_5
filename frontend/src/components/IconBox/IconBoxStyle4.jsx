@@ -9,12 +9,12 @@ export default function IconBoxStyle4({ title, subTitle, iconUrl, href }) {
       </div>
       <h2 className="cs_iconbox_title cs_fs_32">{title}</h2>
       <p className="cs_iconbox_subtitle m-0">{subTitle}</p>
-      {href && (
+    {/*   {href && (
         <Link to={href} className="cs_iconbox_btn cs_center">
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
         </Link>
-      )}
+      )} */}
     </div>
   );
 }

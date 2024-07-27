@@ -29,6 +29,8 @@ export const router = createBrowserRouter([
       {
         path: "about",
         element: <About />,
+        loader: doctorsLoader,
+
       },
       {
         path: "doctors",
