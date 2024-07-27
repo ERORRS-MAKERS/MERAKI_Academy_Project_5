@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function TeamStyle2({
   name,
-  department_id,  
+  department_name,  
   specialist,
   description,
   href,
@@ -16,7 +16,7 @@ export default function TeamStyle2({
         <Link to={href} className="d-block">
           <img src={imgUrl} alt="Doctor" />
         </Link>
-        <div className="cs_label cs_white_color cs_accent_bg">{department_id}</div>
+        <div className="cs_label cs_white_color cs_accent_bg">{department_name}</div>
       </div>
       <div className="cs_team_meta cs_white_bg">
         <div>
