@@ -41,12 +41,10 @@ CREATE TABLE users (
 -- Create a table called **departments ** in the database
 CREATE TABLE departments (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(100) NOT NULL,
-    salary INT,
-    description TEXT,
+    department_name VARCHAR(100) NOT NULL,
+    department_description TEXT,
     is_deleted SMALLINT DEFAULT 0,
     --drop salary 
-
 );
 
 -- Create a table called **doctors** in the database

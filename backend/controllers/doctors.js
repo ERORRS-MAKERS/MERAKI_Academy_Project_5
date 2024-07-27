@@ -1,5 +1,5 @@
-const pool = require('../models/db');
-const bcrypt = require('bcryptjs');
+const pool = require("../models/db");
+const bcrypt = require("bcryptjs");
 
 const addNewDoctor = async (req, res) => {
   const { name, department_id, specialist, description, email, password } =
@@ -19,34 +19,36 @@ const addNewDoctor = async (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: 'Doctor account created successfully',
+        message: "Doctor account created successfully",
       });
     })
     .catch((err) => {
       res.status(409).json({
         success: false,
-        message: 'The email already exists',
+        message: "The email already exists",
         err,
       });
     });
 };
 
 const getAllDoctors = (req, res) => {
-  const query = `SELECT * FROM doctors WHERE is_deleted=0;`;
+  const query = `SELECT  doctors.*,  departments.department_name FROM doctors 
+JOIN departments  ON doctors.department_id = departments.id
+WHERE doctors.is_deleted=0;`;
 
   pool
     .query(query)
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: 'All doctors',
+        message: "All doctors",
         result: result.rows,
       });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server error',
+        message: "Server error",
         err: err,
       });
     });
@@ -85,7 +87,7 @@ const updateDoctorById = (req, res) => {
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server error',
+        message: "Server error",
         err: err.message,
       });
     });
@@ -104,13 +106,13 @@ const deleteDoctorById = (req, res) => {
           message: `Doctor with id: ${id} deleted successfully`,
         });
       } else {
-        throw new Error('Error happened while deleting article');
+        throw new Error("Error happened while deleting article");
       }
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server error',
+        message: "Server error",
         err: err,
       });
     });
