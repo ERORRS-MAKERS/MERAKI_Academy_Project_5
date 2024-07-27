@@ -1,80 +1,82 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import Layout from '../components/Layout';
-import Home from '../components/Pages/Home';
-import About from '../components/Pages/About';
-import Doctors from '../components/Pages/Doctors';
-import DoctorDetails from '../components/Pages/DoctorDetails';
-import Blog from '../components/Pages/Blog';
-import BlogDetails from '../components/Pages/BlogDetails';
-import Appointments from '../components/Pages/Appointments';
-import Departments from '../components/Pages/Departments';
-import DepartmentDetails from '../components/Pages/DepartmentDetails';
-import Gallery from '../components/Pages/Gallery';
-import Timetable from '../components/Pages/Timetable';
-import Contact from '../components/Pages/Contact';
-import ErrorPage from '../components/Pages/ErrorPage';
-import { departmentLoader } from '../service/api/department';
+import Layout from "../components/Layout";
+import Home from "../components/Pages/Home";
+import About from "../components/Pages/About";
+import Doctors from "../components/Pages/Doctors";
+import DoctorDetails from "../components/Pages/DoctorDetails";
+import Blog from "../components/Pages/Blog";
+import BlogDetails from "../components/Pages/BlogDetails";
+import Appointments from "../components/Pages/Appointments";
+import Departments from "../components/Pages/Departments";
+import DepartmentDetails from "../components/Pages/DepartmentDetails";
+import Gallery from "../components/Pages/Gallery";
+import Timetable from "../components/Pages/Timetable";
+import Contact from "../components/Pages/Contact";
+import ErrorPage from "../components/Pages/ErrorPage";
+import { departmentLoader } from "../service/api/department";
+import { doctorsLoader } from "../service/api/doctors";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '',
+        path: "",
         element: <Home />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <About />,
       },
       {
-        path: 'doctors',
+        path: "doctors",
         element: <Doctors />,
+        loader: doctorsLoader,
       },
       {
-        path: 'doctors/doctor-details',
+        path: "doctors/doctor-details",
         element: <DoctorDetails />,
       },
       {
-        path: 'blog',
+        path: "blog",
         element: <Blog />,
       },
       {
-        path: 'blog/blog-details',
+        path: "blog/blog-details",
         element: <BlogDetails />,
       },
       {
-        path: 'appointments',
+        path: "appointments",
         element: <Appointments />,
       },
       {
-        path: 'departments',
+        path: "departments",
         element: <Departments />,
-        loader:departmentLoader,
+        loader: departmentLoader,
       },
       {
-        path: 'departments/department-details',
+        path: "departments/department-details",
         element: <DepartmentDetails />,
       },
       {
-        path: 'gallery',
+        path: "gallery",
         element: <Gallery />,
       },
       {
-        path: 'timetable',
+        path: "timetable",
         element: <Timetable />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <Contact />,
         // JOIN US
       },
     ],
   },
   {
-    path: '*',
+    path: "*",
     element: <ErrorPage />,
   },
 ]);
