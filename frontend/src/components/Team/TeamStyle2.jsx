@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 export default function TeamStyle2({
   name,
-  department_id,
+  department_id,  
   specialist,
   description,
   href,
