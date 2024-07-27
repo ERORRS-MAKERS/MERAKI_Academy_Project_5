@@ -8,13 +8,13 @@ export default function TeamStyle2({
   specialist,
   description,
   href,
-  imgUrl
+  img_url
 }) {
   return (
     <div className="cs_team cs_style_1 cs_type_2 text-center cs_radius_20 overflow-hidden">
       <div className="cs_member_img">
         <Link to={href} className="d-block">
-          <img src={imgUrl} alt="Doctor" />
+          <img src={img_url} alt="Doctor" />
         </Link>
         <div className="cs_label cs_white_color cs_accent_bg">{department_name}</div>
       </div>
