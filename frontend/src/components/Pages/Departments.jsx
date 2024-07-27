@@ -5,6 +5,7 @@ import DepartmentSectionStyle3 from '../Section/DepartmentSection/DepartmentSect
 import BannerSectionStyle6 from '../Section/BannerSection/BannerSectionStyle6';
 import { pageTitle } from '../../helpers/PageTitle';
 import { useLoaderData, Await } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 export default function Departments() {
   pageTitle('Departments');
@@ -20,7 +21,7 @@ export default function Departments() {
 
       <Section bottomMd={140} bottomLg={100} bottomXl={60}>
         <Suspense fallback={<p>Loading data</p>}>
-          <Await resolve={results} errorElement={<p>error loading data</p>}>
+          <Await resolve={results} errorElement={<ErrorPage />}>
             {(results) => {
               return <DepartmentSectionStyle3 data={results.data.result} />;
             }}

@@ -1,11 +1,11 @@
-import React , { Suspense }from 'react';
+import React, { Suspense } from 'react';
 import BannerSectionStyle5 from '../Section/BannerSection/BannerSectionStyle5';
 import BannerSectionStyle4 from '../Section/BannerSection/BannerSectionStyle4';
 import TeamSectionStyle2 from '../Section/TeamSection/TeamSectionStyle2';
 import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
-import { useLoaderData, Await } from "react-router-dom";
-
+import { useLoaderData, Await } from 'react-router-dom';
+import ErrorPage from './ErrorPage';
 
 export default function Doctors() {
   pageTitle('Doctors');
@@ -20,15 +20,13 @@ export default function Doctors() {
         subTitle="The list of certified doctors with years of <br />professional experiences"
       />
       <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
-
-      <Suspense fallback={<p>Loading data</p>}>
-          <Await resolve={results} errorElement={<p>error loading data</p>}>
-             {(results)=>{
-              return  <TeamSectionStyle2 data={results.data.result} />
-             }}
+        <Suspense fallback={<p>Loading data</p>}>
+          <Await resolve={results} errorElement={<ErrorPage />}>
+            {(results) => {
+              return <TeamSectionStyle2 data={results.data.result} />;
+            }}
           </Await>
         </Suspense>
-
       </Section>
       <Section className="cs_footer_margin_0">
         <BannerSectionStyle4
