@@ -6,6 +6,7 @@ import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
 import { useLoaderData, Await } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
+import Loading from './Loading';
 
 export default function Doctors() {
   pageTitle('Doctors');
@@ -20,7 +21,7 @@ export default function Doctors() {
         subTitle="The list of certified doctors with years of <br />professional experiences"
       />
       <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
-        <Suspense fallback={<p>Loading data</p>}>
+        <Suspense fallback={<Loading />}>
           <Await resolve={results} errorElement={<ErrorPage />}>
             {(results) => {
               return <TeamSectionStyle2 data={results.data.result} />;
