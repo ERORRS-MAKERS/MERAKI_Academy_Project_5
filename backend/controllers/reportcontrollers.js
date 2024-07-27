@@ -71,8 +71,38 @@ const getReportsByNationalId = (req, res) => {
       });
     });
 };
+const getReportsByUserId = (req, res) => {
+  const id = req.params.user_id;
+  const query = `SELECT doctors.name, medical_reports.title, medical_reports.description,
+  medical_reports.image_url, medical_reports.time
+   FROM medical_reports
+    INNER JOIN doctors ON medical_reports.doctor_id  =  doctors.id WHERE medical_reports.user_id=($1)`;
+  const data = [id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `The reports with user_id: ${id}`,
+          result: result.rows,
+        });
+      } else {
+        throw new Error('Error happened while getting reports');
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Server error',
+        err: err.message,
+      });
+    });
+};
 module.exports = {
   getAllReports,
   createMedicalReport,
   getReportsByNationalId,
+  getReportsByUserId,
 };
