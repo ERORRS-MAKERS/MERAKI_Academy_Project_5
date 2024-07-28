@@ -21,10 +21,11 @@ const getAllReports = (req, res) => {
 };
 
 const createMedicalReport = (req, res) => {
-  const { user_id, doctor_id, title, description, image_url, time } = req.body;
+  const { user_id, doctor_id, title, description, image_url, date } = req.body;
 
-  const query = `INSERT INTO medical_reports (user_id, doctor_id,title,description,image_url,time) VALUES ($1,$2,$3,$4,$5,$6)`;
-  const data = [user_id, doctor_id, title, description, image_url, time];
+  const query = `INSERT INTO medical_reports (user_id, doctor_id,title,description,image_url,date)
+   VALUES ($1,$2,$3,$4,$5,$6)`;
+  const data = [user_id, doctor_id, title, description, image_url, date];
 
   pool
     .query(query, data)
@@ -74,7 +75,7 @@ const getReportsByNationalId = (req, res) => {
 const getReportsByUserId = (req, res) => {
   const id = req.params.user_id;
   const query = `SELECT doctors.doctor_name, medical_reports.title, medical_reports.description,
-  medical_reports.image_url, medical_reports.time
+  medical_reports.image_url, medical_reports.date
    FROM medical_reports
     INNER JOIN doctors ON medical_reports.doctor_id  =  doctors.id WHERE medical_reports.user_id=($1)`;
   const data = [id];
