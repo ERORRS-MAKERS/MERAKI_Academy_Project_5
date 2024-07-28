@@ -73,7 +73,7 @@ const getReportsByNationalId = (req, res) => {
 };
 const getReportsByUserId = (req, res) => {
   const id = req.params.user_id;
-  const query = `SELECT doctors.name, medical_reports.title, medical_reports.description,
+  const query = `SELECT doctors.doctor_name, medical_reports.title, medical_reports.description,
   medical_reports.image_url, medical_reports.time
    FROM medical_reports
     INNER JOIN doctors ON medical_reports.doctor_id  =  doctors.id WHERE medical_reports.user_id=($1)`;
