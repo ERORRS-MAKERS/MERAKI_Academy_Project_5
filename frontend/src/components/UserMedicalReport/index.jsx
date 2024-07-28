@@ -5,6 +5,7 @@ export default function Reports({
   description,
   doctor_name,
   image_url,
+  date,
 }) {
   const btnText = 'Download Document';
   return (
@@ -14,6 +15,7 @@ export default function Reports({
           <span className="cs_accent_bg">{doctor_name}</span>
         </h3>
         <h2 className="cs_white_color mb-0 cs_fs_72 cs_semibold">{title}</h2>
+        <span>{date}</span>
       </div>
       <div className="cs_pricing_card_body">
         <p>{description}</p>
