@@ -1,106 +1,118 @@
-import React, { useEffect, Suspense } from "react";
-import BannerSectionStyle3 from "../Section/BannerSection/BannerSectionStyle3";
-import BannerSectionStyle4 from "../Section/BannerSection/BannerSectionStyle4";
-import Section from "../Section";
-import DepartmentSectionStyle2 from "../Section/DepartmentSection/DepartmentSectionStyle2";
-import FeaturesSectionStyle2 from "../Section/FeaturesSection/FeaturesSectionStyle2";
-import FunFactSection from "../Section/FunFactSection";
-import TeamSection from "../Section/TeamSection";
-import GallerySection from "../Section/GallerySection";
-import AwardSectionStyle2 from "../Section/AwardSection/AwardSectionStyle2";
-import { pageTitle } from "../../helpers/PageTitle";
-import { useLoaderData, Await } from "react-router-dom";
+import React, { useEffect, Suspense } from 'react';
+import BannerSectionStyle3 from '../Section/BannerSection/BannerSectionStyle3';
+import BannerSectionStyle4 from '../Section/BannerSection/BannerSectionStyle4';
+import Section from '../Section';
+import DepartmentSectionStyle2 from '../Section/DepartmentSection/DepartmentSectionStyle2';
+import FeaturesSectionStyle2 from '../Section/FeaturesSection/FeaturesSectionStyle2';
+import FunFactSection from '../Section/FunFactSection';
+import TeamSection from '../Section/TeamSection';
+import GallerySection from '../Section/GallerySection';
+import { pageTitle } from '../../helpers/PageTitle';
+import { useLoaderData, Await } from 'react-router-dom';
 
 const departmentData = [
   {
-    title: "Diagnostic testing",
+    title: 'Diagnostic testing',
     subTitle:
-      "Blood tests, imaging studies, and other tests to diagnose health conditions",
-    iconUrl: "/images/icons/calendar_white.svg",
-    href: "/departments/department-details",
+      'Blood tests, imaging studies, and other tests to diagnose health conditions',
+    iconUrl: '/images/icons/calendar_white.svg',
+    href: '/departments/department-details',
   },
   {
-    title: "Rehabilitation services",
+    title: 'Rehabilitation services',
     subTitle:
-      "Physical therapy, occupational therapy, and other services to help patients recover from injuries",
-    iconUrl: "/images/icons/calendar_white.svg",
-    href: "/departments/department-details",
+      'Physical therapy, occupational therapy, and other services to help patients recover from injuries',
+    iconUrl: '/images/icons/calendar_white.svg',
+    href: '/departments/department-details',
   },
   {
-    title: "Preventive care",
+    title: 'Preventive care',
     subTitle:
-      "Annual checkups, immunizations, and health screenings care preventive",
-    iconUrl: "/images/icons/calendar_white.svg",
-    href: "/departments/department-details",
+      'Annual checkups, immunizations, and health screenings care preventive',
+    iconUrl: '/images/icons/calendar_white.svg',
+    href: '/departments/department-details',
   },
   {
-    title: "Treatment for acute and chronic conditions",
+    title: 'Treatment for acute and chronic conditions',
     subTitle:
-      "Medication management, disease management, and other treatments to improve health outcomes",
-    iconUrl: "/images/icons/calendar_white.svg",
-    href: "/departments/department-details",
+      'Medication management, disease management, and other treatments to improve health outcomes',
+    iconUrl: '/images/icons/calendar_white.svg',
+    href: '/departments/department-details',
   },
   {
-    title: "Mental health services",
+    title: 'Mental health services',
     subTitle:
-      "Counseling, therapy, and other services to help patients manage mental health conditions",
-    iconUrl: "/images/icons/calendar_white.svg",
-    href: "/departments/department-details",
+      'Counseling, therapy, and other services to help patients manage mental health conditions',
+    iconUrl: '/images/icons/calendar_white.svg',
+    href: '/departments/department-details',
   },
 ];
 
 const featureListData = [
   {
-    title: "Experienced Medical Professionals",
+    title: 'Experienced Medical Professionals',
     subTitle:
-      "Our team includes experienced doctors, nurses, <br />and other healthcare professionals who are <br />dedicated to providing the best possible care to <br />our patients.",
-    iconUrl: "images/icons/professional.svg",
+      'Our team includes experienced doctors, nurses, <br />and other healthcare professionals who are <br />dedicated to providing the best possible care to <br />our patients.',
+    iconUrl: 'images/icons/professional.svg',
   },
   {
-    title: "Comprehensive <br />Services",
+    title: 'Comprehensive <br />Services',
     subTitle:
-      "We offer a wide range of healthcare services, <br />from preventive care to specialized treatment <br />for complex conditions.",
-    iconUrl: "images/icons/comprehensive.svg",
+      'We offer a wide range of healthcare services, <br />from preventive care to specialized treatment <br />for complex conditions.',
+    iconUrl: 'images/icons/comprehensive.svg',
   },
   {
-    title: "Patient-centered <br />Approach",
+    title: 'Patient-centered <br />Approach',
     subTitle:
-      "We believe in treating each patient as an <br />individual, and we take the time to understand <br />your unique health needs and concerns.",
-    iconUrl: "images/icons/patient.svg",
+      'We believe in treating each patient as an <br />individual, and we take the time to understand <br />your unique health needs and concerns.',
+    iconUrl: 'images/icons/patient.svg',
   },
   {
-    title: "State-of-the-art <br />Facilities",
+    title: 'State-of-the-art <br />Facilities',
     subTitle:
-      "Our healthcare center is equipped with the <br />latest technology and equipment to provide our <br />patients with the most advanced care possible.",
-    iconUrl: "images/icons/facilities.svg",
+      'Our healthcare center is equipped with the <br />latest technology and equipment to provide our <br />patients with the most advanced care possible.',
+    iconUrl: 'images/icons/facilities.svg',
   },
 ];
 
 const funFactData = [
-  { number: "20+", title: "Years of experience" },
-  { number: "95%", title: "Patient satisfaction rating" },
-  { number: "5000+", title: "Patients served annually" },
-  { number: "10+", title: "Healthcare providers on staff" },
-  { number: "22+", title: "Convenient locations in the area" },
+  { number: '20+', title: 'Years of experience' },
+  { number: '95%', title: 'Patient satisfaction rating' },
+  { number: '5000+', title: 'Patients served annually' },
+  { number: '10+', title: 'Healthcare providers on staff' },
+  { number: '22+', title: 'Convenient locations in the area' },
 ];
 
 const galleryData = [
-  { imgUrl: "https://prohealth-react.vercel.app/images/about/portfolio_2_lg.jpeg" },
-  { imgUrl: "https://prohealth-react.vercel.app/images/about/portfolio_3_lg.jpeg" },
-  { imgUrl: "https://prohealth-react.vercel.app/images/about/portfolio_1_lg.jpeg" },
-  { imgUrl: "https://prohealth-react.vercel.app/images/about/portfolio_4_lg.jpeg" },
-  { imgUrl: "https://prohealth-react.vercel.app/images/about/portfolio_5_lg.jpeg" },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_2_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_3_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_1_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_4_lg.jpeg',
+  },
+  {
+    imgUrl:
+      'https://prohealth-react.vercel.app/images/about/portfolio_5_lg.jpeg',
+  },
 ];
 
-
 export default function About() {
-    const { results } = useLoaderData();
-   
+  const { results } = useLoaderData();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  pageTitle("About");
+  pageTitle('About');
   return (
     <>
       <BannerSectionStyle3

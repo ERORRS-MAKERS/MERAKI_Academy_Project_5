@@ -2,7 +2,11 @@ const pool = require('../models/db');
 
 const getAllPrescription = (req, res) => {
   const id = req.params.id;
-  const query = `SELECT * FROM prescription WHERE user_id = $1;`;
+  const query = `SELECT doctors.doctor_name, pharmacy.pharmacist_name, prescription.* 
+FROM prescription
+INNER JOIN doctors ON doctors.id = prescription.doctor_id
+INNER JOIN pharmacy ON pharmacy.id = prescription.pharmacist_id
+WHERE prescription.user_id = ($1);`;
   const data = [id];
 
   pool
