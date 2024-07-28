@@ -1,7 +1,6 @@
 import React from 'react';
 import Hero from '../Hero';
 import AboutSection from '../Section/AboutSection';
-import BrandsSection from '../Section/BrandsSection';
 import Banner from '../Section/BannerSection';
 import Section from '../Section';
 import FeaturesSection from '../Section/FeaturesSection';
@@ -42,16 +41,6 @@ const featureListData = [
     subTitle:
       'We believe in working collaboratively with our team membersvand other healthcare professionals to provide comprehensive and effective care to our patients.',
   },
-];
-const brandData = [
-  { imgUrl: 'images/brand_1.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_2.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_3.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_4.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_5.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_6.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_7.png', imgAlt: 'Brand' },
-  { imgUrl: 'images/brand_8.png', imgAlt: 'Brand' },
 ];
 const faqData = [
   {
@@ -294,18 +283,6 @@ export default function Home() {
         />
       </Section>
       {/* End FAQ Section */}
-      {/* Start Brand Section */}
-      {/* <Section
-        topMd={200}
-        topLg={150}
-        topXl={110}
-        bottomMd={200}
-        bottomLg={150}
-        bottomXl={110}
-      >
-        <BrandsSection data={brandData} />
-      </Section> */}
-      {/* End Brand Section */}
     </>
   );
 }
