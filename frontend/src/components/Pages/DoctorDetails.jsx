@@ -5,11 +5,13 @@ import BannerSectionStyle9 from '../Section/BannerSection/BannerSectionStyle9';
 import DoctorDetailsSection from '../Section/DoctorDetailsSection';
 import AppointmentSectionStyle2 from '../Section/AppointmentSection/AppointmentSectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function DoctorDetails() {
   pageTitle('Doctor Details');
   return (
     <>
+      <ScrollUp />
       <BreadcrumbStyle2 />
       <Section bottomMd={190} bottomLg={150} bottomXl={110}>
         <DoctorDetailsSection

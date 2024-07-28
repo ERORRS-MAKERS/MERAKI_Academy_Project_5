@@ -7,12 +7,14 @@ import { pageTitle } from '../../helpers/PageTitle';
 import { useLoaderData, Await } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Loading from './Loading';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function Departments() {
   pageTitle('Departments');
   const { results } = useLoaderData();
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle5
         bgUrl="/images/departments/banner_bg.svg"
         imgUrl="https://prohealth-react.vercel.app/images/departments/banner_img.png"

@@ -6,6 +6,7 @@ import BreadcrumbStyle2 from '../Breadcrumb/BreadcrumbStyle2';
 import AboutSectionStyle2 from '../Section/AboutSection/AboutSectionStyle2';
 import FeaturesSectionStyle3 from '../Section/FeaturesSection/FeaturesSectionStyle3';
 import TeamSectionStyle3 from '../Section/TeamSection/TeamSectionStyle3';
+import ScrollUp from '../ScrollUp/ScrollUp';
 import { pageTitle } from '../../helpers/PageTitle';
 
 const featureData = [
@@ -110,6 +111,7 @@ export default function DepartmentDetails() {
   pageTitle('Department Details');
   return (
     <>
+      <ScrollUp />
       <BreadcrumbStyle2 />
       <Section topMd={135} topLg={100} topXl={100}>
         <AboutSectionStyle2

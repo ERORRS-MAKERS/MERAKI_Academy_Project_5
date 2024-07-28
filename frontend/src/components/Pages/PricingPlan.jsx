@@ -5,6 +5,7 @@ import Section from '../Section';
 import PricingSection from '../Section/PricingSection';
 import FaqSectionStyle4 from '../Section/FaqSection/FaqSectionStyle4';
 import BannerSectionStyle10 from '../Section/BannerSection/BannerSectionStyle10';
+import ScrollUp from '../ScrollUp/ScrollUp';
 const pricingData = [
   {
     title: 'Family Health Plan',
@@ -134,6 +135,7 @@ export default function PricingPlan() {
   pageTitle('Pricing Plan');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle3
         bgUrl="/images/pricing_plan/banner_bg.svg"
         imgUrl="/images/pricing_plan/banner_img.png"

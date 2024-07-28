@@ -7,12 +7,14 @@ import BannerSectionStyle10 from '../Section/BannerSection/BannerSectionStyle10'
 import { useLoaderData, Await } from 'react-router-dom';
 import ErrorPage from './ErrorPage';
 import Loading from './Loading';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function UserMedicalReports() {
   pageTitle('Medical Reports');
   const { results } = useLoaderData();
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle3
         bgUrl="/images/pricing_plan/banner_bg.svg"
         imgUrl="/images/pricing_plan/banner_img.png"

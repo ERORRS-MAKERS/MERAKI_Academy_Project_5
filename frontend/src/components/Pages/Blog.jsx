@@ -4,6 +4,7 @@ import Section from '../Section';
 import BlogSectionStyle2 from '../Section/BlogSection/BlogSectionStyle2';
 import Breadcrumb from '../Breadcrumb';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 const blogData = [
   {
     title:
@@ -84,6 +85,7 @@ export default function Blog() {
   pageTitle('Blog');
   return (
     <>
+      <ScrollUp />
       <Section topMd={170} bottomMd={96} bottomLg={70}>
         <Breadcrumb title="Psychology and Life Style" />
       </Section>

@@ -4,11 +4,13 @@ import ContactForm from '../ContactForm';
 import Section from '../Section';
 import ContactInfoSection from '../Section/ContactInfoSection';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function Contact() {
   pageTitle('Contact');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle5
         bgUrl="/images/contact/banner_bg.svg"
         imgUrl="/images/contact/banner_img.png"

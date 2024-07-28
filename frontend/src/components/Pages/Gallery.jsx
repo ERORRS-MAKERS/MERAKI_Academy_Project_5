@@ -4,6 +4,7 @@ import BannerSectionStyle9 from '../Section/BannerSection/BannerSectionStyle9';
 import Section from '../Section';
 import GallerySectionStyle2 from '../Section/GallerySection/GallerySectionStyle2';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 const galleryData = [
   {
     imgUrl:
@@ -39,6 +40,7 @@ export default function Gallery() {
   pageTitle('Gallery');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl="https://prohealth-react.vercel.app/images/about/banner_img.png"
