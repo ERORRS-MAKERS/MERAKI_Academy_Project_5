@@ -23,6 +23,7 @@ import { userPrescriptionLoader } from "../service/api/user_prescription";
 // import Register from "../components/Pages/Register";
 import Login from "../components/Pages/Login";
 import { userLogin } from "../service/api/userLogin";
+import MedicalReportsRequest from "../components/Pages/Medical_reports";
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,7 @@ export const router = createBrowserRouter([
         element: <UserPrescription />,
         loader: userPrescriptionLoader,
       },
+      
     ],
   },
   // {
@@ -102,7 +104,10 @@ export const router = createBrowserRouter([
     element: <Login />,
     // loader: userLogin,
   },
-
+  {
+    path: "/medical_reports",
+    element: <MedicalReportsRequest />,
+  },
   {
     path: "*",
     element: <ErrorPage />,
