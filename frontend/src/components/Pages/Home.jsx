@@ -11,6 +11,7 @@ import FaqSection from '../Section/FaqSection';
 import AwardSection from '../Section/AwardSection';
 import DepartmentSection from '../Section/DepartmentSection';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 const featureListData = [
   {
     iconSrc: '/images/home_1/compassion.svg',
@@ -159,6 +160,7 @@ export default function Home() {
   pageTitle('Home');
   return (
     <>
+      <ScrollUp />
       <Hero
         title="Your Partner in Health and Wellness"
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."

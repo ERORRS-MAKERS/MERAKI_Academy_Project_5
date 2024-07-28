@@ -7,6 +7,7 @@ import { Icon } from '@iconify/react';
 import Spacing from '../Spacing';
 import Post from '../Post';
 import Sidebar from '../Sidebar';
+import ScrollUp from '../ScrollUp/ScrollUp';
 import AuthorWidget from '../Widget/AuthorWidget';
 import CommentsWidget from '../Widget/CommentsWidget';
 import ReplyWidget from '../Widget/ReplyWidget';
@@ -47,6 +48,7 @@ export default function BlogDetails() {
   pageTitle('Blog Details');
   return (
     <>
+      <ScrollUp />
       <Section topMd={170} bottomMd={54} bottomLg={54}>
         <Breadcrumb title="The Importance of Mental Health: Understanding and Managing Anxiety Disorders" />
       </Section>

@@ -3,6 +3,7 @@ import BannerSectionStyle5 from '../Section/BannerSection/BannerSectionStyle5';
 import Section from '../Section';
 import parse from 'html-react-parser';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 const timeTable = [
   {
     day: 'Monday',
@@ -196,6 +197,7 @@ export default function Timetable() {
   pageTitle('Timetable');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle5
         bgUrl="/images/timetable/banner_bg.svg"
         imgUrl="/images/timetable/banner_img.png"

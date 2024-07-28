@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react';
+import React, { Suspense } from 'react';
 import BannerSectionStyle3 from '../Section/BannerSection/BannerSectionStyle3';
 import BannerSectionStyle4 from '../Section/BannerSection/BannerSectionStyle4';
 import Section from '../Section';
@@ -9,6 +9,7 @@ import TeamSection from '../Section/TeamSection';
 import GallerySection from '../Section/GallerySection';
 import { pageTitle } from '../../helpers/PageTitle';
 import { useLoaderData, Await } from 'react-router-dom';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 const departmentData = [
   {
@@ -109,12 +110,10 @@ const galleryData = [
 export default function About() {
   const { results } = useLoaderData();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   pageTitle('About');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle3
         bgUrl="/images/about/banner_bg.svg"
         imgUrl="https://prohealth-react.vercel.app/images/about/banner_img.png"

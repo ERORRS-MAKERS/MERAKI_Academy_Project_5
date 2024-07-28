@@ -3,11 +3,13 @@ import BannerSectionStyle3 from '../Section/BannerSection/BannerSectionStyle3';
 import AppointmentWithContactInfoSection from '../Section/AppointmentWithContactInfoSection';
 import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
+import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function Appointments() {
   pageTitle('Appointments');
   return (
     <>
+      <ScrollUp />
       <BannerSectionStyle3
         bgUrl="/images/appointments/banner_bg.svg"
         imgUrl="https://prohealth-react.vercel.app/images/appointments/banner_img.png"
