@@ -20,9 +20,9 @@ import { departmentLoader } from "../service/api/department";
 import { doctorsLoader } from "../service/api/doctors";
 import { userReportsLoader } from "../service/api/user_reports";
 import { userPrescriptionLoader } from "../service/api/user_prescription";
-// import Register from "../components/Pages/Register";
+import Register from "../components/Pages/Register";
 import Login from "../components/Pages/Login";
-import { userLogin } from "../service/api/userLogin";
+// import { userLogin } from "../service/api/userLogin";
 
 export const router = createBrowserRouter([
   {
@@ -93,10 +93,10 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // {
-  //   path: "/register",
-  //   element: <Register />,
-  // },
+  {
+    path: "/register",
+    element: <Register />,
+  },
   {
     path: "/login",
     element: <Login />,

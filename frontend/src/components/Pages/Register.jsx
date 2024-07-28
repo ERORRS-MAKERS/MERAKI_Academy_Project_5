@@ -1,9 +1,9 @@
-// import React from 'react'
+import React from 'react'
+import RegisterSection from '../Section/RegisterSection'
+const Register = () => {
+  return (
+<RegisterSection/> 
+ )
+}
 
-// const Register = () => {
-//   return (
-//     <Form />
-//   )
-// }
-
-// export default Register
+export default Register
