@@ -21,11 +21,11 @@ const getAllReports = (req, res) => {
 };
 
 const createMedicalReport = (req, res) => {
-  const { user_id, doctor_id, title, description, image_url, date } = req.body;
+  const { user_id, doctor_id, title, description, image_url } = req.body;
 
-  const query = `INSERT INTO medical_reports (user_id, doctor_id,title,description,image_url,date)
-   VALUES ($1,$2,$3,$4,$5,$6)`;
-  const data = [user_id, doctor_id, title, description, image_url, date];
+  const query = `INSERT INTO medical_reports (user_id, doctor_id,title,description,image_url)
+   VALUES ($1,$2,$3,$4,$5)`;
+  const data = [user_id, doctor_id, title, description, image_url];
 
   pool
     .query(query, data)

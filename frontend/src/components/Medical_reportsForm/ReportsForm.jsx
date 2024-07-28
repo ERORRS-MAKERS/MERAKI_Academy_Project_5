@@ -21,17 +21,11 @@ const MedicalReportsForm = () => {
    
   }
   const sendMedicalReport = () => {
-    const currentDate = new Date();
-    const date = `${
-      currentDate.getMonth() + 1
-    }-${currentDate.getDate()}-${currentDate.getFullYear()}`;
-
     axios.post("http://127.0.0.1:5000/reports", {
         title,
         description,
       user_id,
       doctor_id: '1',
-      time: date,
       image_url:"l"
     }).then((result)=>{
   console.log(result)}).catch((Err)=>{
