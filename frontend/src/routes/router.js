@@ -15,7 +15,6 @@ import Timetable from '../components/Pages/Timetable';
 import Contact from '../components/Pages/Contact';
 import ErrorPage from '../components/Pages/ErrorPage';
 import UserMedicalReports from '../components/Pages/UserMedicalReports';
-import PricingPlan from '../components/Pages/PricingPlan';
 import { departmentLoader } from '../service/api/department';
 import { doctorsLoader } from '../service/api/doctors';
 import { userLoader } from '../service/api/user_reports';
@@ -76,11 +75,6 @@ export const router = createBrowserRouter([
         path: 'contact',
         element: <Contact />,
         // JOIN US
-      },
-      {
-        path: 'pricing',
-        element: <PricingPlan />,
-        // test
       },
       {
         path: 'user/report/:userId',
