@@ -1,4 +1,5 @@
 import React from 'react';
+import { format } from 'date-fns';
 
 export default function Reports({
   title,
@@ -8,6 +9,7 @@ export default function Reports({
   date,
 }) {
   const btnText = 'Download Document';
+  const formattedDate = format(new Date(date), 'yyyy-MM-dd');
   return (
     <div className="cs_pricing_card cs_style_1 cs_radius_20 overflow-hidden">
       <div className="cs_pricing_card_head cs_accent_bg cs_white_color">
@@ -15,7 +17,7 @@ export default function Reports({
           <span className="cs_accent_bg">{doctor_name}</span>
         </h3>
         <h2 className="cs_white_color mb-0 cs_fs_72 cs_semibold">{title}</h2>
-        <span>{date}</span>
+        <span>{formattedDate}</span>
       </div>
       <div className="cs_pricing_card_body">
         <p>{description}</p>
