@@ -15,9 +15,11 @@ import Timetable from '../components/Pages/Timetable';
 import Contact from '../components/Pages/Contact';
 import ErrorPage from '../components/Pages/ErrorPage';
 import UserMedicalReports from '../components/Pages/UserMedicalReports';
+import UserPrescription from '../components/Pages/UserPrescription';
 import { departmentLoader } from '../service/api/department';
 import { doctorsLoader } from '../service/api/doctors';
-import { userLoader } from '../service/api/user_reports';
+import { userReportsLoader } from '../service/api/user_reports';
+import { userPrescriptionLoader } from '../service/api/user_prescription';
 
 export const router = createBrowserRouter([
   {
@@ -79,7 +81,12 @@ export const router = createBrowserRouter([
       {
         path: 'user/report/:userId',
         element: <UserMedicalReports />,
-        loader: userLoader,
+        loader: userReportsLoader,
+      },
+      {
+        path: 'user/prescription/:userId',
+        element: <UserPrescription />,
+        loader: userPrescriptionLoader,
       },
     ],
   },
