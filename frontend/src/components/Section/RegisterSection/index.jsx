@@ -10,8 +10,8 @@ const RegisterSection = () => {
         <div className="cs_height_42 cs_height_xl_25" />
           <RegisterForm />
         </div>
-      <div class="col-lg-5 offset-lg-1 text-center">
-    <img src="https://prohealth-react.vercel.app/images/home_1/appointment.jpeg" alt="Appointment" class="cs_radius_30"/>
+      <div className="col-lg-5 offset-lg-1 text-center">
+    <img src="https://prohealth-react.vercel.app/images/home_1/appointment.jpeg" alt="Appointment" className="cs_radius_30"/>
       </div>
   </div>
 </div>
