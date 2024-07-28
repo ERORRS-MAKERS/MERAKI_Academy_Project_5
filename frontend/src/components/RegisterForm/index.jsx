@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import ErrorPage from '../Pages/ErrorPage';
+import Loading from '../Pages/Loading';
+import {userRegister} from "../../service/api/userRegister"
 
 const RegisterForm = () => {
     const [username, setuUername] = useState('');
@@ -13,8 +17,31 @@ const RegisterForm = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setError(null);
+      try {
+          const response = await userRegister(
+            username,
+            national_id,
+            password,
+            first_name,
+            last_name,
+            age,
+            email
+          );
+          dispatch(setUserId(response.userId));  
+          navigate('/about');  
+      } catch (err) {
+          setError(err.message || 'Registration failed');
+        } finally {
+          setLoading(false);
+        } };
+
   return (
-    <form className="row">
+    <form className="row"  onSubmit={handleSubmit}>
     <div className="col-lg-6">
       <label className="cs_input_label cs_heading_color">username</label>
       <input type="text" className="cs_form_field" placeholder="David John" />
@@ -68,7 +95,7 @@ const RegisterForm = () => {
 
 
     <div className="col-lg-12">
-      <button className="cs_btn cs_style_1">
+      <button type="submit" className="cs_btn cs_style_1">
         <span>Submit</span>
         <i>
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
