@@ -17,7 +17,11 @@ export default function BannerSectionStyle3({
       style={{ backgroundImage: `url(${bgUrl})` }}
     >
       <div className="cs_banner_img">
-        <img src={imgUrl} alt="Banner" className="cs_main_banner_img" />
+        <img
+          src="https://prohealth-react.vercel.app/images/pricing_plan/banner_img.png"
+          alt="Banner"
+          className="cs_main_banner_img"
+        />
       </div>
       <div className="container">
         <div className="cs_banner_text">
