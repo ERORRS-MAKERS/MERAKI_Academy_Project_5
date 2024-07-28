@@ -1,6 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react';
+
 
 const RegisterForm = () => {
+    const [username, setuUername] = useState('');
+    const [national_id, setunational_id] = useState('');
+    const [password, setPassword] = useState('');
+
+    const [first_name, setuFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
+    const [age, setAge] = useState('');
+    const [email, setEmail] = useState('');
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
   return (
     <form className="row">
     <div className="col-lg-6">
