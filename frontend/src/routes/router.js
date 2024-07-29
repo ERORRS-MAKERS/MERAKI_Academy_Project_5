@@ -1,33 +1,28 @@
 import { createBrowserRouter } from 'react-router-dom';
 
-
-
-
-import Layout from "../components/Layout";
-import Home from "../components/Pages/Home";
-import About from "../components/Pages/About";
-import Doctors from "../components/Pages/Doctors";
-import DoctorDetails from "../components/Pages/DoctorDetails";
-import Blog from "../components/Pages/Blog";
-import BlogDetails from "../components/Pages/BlogDetails";
-import Appointments from "../components/Pages/Appointments";
-import Departments from "../components/Pages/Departments";
-import DepartmentDetails from "../components/Pages/DepartmentDetails";
-import Gallery from "../components/Pages/Gallery";
-import Timetable from "../components/Pages/Timetable";
-import Contact from "../components/Pages/Contact";
-import ErrorPage from "../components/Pages/ErrorPage";
-import UserMedicalReports from "../components/Pages/UserMedicalReports";
-import UserPrescription from "../components/Pages/UserPrescription";
-import { departmentLoader } from "../service/api/department";
-import { doctorsLoader } from "../service/api/doctors";
-import { userReportsLoader } from "../service/api/user_reports";
-import { userPrescriptionLoader } from "../service/api/user_prescription";
-// import Register from "../components/Pages/Register";
-import Login from "../components/Pages/Login";
-import { userLogin } from "../service/api/userLogin";
-import MedicalReportsRequest from "../components/Pages/Medical_reports";
-
+import Layout from '../components/Layout';
+import Home from '../components/Pages/Home';
+import About from '../components/Pages/About';
+import Doctors from '../components/Pages/Doctors';
+import DoctorDetails from '../components/Pages/DoctorDetails';
+import Blog from '../components/Pages/Blog';
+import BlogDetails from '../components/Pages/BlogDetails';
+import Appointments from '../components/Pages/Appointments';
+import Departments from '../components/Pages/Departments';
+import DepartmentDetails from '../components/Pages/DepartmentDetails';
+import Gallery from '../components/Pages/Gallery';
+import Timetable from '../components/Pages/Timetable';
+import Contact from '../components/Pages/Contact';
+import ErrorPage from '../components/Pages/ErrorPage';
+import UserMedicalReports from '../components/Pages/UserMedicalReports';
+import UserPrescription from '../components/Pages/UserPrescription';
+import { departmentLoader } from '../service/api/department';
+import { doctorsLoader } from '../service/api/doctors';
+import { userReportsLoader } from '../service/api/user_reports';
+import { userPrescriptionLoader } from '../service/api/user_prescription';
+import Register from '../components/Pages/Register';
+import Login from '../components/Pages/Login';
+import MedicalReportsRequest from '../components/Pages/Medical_reports';
 
 export const router = createBrowserRouter([
   {
@@ -97,7 +92,6 @@ export const router = createBrowserRouter([
         element: <UserPrescription />,
         loader: userPrescriptionLoader,
       },
-      
     ],
   },
   {
@@ -110,7 +104,7 @@ export const router = createBrowserRouter([
     // loader: userLogin,
   },
   {
-    path: "/medical_reports",
+    path: '/medical_reports',
     element: <MedicalReportsRequest />,
   },
   {
