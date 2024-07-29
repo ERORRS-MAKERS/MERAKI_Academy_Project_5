@@ -68,7 +68,7 @@ const addNewAppointments = async (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(409).json({
+      res.status(400).json({
         success: false,
         message: 'Server Error',
         err,
