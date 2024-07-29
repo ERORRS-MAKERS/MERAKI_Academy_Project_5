@@ -6,7 +6,6 @@ import Section from '../Section';
 import FeaturesSection from '../Section/FeaturesSection';
 import TestimonialSection from '../Section/TestimonialSection';
 import BlogSection from '../Section/BlogSection';
-import AppointmentSection from '../Section/AppointmentSection';
 import FaqSection from '../Section/FaqSection';
 import AwardSection from '../Section/AwardSection';
 import DepartmentSection from '../Section/DepartmentSection';
@@ -267,15 +266,6 @@ export default function Home() {
         />
       </Section>
       {/* End Blog Section */}
-      {/* Start Appointment Section */}
-      <Section topMd={190} topLg={145} topXl={105} id="appointment">
-        <AppointmentSection
-          sectionTitle="Appointment"
-          sectionTitleUp="BOOK AN"
-          imgUrl="https://prohealth-react.vercel.app/images/home_1/appointment.jpeg"
-        />
-      </Section>
-      {/* End Appointment Section */}
       {/* Start FAQ Section */}
       <Section topMd={190} topLg={145} topXl={105}>
         <FaqSection
