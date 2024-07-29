@@ -1,24 +1,35 @@
-import React, { useState,Suspense } from "react";
+import React, { useState, Suspense } from "react";
 import { userInfo } from "../../service/api/reportsApi/getReportByNationalId";
-import Loading from '.././Pages/Loading'
+import Loading from ".././Pages/Loading";
 import ErrorPage from "../Pages/ErrorPage";
-import { useLoaderData, Await } from 'react-router-dom';
+import { useLoaderData, Await } from "react-router-dom";
 
+import { SendForDepartments } from "../../service/api/SendDoctorRequest";
 
-const DoctorsRequestForm = () => {  //send to Doctor_requests table
-    const {results}=useLoaderData()
+const DoctorsRequestForm = () => {
+  //send to Doctor_requests table
+  const { results } = useLoaderData();
   const [userData, setUserData] = useState();
   const [test, setTest] = useState();
   const [user_id, setUser_id] = useState();
-  const [department_id,setDepartment_id]=useState()
+  const [department_id, setDepartment_id] = useState();
 
   const saveData = async (national_id) => {
     const data = await userInfo(national_id);
     setUserData(data);
     setUser_id(data.user_id);
-    console.log(data)
+    console.log(data);
   };
- 
+  const sendReport = async () => {
+    let doctor_id = 1;
+    const report = await SendForDepartments(
+      test,
+      department_id,
+      user_id,
+      doctor_id
+    );
+  };
+
   return (
     <form action="#" className="row">
       <div className="col-lg-6">
@@ -51,36 +62,34 @@ const DoctorsRequestForm = () => {  //send to Doctor_requests table
         />
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
-    
-     
-     
-      <Suspense fallback={<Loading />}>
-              <Await resolve={results} errorElement={<ErrorPage />}>
-                {(results) => {
-                  return results.data.result?.map((item, index) => (
-                    <div className="cs_radio_wrap" key={index}>
-                      <input
-                        className="cs_radio_input"
-                        type="radio"
-                        name="department"
-                        id={item.department_name}
-                        defaultValue={item.department_name}
-                        onClick={(e) => setDepartment_id(item.id)}
-                      />
-                      <label
-                        className="cs_radio_label"
-                        htmlFor={item.department_name}
-                      >
-                        {item.department_name}
-                      </label>
-                    </div>
-                  ));
-                }}
-              </Await>
-            </Suspense>
 
-            <div className="col-lg-12">
-        <button className="cs_btn cs_style_1" /* onClick={sendMedicalReport} */>
+      <Suspense fallback={<Loading />}>
+        <Await resolve={results} errorElement={<ErrorPage />}>
+          {(results) => {
+            return results.data.result?.map((item, index) => (
+              <div className="cs_radio_wrap" key={index}>
+                <input
+                  className="cs_radio_input"
+                  type="radio"
+                  name="department"
+                  id={item.department_name}
+                  defaultValue={item.department_name}
+                  onClick={(e) => setDepartment_id(item.id)}
+                />
+                <label
+                  className="cs_radio_label"
+                  htmlFor={item.department_name}
+                >
+                  {item.department_name}
+                </label>
+              </div>
+            ));
+          }}
+        </Await>
+      </Suspense>
+
+      <div className="col-lg-12">
+        <button className="cs_btn cs_style_1" onClick={sendReport}>
           <span>Submit</span>
           <i>
             <img src="/images/icons/arrow_white.svg" alt="Icon" />
@@ -92,4 +101,4 @@ const DoctorsRequestForm = () => {  //send to Doctor_requests table
   );
 };
 
-export default DoctorsRequestForm
+export default DoctorsRequestForm;
