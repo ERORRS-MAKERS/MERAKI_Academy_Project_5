@@ -25,7 +25,7 @@ import Login from '../components/Pages/Login';
 import MedicalReportsRequest from '../components/Pages/Medical_reports';
 
 
-import DoctorsRequestForm from '../components/DoctorsRequestForm/DoctorsRequestForm'
+import DoctorRequest from '../components/Pages/CreateDoctorsRequest'
 
 export const router = createBrowserRouter([
   {
@@ -112,7 +112,7 @@ export const router = createBrowserRouter([
   },
    {
     path: '/doctor_request',
-    element: <DoctorsRequestForm />,
+    element: <DoctorRequest />,
     loader: departmentLoader,
   }, 
   {

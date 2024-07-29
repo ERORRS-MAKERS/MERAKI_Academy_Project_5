@@ -5,7 +5,7 @@ import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
 
 export default function MedicalReportsRequest() {
-  pageTitle('Appointments');
+  pageTitle('Medical Report');
   return (
     <>
       <BannerSectionStyle3

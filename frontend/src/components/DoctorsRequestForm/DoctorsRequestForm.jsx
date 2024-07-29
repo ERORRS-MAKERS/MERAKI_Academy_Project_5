@@ -92,4 +92,4 @@ const DoctorsRequestForm = () => {  //send to Doctor_requests table
   );
 };
 
-export default DoctorsRequestForm;
+export default DoctorsRequestForm
