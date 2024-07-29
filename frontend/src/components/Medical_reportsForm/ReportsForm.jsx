@@ -1,5 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
+import { userInfo } from "../../service/api/reportsApi/getReportByNationalId";
+import { SendReport } from "../../service/api/reportsApi/SendMedicalReport";
 
 const MedicalReportsForm = () => {
   const [userData, setUserData] = useState();
@@ -7,31 +8,19 @@ const MedicalReportsForm = () => {
   const [description, setDescription] = useState();
   const [user_id, setUser_id] = useState();
 
-  const saveData = (national_id) => {
-    axios
-      .get(`http://localhost:5000/reports/${national_id}`)
-      .then((result) => {
-        setUserData(result.data.result[0]);
-
-        setUser_id(result.data.result[0].id);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+  const saveData = async (national_id) => {
+    const data = await userInfo(national_id);
+    setUserData(data);
+    setUser_id(data.user_id);
+    console.log(data)
+  };
+  const sendMedicalReport =async () => {
+    console.log(user_id)
+    let doctor_id=1
+    let image_url='l'
+  const report=await SendReport(title, description, user_id, doctor_id, image_url);
+  console.log(report)
    
-  }
-  const sendMedicalReport = () => {
-    axios.post("http://127.0.0.1:5000/reports", {
-        title,
-        description,
-      user_id,
-      doctor_id: '1',
-      image_url:"l"
-    }).then((result)=>{
-  console.log(result)}).catch((Err)=>{
-      console.log(Err)
-  })
- 
   };
   return (
     <form action="#" className="row">
@@ -44,6 +33,7 @@ const MedicalReportsForm = () => {
           onChange={(e) => {
             if (e.target.value.length === 6 || e.target.value.length === 9) {
               saveData(e.target.value);
+              console.log(e.target.value);
             }
           }}
         />
