@@ -64,11 +64,11 @@ CREATE TABLE doctors (
 CREATE TABLE appointments (
     id SERIAL PRIMARY KEY,
     user_id INT NOT NULL ,
-    doctor_id INT NOT NULL,
+    department_id INT NOT NULL,
     time TIMESTAMP NOT NULL,
     notes TEXT
     FOREIGN KEY (user_id) REFERENCES users(id),
-    FOREIGN KEY (doctor_id) REFERENCES doctors(id),
+    FOREIGN KEY (department_id) REFERENCES departments(id),
 );
 
 -- Create a table called **doctors_request** in the database

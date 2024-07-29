@@ -1,5 +1,4 @@
 const pool = require('../models/db');
-// 0
 
 const updateAppointmentById = (req, res) => {
   const id = req.params.id;
@@ -29,6 +28,7 @@ const updateAppointmentById = (req, res) => {
       });
     });
 };
+
 const getAllAppointments = (req, res) => {
   pool
     .query('SELECT * FROM appointments')
@@ -48,4 +48,36 @@ const getAllAppointments = (req, res) => {
     });
 };
 
-module.exports = { updateAppointmentById, getAllAppointments };
+const addNewAppointments = async (req, res) => {
+  const { user_id, department_id, time, notes } = req.body;
+  const query = `
+  INSERT 
+  INTO 
+    appointments 
+   (user_id, department_id, time, notes)
+  VALUES 
+    ($1,$2,$3,$4)
+    `;
+  const data = [user_id, department_id, time, notes];
+  pool
+    .query(query, data)
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: 'Appointment Created Successfully',
+      });
+    })
+    .catch((err) => {
+      res.status(400).json({
+        success: false,
+        message: 'Server Error',
+        err,
+      });
+    });
+};
+
+module.exports = {
+  updateAppointmentById,
+  getAllAppointments,
+  addNewAppointments,
+};
