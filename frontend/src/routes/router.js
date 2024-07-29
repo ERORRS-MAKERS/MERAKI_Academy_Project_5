@@ -24,6 +24,9 @@ import Register from '../components/Pages/Register';
 import Login from '../components/Pages/Login';
 import MedicalReportsRequest from '../components/Pages/Medical_reports';
 
+
+import DoctorsRequestForm from '../components/DoctorsRequestForm/DoctorsRequestForm'
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -107,6 +110,11 @@ export const router = createBrowserRouter([
     path: '/medical_reports',
     element: <MedicalReportsRequest />,
   },
+   {
+    path: '/doctor_request',
+    element: <DoctorsRequestForm />,
+    loader: departmentLoader,
+  }, 
   {
     path: '*',
     element: <ErrorPage />,
