@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData, Await } from 'react-router-dom';
@@ -11,8 +11,8 @@ import { format } from 'date-fns';
 import { bookAppointment } from '../../service/api/book_appointment';
 
 export default function AppointmentForm() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+  const user_id = useSelector((store) => store.auth.userId);
 
   const { results } = useLoaderData();
   const [selectedDate, setSelectedDate] = useState(null);
@@ -24,7 +24,7 @@ export default function AppointmentForm() {
 
   const formattedDate = format(new Date(selectedDate), 'yyyy-MM-dd');
   const time = formattedDate + ' ' + selectedTime + ':00';
-  const user_id = 3;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -36,10 +36,7 @@ export default function AppointmentForm() {
         time,
         notes
       );
-
       console.log(response);
-      // dispatch(setLogin(response));
-      // dispatch(setUserId(response.userId));
       navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');
