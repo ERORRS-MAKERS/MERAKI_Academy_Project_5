@@ -23,6 +23,7 @@ import { userPrescriptionLoader } from '../service/api/user_prescription';
 import Register from '../components/Pages/Register';
 import Login from '../components/Pages/Login';
 import MedicalReportsRequest from '../components/Pages/Medical_reports';
+import Pharmacy from '../components/Pages/Pharmacy';
 
 export const router = createBrowserRouter([
   {
@@ -91,6 +92,10 @@ export const router = createBrowserRouter([
         path: 'user/prescription/:userId',
         element: <UserPrescription />,
         loader: userPrescriptionLoader,
+      },
+      {
+        path: '/pharmacy',
+        element: <Pharmacy />,
       },
     ],
   },
