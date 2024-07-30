@@ -129,12 +129,23 @@ const RegisterForm = () => {
 
     <div className="col-lg-12">
       <button type="submit" className="cs_btn cs_style_1">
-        <span>Submit</span>
+        <span>Register</span>
         <i>
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
         </i>
       </button>
+
+      <button onClick={()=>{
+        navigate('/login')
+      }}  className="cs_btn cs_style_1">
+        <span>Login</span>
+        <i>
+          <img src="/images/icons/arrow_white.svg" alt="Icon" />
+          <img src="/images/icons/arrow_white.svg" alt="Icon" />
+        </i>
+      </button>
+
     </div>
   </form>
 </>)}
