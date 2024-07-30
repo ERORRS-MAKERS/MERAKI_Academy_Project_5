@@ -1,9 +1,15 @@
 import React, { useState } from "react";
+import { addNewDepartment } from "../../service/api/AddNewDepartment";
 
 const NewDepartment = () => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [imgUrl, setimgUrl] = useState();
+
+  const add= async()=>{
+    await addNewDepartment(name,description,imgUrl);
+
+  }
 
  
   return (
@@ -47,6 +53,16 @@ const NewDepartment = () => {
           }}
         />
         <div className="cs_height_42 cs_height_xl_25" />
+      </div>
+
+      <div className="col-lg-12">
+        <button className="cs_btn cs_style_1" onClick={add}>
+          <span>Add</span>
+          <i>
+            <img src="/images/icons/arrow_white.svg" alt="Icon" />
+            <img src="/images/icons/arrow_white.svg" alt="Icon" />
+          </i>
+        </button>
       </div>
      
     </form>
