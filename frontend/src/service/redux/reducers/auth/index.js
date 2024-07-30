@@ -6,8 +6,6 @@ export const authSlice = createSlice({
     token: localStorage.getItem("token") || null,
     userId: localStorage.getItem("userId") || null,
     isLoggedIn: false,
-    // Add userProfile to store user profile data
-    userProfile: null,
   },
 
   reducers: {
@@ -17,8 +15,6 @@ export const authSlice = createSlice({
 
       state.token = action.payload.token;
       state.isLoggedIn = action.payload.success;
-      // Store user profile data
-      state.userProfile = action.payload.userProfile;
     },
 
     setUserId: (state, action) => {
@@ -29,8 +25,6 @@ export const authSlice = createSlice({
       state.token = null;
       state.userId = null;
       state.isLoggedIn = false;
-      // Clear user profile data
-      state.userProfile = null;
       localStorage.clear();
     },
   },
