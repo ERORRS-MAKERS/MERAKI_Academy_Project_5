@@ -26,7 +26,7 @@ import MedicalReportsRequest from '../components/Pages/Medical_reports';
 import Pharmacy from '../components/Pages/Pharmacy';
 import DoctorRequest from '../components/Pages/CreateDoctorsRequest'
 
-import NewDepartment from '../components/DepartmentsForm/index'
+import NewDepartment from '../components/DepartmentsForm/AddDepartmentForm'
 export const router = createBrowserRouter([
   {
     path: "/",
