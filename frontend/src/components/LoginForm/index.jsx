@@ -38,7 +38,7 @@ const Form = () => {
       {loading && <Loading />}
       {error && <ErrorPage message={error} />}
       <form className="row" onSubmit={handleLogin}>
-        <div className="col-lg-6">
+        <div className="col-lg-12">
           <label className="cs_input_label cs_heading_color">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +49,7 @@ const Form = () => {
           />
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-12">
           <label className="cs_input_label cs_heading_color">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
