@@ -7,15 +7,15 @@ import { pageTitle } from '../../helpers/PageTitle';
 import ScrollUp from '../ScrollUp/ScrollUp';
 
 export default function Contact() {
-  pageTitle('Contact');
+  pageTitle('Join Us');
   return (
     <>
       <ScrollUp />
       <BannerSectionStyle5
         bgUrl="/images/contact/banner_bg.svg"
-        imgUrl="/images/contact/banner_img.png"
-        title="Contact Us"
-        subTitle="Kindly reach us to get the fastest response and treatment"
+        imgUrl="https://prohealth-react.vercel.app/images/contact/banner_img.png"
+        title="Join Us"
+        subTitle="Join Our Dedicated Healthcare Team: Make a Difference Every Day!"
       />
       <div className="container cs_mt_minus_110">
         <div className="row">

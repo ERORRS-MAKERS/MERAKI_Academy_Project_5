@@ -4,11 +4,14 @@ import Spacing from '../Spacing';
 import Button from '../Button';
 import { pageTitle } from '../../helpers/PageTitle';
 
-export default function ErrorPage({ message }) {
+export default function ErrorPage({ message, customStyle }) {
   pageTitle('Error');
   return (
     <>
-      <div className="cs_error cs_center text-center cs_gray_bg_1">
+      <div
+        className="cs_error cs_center text-center cs_gray_bg_1"
+        style={customStyle || null}
+      >
         <div className="container">
           <SectionHeading
             title="This page could <br> not be found."
