@@ -1,114 +1,119 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
-import Layout from '../components/Layout';
-import Home from '../components/Pages/Home';
-import About from '../components/Pages/About';
-import Doctors from '../components/Pages/Doctors';
-import DoctorDetails from '../components/Pages/DoctorDetails';
-import Blog from '../components/Pages/Blog';
-import BlogDetails from '../components/Pages/BlogDetails';
-import Appointments from '../components/Pages/Appointments';
-import Departments from '../components/Pages/Departments';
-import DepartmentDetails from '../components/Pages/DepartmentDetails';
-import Gallery from '../components/Pages/Gallery';
-import Timetable from '../components/Pages/Timetable';
-import Contact from '../components/Pages/Contact';
-import ErrorPage from '../components/Pages/ErrorPage';
-import UserMedicalReports from '../components/Pages/UserMedicalReports';
-import UserPrescription from '../components/Pages/UserPrescription';
-import { departmentLoader } from '../service/api/department';
-import { doctorsLoader } from '../service/api/doctors';
-import { userReportsLoader } from '../service/api/user_reports';
-import { userPrescriptionLoader } from '../service/api/user_prescription';
-import Register from '../components/Pages/Register';
-import Login from '../components/Pages/Login';
-import MedicalReportsRequest from '../components/Pages/Medical_reports';
+import Layout from "../components/Layout";
+import Home from "../components/Pages/Home";
+import About from "../components/Pages/About";
+import Doctors from "../components/Pages/Doctors";
+import DoctorDetails from "../components/Pages/DoctorDetails";
+import Blog from "../components/Pages/Blog";
+import BlogDetails from "../components/Pages/BlogDetails";
+import Appointments from "../components/Pages/Appointments";
+import Departments from "../components/Pages/Departments";
+import DepartmentDetails from "../components/Pages/DepartmentDetails";
+import Gallery from "../components/Pages/Gallery";
+import Timetable from "../components/Pages/Timetable";
+import Contact from "../components/Pages/Contact";
+import ErrorPage from "../components/Pages/ErrorPage";
+import UserMedicalReports from "../components/Pages/UserMedicalReports";
+import UserPrescription from "../components/Pages/UserPrescription";
+import { departmentLoader } from "../service/api/department";
+import { doctorsLoader } from "../service/api/doctors";
+import { userReportsLoader } from "../service/api/user_reports";
+import { userPrescriptionLoader } from "../service/api/user_prescription";
+import Register from "../components/Pages/Register";
+import Login from "../components/Pages/Login";
+import MedicalReportsRequest from "../components/Pages/Medical_reports";
+import UserProfile from "../components/Pages/UserProfile";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '',
+        path: "",
         element: <Home />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <About />,
         loader: doctorsLoader,
       },
       {
-        path: 'doctors',
+        path: "doctors",
         element: <Doctors />,
         loader: doctorsLoader,
       },
       {
-        path: 'doctors/doctor-details',
+        path: "doctors/doctor-details",
         element: <DoctorDetails />,
       },
       {
-        path: 'blog',
+        path: "blog",
         element: <Blog />,
       },
       {
-        path: 'blog/blog-details',
+        path: "blog/blog-details",
         element: <BlogDetails />,
       },
       {
-        path: 'appointments',
+        path: "appointments",
         element: <Appointments />,
         loader: departmentLoader,
       },
       {
-        path: 'departments',
+        path: "departments",
         element: <Departments />,
         loader: departmentLoader,
       },
       {
-        path: 'departments/department-details',
+        path: "departments/department-details",
         element: <DepartmentDetails />,
       },
       {
-        path: 'gallery',
+        path: "gallery",
         element: <Gallery />,
       },
       {
-        path: 'timetable',
+        path: "timetable",
         element: <Timetable />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <Contact />,
         // JOIN US
       },
       {
-        path: 'user/report/:userId',
+        path: "user/report/:userId",
         element: <UserMedicalReports />,
         loader: userReportsLoader,
       },
       {
-        path: 'user/prescription/:userId',
+        path: "user/prescription/:userId",
         element: <UserPrescription />,
         loader: userPrescriptionLoader,
+      },
+      {
+        path: "/user/profile",
+        element: <UserProfile />,
       },
     ],
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
     // loader: userLogin,
   },
   {
-    path: '/medical_reports',
+    path: "/medical_reports",
     element: <MedicalReportsRequest />,
   },
   {
-    path: '*',
+    path: "*",
     element: <ErrorPage />,
   },
 ]);
