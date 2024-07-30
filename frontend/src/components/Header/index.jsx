@@ -18,6 +18,12 @@ export default function Header({ logoSrc, variant }) {
     };
   });
 
+  const {userId} = useSelector((state)=>{
+    return{
+      userId:state.auth.userId
+    }
+  })
+
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const [sideNav, setSideNav] = useState(false);
@@ -92,14 +98,14 @@ export default function Header({ logoSrc, variant }) {
                       </DropDown>
                     </li>
                     <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
+                        <Link to={`/user/profile/${userId}`} 
+                          >MyProfile</Link>
+                      </li>
                   <li>
-                        <Link to="/"  onClick={() => {
+                       <Link to="/"  onClick={() => {
                           dispatch(setLogout());
                           }}>logout</Link>
                       </li>
-
                   </ul>
                   <span
                     className={
@@ -114,7 +120,6 @@ export default function Header({ logoSrc, variant }) {
                   </nav>
                   </> ) : (
                       <>
-
                   <nav className="cs_nav">
                   <ul
                     className={`${
@@ -129,6 +134,9 @@ export default function Header({ logoSrc, variant }) {
                     </li>
                     <li>
                       <Link to="/doctors">Find Doctor</Link>
+                    </li>
+                    <li>
+                      <Link to="/contact">Contact</Link>
                     </li>
                   <li>
                      <Link to="/login"  onClick={() => {
@@ -146,8 +154,9 @@ export default function Header({ logoSrc, variant }) {
                   >
                     <span></span>
                   </span>
-                  </nav>                    </>
-                     )}
+                  </nav>                   
+                   </>
+              )}
                 
               </div>
               <div className="cs_main_header_right">
