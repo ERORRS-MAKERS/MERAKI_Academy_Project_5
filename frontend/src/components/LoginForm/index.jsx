@@ -25,7 +25,7 @@ const Form = () => {
       const results = await userLogin(email, password);
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
-      navigate('/');
+      navigate(`/user/profile/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
@@ -38,7 +38,7 @@ const Form = () => {
       {loading && <Loading />}
       {error && <ErrorPage message={error} />}
       <form className="row" onSubmit={handleLogin}>
-        <div className="col-lg-6">
+        <div className="col-lg-12">
           <label className="cs_input_label cs_heading_color">Email</label>
           <input
             onChange={(e) => setEmail(e.target.value)}
@@ -49,7 +49,7 @@ const Form = () => {
           />
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
-        <div className="col-lg-6">
+        <div className="col-lg-12">
           <label className="cs_input_label cs_heading_color">Password</label>
           <input
             onChange={(e) => setPassword(e.target.value)}
@@ -63,6 +63,17 @@ const Form = () => {
         <div className="col-lg-12">
           <button type="submit" className="cs_btn cs_style_1">
             <span>Login</span>
+            <i>
+              <img src="/images/icons/arrow_white.svg" alt="Icon" />
+              <img src="/images/icons/arrow_white.svg" alt="Icon" />
+            </i>
+          </button>
+          <button            
+           onClick={() => {
+              navigate('/register')
+            }}
+             className="cs_btn cs_style_1">
+            <span>Register</span>
             <i>
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
               <img src="/images/icons/arrow_white.svg" alt="Icon" />

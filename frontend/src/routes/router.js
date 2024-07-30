@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { createBrowserRouter } from "react-router-dom";
 
 import Layout from '../components/Layout';
 import Home from '../components/Pages/Home';
@@ -30,69 +30,69 @@ import DoctorRequest from '../components/Pages/CreateDoctorsRequest'
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '',
+        path: "",
         element: <Home />,
       },
       {
-        path: 'about',
+        path: "about",
         element: <About />,
         loader: doctorsLoader,
       },
       {
-        path: 'doctors',
+        path: "doctors",
         element: <Doctors />,
         loader: doctorsLoader,
       },
       {
-        path: 'doctors/doctor-details',
+        path: "doctors/doctor-details",
         element: <DoctorDetails />,
       },
       {
-        path: 'blog',
+        path: "blog",
         element: <Blog />,
       },
       {
-        path: 'blog/blog-details',
+        path: "blog/blog-details",
         element: <BlogDetails />,
       },
       {
-        path: 'appointments',
+        path: "appointments",
         element: <Appointments />,
         loader: departmentLoader,
       },
       {
-        path: 'departments',
+        path: "departments",
         element: <Departments />,
         loader: departmentLoader,
       },
       {
-        path: 'departments/department-details',
+        path: "departments/department-details",
         element: <DepartmentDetails />,
       },
       {
-        path: 'gallery',
+        path: "gallery",
         element: <Gallery />,
       },
       {
-        path: 'timetable',
+        path: "timetable",
         element: <Timetable />,
       },
       {
-        path: 'contact',
+        path: "contact",
         element: <Contact />,
         // JOIN US
       },
       {
-        path: 'user/report/:userId',
+        path: "user/report/:userId",
         element: <UserMedicalReports />,
         loader: userReportsLoader,
       },
       {
-        path: 'user/prescription/:userId',
+        path: "user/prescription/:userId",
         element: <UserPrescription />,
         loader: userPrescriptionLoader,
       },
@@ -103,16 +103,16 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path: '/register',
+    path: "/register",
     element: <Register />,
   },
   {
-    path: '/login',
+    path: "/login",
     element: <Login />,
     // loader: userLogin,
   },
   {
-    path: '/medical_reports',
+    path: "/medical_reports",
     element: <MedicalReportsRequest />,
   },
    {
@@ -121,7 +121,7 @@ export const router = createBrowserRouter([
     loader: departmentLoader,
   }, 
   {
-    path: '*',
+    path: "*",
     element: <ErrorPage />,
   },
 ]);
