@@ -12,15 +12,12 @@ const MedicalReportsForm = () => {
     const data = await userInfo(national_id);
     setUserData(data);
     setUser_id(data.user_id);
-    console.log(data)
   };
   const sendMedicalReport =async () => {
-    console.log(user_id)
-    let doctor_id=1
+    let doctor_id=2
     let image_url='l'
   const report=await SendReport(title, description, user_id, doctor_id, image_url);
-  console.log(report)
-   
+   console.log(report)
   };
   return (
     <form action="#" className="row">
