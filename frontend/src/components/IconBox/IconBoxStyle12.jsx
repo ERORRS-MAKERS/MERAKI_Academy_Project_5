@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { updatePrescriptions } from '../../service/api/updatePrescriptions';
+import ErrorPage from '../Pages/ErrorPage';
+import Loading from '../Pages/Loading';
 
 export default function IconBoxStyle12({
   id,
@@ -12,20 +14,37 @@ export default function IconBoxStyle12({
   quantity,
 }) {
   const [status2, setStatus2] = useState(status);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
   const saveData = async (prescription_id, status_updated) => {
-    const data = await updatePrescriptions(prescription_id, status_updated);
-    if (data.success) {
+    setLoading(true);
+    setError(null);
+
+    try {
+      await updatePrescriptions(prescription_id, status_updated);
       setStatus2(status_updated);
+    } catch (err) {
+      setError(err.message || 'Update failed');
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      {/* <Loading /> */}
+      {loading && <Loading />}
+      {error && <ErrorPage message={error} />}
       <div
         className="cs_iconbox_info cs_radius_20"
-        style={{ display: 'flex', gap: '10px' }}
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          gap: '10px',
+        }}
       >
-        <div>
+        <div style={{ position: 'relative' }}>
           <span className="cs_iconbox_circle cs_accent_bg" />
           <h4>{first_name + ' ' + last_name}</h4>
           <h2 className="cs_iconbox_title cs_fs_32 cs_semibold">
