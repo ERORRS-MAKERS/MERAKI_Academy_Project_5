@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import { addNewDepartment } from "../../service/api/AddNewDepartment";
+import axios from "axios";
+import {getImgUrl} from '../../service/api/CloudinaryApi'
 
 const NewDepartment = () => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
   const [imgUrl, setimgUrl] = useState();
+  const [image,setImage]=useState()
 
   const add= async()=>{
     await addNewDepartment(name,description,imgUrl);
 
   }
+  const upload =async () => {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "maintain solutions");
+    data.append("cloud_name", "dkr5xxdly");
 
+    const url = await getImgUrl(data)
+   setimgUrl(url)
+  };
  
   return (
     <form action="#" className="row">
@@ -42,17 +53,19 @@ const NewDepartment = () => {
       </div>
 
       <div className="col-lg-12">
-        <label className="cs_input_label cs_heading_color">ImageURL</label>
-        <input
-          type="text"
-          className="cs_form_field"
-          style={{ height: "80px" }}
-          placeholder="Write description of patient report here..."
-          onChange={(e) => {
-            setimgUrl(e.target.value);
-          }}
-        />
-        <div className="cs_height_42 cs_height_xl_25" />
+      
+          <input
+          
+            type="file"
+            onChange={(e) => setImage(e.target.files[0])}
+          />
+
+          <button
+            component="label"
+            onClick={upload}  >
+            upload
+          </button>
+     
       </div>
 
       <div className="col-lg-12">

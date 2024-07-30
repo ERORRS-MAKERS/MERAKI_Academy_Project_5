@@ -118,9 +118,39 @@ const deleteDoctorById = (req, res) => {
     });
 };
 
+const getDoctorsByStatusOfHiring = (req, res) => {
+  const status = req.body.is_hired;
+  const query = `SELECT *
+   FROM doctors
+   WHERE is_hired=($1)`;
+  const data = [status];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `The Doctors with is_hired: ${status}`,
+          result: result.rows,
+        });
+      } else {
+        throw new Error('There is No job requests');
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Server error',
+        err: err.message,
+      });
+    });
+};
+
 module.exports = {
   addNewDoctor,
   getAllDoctors,
   updateDoctorById,
   deleteDoctorById,
+  getDoctorsByStatusOfHiring,
 };
