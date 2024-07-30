@@ -22,7 +22,7 @@ const DoctorsRequestForm = () => {
   };
   const sendReport = async () => {
     let doctor_id = 1;
-    const report = await SendForDepartments(
+     await SendForDepartments(
       test,
       department_id,
       user_id,

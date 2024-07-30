@@ -1,10 +1,10 @@
 const pool = require('../models/db');
 
 const addNewDepartment = (req, res) => {
-  const { name, description } = req.body;
+  const { department_name, department_description,department_imgurl } = req.body;
 
-  const query = `INSERT INTO departments (name, description) VALUES ($1,$2)`;
-  const data = [name, description];
+  const query = `INSERT INTO departments (department_name, department_description,department_imgurl) VALUES ($1,$2,$3)`;
+  const data = [department_name, department_description,department_imgurl];
   pool
     .query(query, data)
     .then((result) => {
