@@ -26,7 +26,7 @@ import MedicalReportsRequest from '../components/Pages/Medical_reports';
 import Pharmacy from '../components/Pages/Pharmacy';
 import DoctorRequest from '../components/Pages/CreateDoctorsRequest'
 
-import NewDepartment from '../components/DepartmentsForm/AddDepartmentForm'
+import AddDepartment from '../components/Pages/AddDepartment'
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -121,7 +121,7 @@ export const router = createBrowserRouter([
   }, 
   {
     path: '/add_deparment',
-    element: <NewDepartment />,
+    element: <AddDepartment />,
   }, 
   {
     path: "*",

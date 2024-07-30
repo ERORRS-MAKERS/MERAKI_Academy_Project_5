@@ -1,6 +1,6 @@
 import React from "react";
-import NewDepartment from '../components/DepartmentsForm/AddDepartmentForm'
-const DepartmentReportSection = () => {
+import NewDepartment from '../../DepartmentsForm/AddDepartmentForm'
+const NewDepartmentSection = () => {
   return (
     <div className="container">
       <div className="row">
@@ -15,4 +15,4 @@ const DepartmentReportSection = () => {
   );
 };
 
-export default  DepartmentReportSection;
+export default  NewDepartmentSection;
