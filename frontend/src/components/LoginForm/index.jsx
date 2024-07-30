@@ -25,7 +25,7 @@ const Form = () => {
       const results = await userLogin(email, password);
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
-      navigate('/');
+      navigate(`/user/profile/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {

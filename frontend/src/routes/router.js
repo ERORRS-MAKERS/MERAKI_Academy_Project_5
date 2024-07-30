@@ -94,7 +94,7 @@ export const router = createBrowserRouter([
         loader: userPrescriptionLoader,
       },
       {
-        path: "/user/profile",
+        path: "/user/profile/:id",
         element: <UserProfile />,
       },
     ],
