@@ -9,7 +9,6 @@ export const prescriptionsSlice = createSlice({
   reducers: {
     setPrescriptions: (state, action) => {
       state.prescription = action.payload;
-      console.log('redux', action.payload);
     },
 
     clearPrescriptions: (state) => {
@@ -18,7 +17,7 @@ export const prescriptionsSlice = createSlice({
   },
 });
 
-export const { setPrescriptions, clearPrescriptions } =
+export const { setPrescriptions, clearPrescriptions, setUpdatePrescriptions } =
   prescriptionsSlice.actions;
 
 export default prescriptionsSlice.reducer;
