@@ -6,12 +6,12 @@ import PharmacySection from '../Section/PharmacySection/index';
 import { pageTitle } from '../../helpers/PageTitle';
 
 export default function HomeStyle4() {
-  pageTitle('Home V4');
+  pageTitle('Pharmacy');
   return (
     <>
       <HeroStyle4
-        title="Your Path to Health and Wellness Begins Here"
-        subTitle="Your Trusted Partner in Comprehensive Healthcare, Where Your Well-being is Our Priority, Providing Quality Care and Support for All Your Health Needs."
+        title="Your Expertise and Compassion Make Every Prescription a Path to Wellness!"
+        subTitle="Your dedication to ensuring the health and well-being of others is truly inspiring. Every day, you make a positive impact with your knowledge, care, and compassion. Thank you for being a vital part of our community"
         bgUrl="/images/home_4/hero_bg.jpeg"
         imgUrl="/images/home_4/hero_img_1.png"
         imgUrl2="/images/home_4/hero_img_2.png"
