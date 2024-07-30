@@ -1,40 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { setPrescriptions } from '../../service/redux/reducers/prescriptions/index';
+import { prescriptions } from '../../service/api/getPrescriptionsByNationalId';
+import { useDispatch } from 'react-redux';
 
 export default function AppointmentFormStyle2() {
+  const dispatch = useDispatch();
+  const [national_id, setNational_id] = useState(null);
+
+  const saveData = async (e, national_id) => {
+    e.preventDefault();
+    const data = await prescriptions(national_id);
+    dispatch(setPrescriptions(data));
+  };
+
   return (
-    <form
-      action="/"
-      className="cs_appointment_form cs_style_1 cs_type_1 cs_fs_20 position-relative"
-    >
-      <div className="cs_appointment_form_field">
-        <div className="cs_appointment_form_icon cs_center rounded-circle cs_white_bg">
-          <img src="/images/home_4/appointment_icon_1.svg" alt="Icon" />
-        </div>
-        <div className="cs_appointment_form_field_right">
-          <label>Date</label>
-          <input type="text" placeholder="David John" />
-        </div>
-      </div>
+    <form className="cs_appointment_form cs_style_1 cs_type_1 cs_fs_20 position-relative">
       <div className="cs_appointment_form_field">
         <div className="cs_appointment_form_icon cs_center rounded-circle cs_white_bg">
           <img src="/images/home_4/appointment_icon_2.svg" alt="Icon" />
         </div>
         <div className="cs_appointment_form_field_right">
-          <label>Specialization</label>
-          <input type="text" placeholder="David John" />
+          <label>Patient National Id</label>
+          <input
+            type="text"
+            placeholder="123456789"
+            onChange={(e) => {
+              setNational_id(e.target.value);
+            }}
+          />
         </div>
       </div>
-      <div className="cs_appointment_form_field">
-        <div className="cs_appointment_form_icon cs_center rounded-circle cs_white_bg">
-          <img src="/images/home_4/appointment_icon_3.svg" alt="Icon" />
-        </div>
-        <div className="cs_appointment_form_field_right">
-          <label>Contact Number</label>
-          <input type="text" placeholder="David John" />
-        </div>
-      </div>
-      <button className="cs_btn cs_style_1 w-100">
-        <span>Book Now</span>
+
+      <button
+        className="cs_btn cs_style_1 w-100"
+        onClick={(e) => saveData(e, national_id)}
+      >
+        <span>Find Prescriptions</span>
         <i>
           <img src="/images/icons/arrow_white.svg" alt="Icon" />
           <img src="/images/icons/arrow_white.svg" alt="Icon" />

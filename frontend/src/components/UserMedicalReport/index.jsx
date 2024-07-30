@@ -6,10 +6,10 @@ export default function Reports({
   description,
   doctor_name,
   image_url,
-  date,
+  report_date,
 }) {
   const btnText = 'Download Document';
-  const formattedDate = format(new Date(date), 'yyyy-MM-dd');
+  const formattedDate = format(new Date(report_date), 'yyyy-MM-dd');
   return (
     <div className="cs_pricing_card cs_style_1 cs_radius_20 overflow-hidden">
       <div className="cs_pricing_card_head cs_accent_bg cs_white_color">

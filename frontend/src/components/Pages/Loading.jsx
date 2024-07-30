@@ -1,10 +1,8 @@
 import React from 'react';
-import ScrollUp from '../ScrollUp/ScrollUp';
 
 const Loading = () => {
   return (
     <>
-      <ScrollUp />
       <div className="loader-container">
         <div className="loader">
           <div>
