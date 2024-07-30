@@ -27,6 +27,7 @@ import Pharmacy from "../components/Pages/Pharmacy";
 import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
 
+import AddDepartment from '../components/Pages/AddDepartment'
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -123,6 +124,10 @@ export const router = createBrowserRouter([
     element: <DoctorRequest />,
     loader: departmentLoader,
   },
+  {
+    path: '/add_deparment',
+    element: <AddDepartment />,
+  }, 
   {
     path: "*",
     element: <ErrorPage />,
