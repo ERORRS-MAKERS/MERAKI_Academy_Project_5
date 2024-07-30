@@ -71,12 +71,16 @@ $color_2: var(--text);
 }
 
 .loader-container {
-  width: 100vw;
-  height: 100vh;
+  position: absolute;
+  z-index: 9999999;
+  background-color: #fff;
+  width: 400px;
+  height: 258px;
   display: flex;
   justify-content: center;
   align-items: center;
   backdrop-filter: blur(10px);
+  border-radius: 20px;
 }
 .loader {
   --background: linear-gradient(135deg, #23c4f8, #275efe);

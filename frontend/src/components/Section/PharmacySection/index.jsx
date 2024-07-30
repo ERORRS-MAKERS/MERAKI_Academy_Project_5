@@ -15,7 +15,12 @@ export default function DepartmentSectionStyle6({
       <Spacing md="72" lg="50" />
       <div
         className="cs_iconbox cs_style_12"
-        style={{ justifyContent: 'start' }}
+        style={{
+          margin: '0 auto',
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3,1fr)',
+          alignItems: 'center',
+        }}
       >
         {data?.map((item, index) => (
           <div key={index}>
