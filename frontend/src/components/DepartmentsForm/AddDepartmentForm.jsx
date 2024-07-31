@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { addNewDepartment } from "../../service/api/AddNewDepartment";
-import axios from "axios";
 import {getImgUrl} from '../../service/api/CloudinaryApi'
 
 const NewDepartment = () => {
