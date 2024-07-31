@@ -23,6 +23,8 @@ import { userPrescriptionLoader } from '../service/api/user_prescription';
 import Register from '../components/Pages/Register';
 import Login from '../components/Pages/Login';
 import MedicalReportsRequest from '../components/Pages/Medical_reports';
+import DepartmentDash from '../components/Pages/DepartmentDash';
+import {departmentDashLoader} from '../service/api/departmentDash'
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +70,11 @@ export const router = createBrowserRouter([
       {
         path: 'departments/department-details',
         element: <DepartmentDetails />,
+      },
+      {
+        path:'department-dashboard/doctors_request',
+        element: <DepartmentDash/>,
+        loader: departmentDashLoader,
       },
       {
         path: 'gallery',

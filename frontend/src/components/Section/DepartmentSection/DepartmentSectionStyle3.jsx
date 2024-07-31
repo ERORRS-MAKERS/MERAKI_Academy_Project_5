@@ -2,6 +2,7 @@ import React from 'react';
 import IconBoxStyle7 from '../../IconBox/IconBoxStyle7';
 
 export default function DepartmentSectionStyle3({ data }) {
+  console.log(data);
   return (
     <div className="container cs_mt_minus_110">
       <div className="row justify-content-end">
