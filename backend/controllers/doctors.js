@@ -4,39 +4,45 @@ const bcrypt = require('bcryptjs');
 const addNewDoctor = async (req, res) => {
   const {
     doctor_name,
-    department_id,
-    specialist,
-    description,
     email,
     password,
-  } = req.body;
-  const encryptedPassword = await bcrypt.hash(password, 10);
-  const query = `INSERT INTO doctors
-   (doctor_name, department_id, specialist, description, email, password)
-    VALUES ($1,$2,$3,$4,$5,$6)`;
-  const data = [
-    doctor_name,
-    department_id,
     specialist,
     description,
-    email.toLowerCase(),
-    encryptedPassword,
-  ];
-  pool
-    .query(query, data)
-    .then((result) => {
-      res.status(200).json({
-        success: true,
-        message: 'Doctor account created successfully',
-      });
-    })
-    .catch((err) => {
-      res.status(409).json({
-        success: false,
-        message: 'The email already exists',
-        err,
-      });
+    department_id,
+    img_url,
+    cv_url,
+  } = req.body;
+
+  try {
+    const encryptedPassword = await bcrypt.hash(password, 10);
+    const query = `
+      INSERT INTO doctors
+      (doctor_name, department_id, specialist, description, email, password, img_url, cv_url)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`;
+
+    const data = [
+      doctor_name,
+      department_id,
+      specialist,
+      description,
+      email.toLowerCase(),
+      encryptedPassword,
+      img_url,
+      cv_url,
+    ];
+
+    await pool.query(query, data);
+    res.status(200).json({
+      success: true,
+      message: 'Doctor account created successfully',
     });
+  } catch (err) {
+    res.status(409).json({
+      success: false,
+      message: 'The email already exists',
+      err,
+    });
+  }
 };
 
 const getAllDoctors = (req, res) => {
