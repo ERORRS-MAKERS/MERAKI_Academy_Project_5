@@ -29,7 +29,7 @@ import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
 import AddDepartment from '../components/Pages/AddDepartment'
 
-import HiringDoctors from '../components/Section/AdminSection/getDoctorsRequests'
+import DoctorsJobRequest from '../components/Pages/DoctorsJobRequest'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -134,7 +134,9 @@ export const router = createBrowserRouter([
   }, 
   {
     path: '/admin/requests',
-    element: <HiringDoctors />,
+    element: <DoctorsJobRequest />,
+    loader: doctorsLoader,
+
   }, 
   
   {

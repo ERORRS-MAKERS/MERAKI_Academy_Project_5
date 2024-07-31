@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import Spacing from '../../Spacing';
-import TeamStyle2 from '../../Team/TeamStyle2';
 import Pagination from '../../Pagination';
 import TeamStyle5 from '../../Team/TeamStyle5_Hiring_Requests';
 
 export default function HiringDoctors({ data }) {
-/*   const [view, setView] = useState('grid');
+   const [view, setView] = useState('grid');
   const [active, setActive] = useState('all');
   const [filteredData, setFilteredData] = useState(data);
   // Extracting unique categories from teamData
@@ -22,12 +21,11 @@ export default function HiringDoctors({ data }) {
       setFilteredData(filtered);
     }
     setActive(department_name);
-  }; */
+  }; 
 
   return (
     <div className="container">
-        hello
-     {/*  <div className="cs_doctors_heading">
+          <div className="cs_doctors_heading">
         <div className="cs_isotop_filter cs_style1">
           <p className="mb-0">Sort by</p>
           <ul className="cs_mp0">
@@ -90,7 +88,7 @@ export default function HiringDoctors({ data }) {
         ))}
       </div>
       <Spacing md="90" />
-      <Pagination /> */}
+      <Pagination /> 
     </div>
   );
 }
