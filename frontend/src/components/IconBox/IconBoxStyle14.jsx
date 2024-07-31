@@ -13,6 +13,7 @@ export default function IconBoxStyle14({ title, subtitle, href }) {
       </div>
       <h2 className="cs_iconbox_title cs_fs_32">{parser(title)}</h2>
       <p className="cs_iconbox_subtitle m-0">{parser(subtitle)}</p>
+
       <Link to={href} className="cs_iconbox_btn cs_center">
         <img src="images/icons/arrow_white.svg" alt="Icon" />
         <img src="images/icons/arrow_white.svg" alt="Icon" />
