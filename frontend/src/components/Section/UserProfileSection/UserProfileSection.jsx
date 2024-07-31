@@ -16,6 +16,13 @@ export default function UserProfileSections({ userId, sectionTitle }) {
             href={`/user/report/${userId}`}
           />
         </div>
+        <div className="col-xl-4 col-md-6">
+          <IconBoxStyle14
+            title="Prescriptions"
+            subtitle="View your prescriptions"
+            href={`/user/prescription/${userId}`}
+          />
+        </div>
       </div>
     </div>
   );
