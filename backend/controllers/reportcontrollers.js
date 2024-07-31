@@ -1,4 +1,4 @@
-const pool = require('../models/db');
+const pool = require("../models/db");
 
 const getAllReports = (req, res) => {
   pool
@@ -6,14 +6,14 @@ const getAllReports = (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: 'All The Reports',
+        message: "All The Reports",
         result: result.rows,
       });
     })
     .catch((error) => {
       res.status(500).json({
         success: false,
-        message: 'Server Error',
+        message: "Server Error",
         error: error.message,
       });
       console.log(error);
@@ -32,13 +32,13 @@ const createMedicalReport = (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: 'report created successfully',
+        message: "report created successfully",
       });
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server Error',
+        message: "Server Error",
         err: err.message,
       });
     });
@@ -61,17 +61,18 @@ const getReportsByNationalId = (req, res) => {
           result: result.rows,
         });
       } else {
-        throw new Error('Error happened while getting reports');
+        throw new Error("Error happened while getting reports");
       }
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server error',
+        message: "Server error",
         err: err,
       });
     });
 };
+
 const getReportsByUserId = (req, res) => {
   const id = req.params.user_id;
   const query = `SELECT doctors.doctor_name, medical_reports.title, medical_reports.description,
@@ -90,20 +91,52 @@ const getReportsByUserId = (req, res) => {
           result: result.rows,
         });
       } else {
-        throw new Error('Error happened while getting reports');
+        throw new Error("Error happened while getting reports");
       }
     })
     .catch((err) => {
       res.status(500).json({
         success: false,
-        message: 'Server error',
+        message: "Server error",
         err: err.message,
       });
     });
 };
+
+const getReportsByDoctorId = (req, res) => {
+  const id = req.params.doctor_id;
+  const query = `SELECT users.first_name,users.last_name,users.national_id, medical_reports.title, medical_reports.description,
+  medical_reports.image_url, medical_reports.report_date
+   FROM medical_reports
+    INNER JOIN users ON medical_reports.user_id  =  users.id WHERE medical_reports.user_id=($1)`;
+  const data = [id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `The reports with doctor_id: ${id}`,
+          result: result.rows,
+        });
+      } else {
+        throw new Error("Error happened while getting reports");
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: "Server error",
+        err: err.message,
+      });
+    });
+};
+
 module.exports = {
   getAllReports,
   createMedicalReport,
   getReportsByNationalId,
   getReportsByUserId,
+  getReportsByDoctorId,
 };
