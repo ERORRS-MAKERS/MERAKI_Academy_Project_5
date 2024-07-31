@@ -1,11 +1,9 @@
 import React from 'react';
-import ScrollUp from '../ScrollUp/ScrollUp';
 
-const Loading = () => {
+const Loading = (customStyle) => {
   return (
     <>
-      <ScrollUp />
-      <div className="loader-container">
+      <div className="loader-container" style={customStyle.customStyle || null}>
         <div className="loader">
           <div>
             <ul>

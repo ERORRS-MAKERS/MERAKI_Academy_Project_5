@@ -1,11 +1,11 @@
 import React from 'react';
 import BannerSectionStyle3 from '../Section/BannerSection/BannerSectionStyle3';
-import MedicalReportSection from '../Section/MedicalReportSection/index';
+import AddDepartmentSection from '../Section/AdminSection/AddDepartmentSection'
 import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
 
-export default function MedicalReportsRequest() {
-  pageTitle('Medical Report');
+export default function AddDepartment() {
+  pageTitle('Department Report');
   return (
     <>
       <BannerSectionStyle3
@@ -22,7 +22,7 @@ export default function MedicalReportsRequest() {
         bottomLg={150}
         bottomXl={110}
       >
-        <MedicalReportSection />
+        <AddDepartmentSection />
       </Section>
     </>
   );

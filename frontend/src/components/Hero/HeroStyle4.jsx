@@ -4,7 +4,6 @@ import AppointmentFormStyle2 from '../AppointmentForm/AppointmentFormStyle2';
 export default function HeroStyle4({
   title,
   subTitle,
-  bgUrl,
   imgUrl,
   imgUrl2,
   imgUrl3,
@@ -12,7 +11,9 @@ export default function HeroStyle4({
   return (
     <section
       className="cs_hero cs_style_4 cs_bg_filed"
-      style={{ backgroundImage: `url(${bgUrl})` }}
+      style={{
+        backgroundImage: `url(https://prohealth-react.vercel.app/images/home_4/hero_bg.jpeg)`,
+      }}
     >
       <div className="container">
         <div className="cs_hero_text">

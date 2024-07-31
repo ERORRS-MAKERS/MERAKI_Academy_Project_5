@@ -5,8 +5,25 @@ import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
 import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
 import Spacing from '../Spacing';
+import { useSelector, useDispatch } from "react-redux";
+import { setLogin, setLogout } from "../../service/redux/reducers/auth/index";
+
 
 export default function Header({ logoSrc, variant }) {
+
+  const dispatch = useDispatch();
+  const { isLoggedIn } = useSelector((state) => {
+    return {
+      isLoggedIn: state.auth.isLoggedIn,
+    };
+  });
+
+  const {userId} = useSelector((state)=>{
+    return{
+      userId:state.auth.userId
+    }
+  })
+
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const [sideNav, setSideNav] = useState(false);
@@ -39,6 +56,7 @@ export default function Header({ logoSrc, variant }) {
                 <Link className="cs_site_branding" to="/">
                   <img src={logoSrc} alt="Logo" />
                 </Link>
+                {isLoggedIn ? (<>
                 <nav className="cs_nav">
                   <ul
                     className={`${
@@ -80,8 +98,14 @@ export default function Header({ logoSrc, variant }) {
                       </DropDown>
                     </li>
                     <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
+                        <Link to={`/user/profile/${userId}`} 
+                          >MyProfile</Link>
+                      </li>
+                  <li>
+                       <Link to="/"  onClick={() => {
+                          dispatch(setLogout());
+                          }}>logout</Link>
+                      </li>
                   </ul>
                   <span
                     className={
@@ -93,7 +117,47 @@ export default function Header({ logoSrc, variant }) {
                   >
                     <span></span>
                   </span>
-                </nav>
+                  </nav>
+                  </> ) : (
+                      <>
+                  <nav className="cs_nav">
+                  <ul
+                    className={`${
+                      mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
+                    }`}
+                  >
+                    <li>
+                      <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                      <Link to="/about">About</Link>
+                    </li>
+                    <li>
+                      <Link to="/doctors">Find Doctor</Link>
+                    </li>
+                    <li>
+                      <Link to="/contact">Contact</Link>
+                    </li>
+                  <li>
+                     <Link to="/login"  onClick={() => {
+                         dispatch(setLogin());
+                        }}>Login</Link>
+                      </li>
+                  </ul>
+                  <span
+                    className={
+                      mobileToggle
+                        ? 'cs_menu_toggle cs_teggle_active'
+                        : 'cs_menu_toggle'
+                    }
+                    onClick={() => setMobileToggle(!mobileToggle)}
+                  >
+                    <span></span>
+                  </span>
+                  </nav>                   
+                   </>
+              )}
+                
               </div>
               <div className="cs_main_header_right">
                 <div className="cs_toolbox">

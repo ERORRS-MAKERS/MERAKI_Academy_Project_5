@@ -3,18 +3,19 @@ import SectionHeading from '../SectionHeading';
 import Spacing from '../Spacing';
 import Button from '../Button';
 import { pageTitle } from '../../helpers/PageTitle';
-import ScrollUp from '../ScrollUp/ScrollUp';
 
-export default function ErrorPage() {
+export default function ErrorPage({ message, customStyle }) {
   pageTitle('Error');
   return (
     <>
-      <ScrollUp />
-      <div className="cs_error cs_center text-center cs_gray_bg_1">
+      <div
+        className="cs_error cs_center text-center cs_gray_bg_1"
+        style={customStyle || null}
+      >
         <div className="container">
           <SectionHeading
             title="This page could <br> not be found."
-            titleUp="404 ERROR"
+            titleUp={message || '404 ERROR'}
             variantColor="cs_white_color"
           />
           <Spacing lg="30" md="30" />

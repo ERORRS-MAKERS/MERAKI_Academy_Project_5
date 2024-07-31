@@ -22,3 +22,4 @@ export default function IconBoxStyle14({ department_id, doctor_id, id, status, t
         </div>
     );
 }
+
