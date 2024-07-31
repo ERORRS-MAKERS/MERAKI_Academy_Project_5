@@ -20,6 +20,7 @@ const NewDepartment = () => {
 
     const url = await getImgUrl(data)
    setimgUrl(url)
+   
   };
  
   return (

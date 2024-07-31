@@ -27,9 +27,9 @@ import MedicalReportsRequest from "../components/Pages/Medical_reports";
 import Pharmacy from "../components/Pages/Pharmacy";
 import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
-
-
 import AddDepartment from '../components/Pages/AddDepartment'
+
+import HiringDoctors from '../components/Section/AdminSection/getDoctorsRequests'
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -132,6 +132,11 @@ export const router = createBrowserRouter([
     path: '/add_deparment',
     element: <AddDepartment />,
   }, 
+  {
+    path: '/admin/requests',
+    element: <HiringDoctors />,
+  }, 
+  
   {
     path: '*',
     element: <ErrorPage />,
