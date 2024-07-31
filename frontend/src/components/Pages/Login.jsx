@@ -1,5 +1,5 @@
 import React from 'react'
-import LoginSection from '../Section/LoginSection/'
+import LoginSection from '../Section/LoginSection/index'
 
 const Login = () => {
   return (

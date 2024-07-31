@@ -5,7 +5,7 @@ import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
-import { doctorLogin } from '../../service/api/doctorLogin';
+import  {doctorLogin}  from '../../service/api/userLogin';
 
 const Form = () => {
   const dispatch = useDispatch();
