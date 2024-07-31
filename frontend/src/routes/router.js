@@ -26,6 +26,8 @@ import MedicalReportsRequest from "../components/Pages/Medical_reports";
 import Pharmacy from "../components/Pages/Pharmacy";
 import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
+import DepartmentDash from '../components/Pages/DepartmentDash';
+import {departmentDashLoader} from '../service/api/departmentDash'
 
 import AddDepartment from "../components/Pages/AddDepartment";
 import DoctorLogin from "../components/Pages/DoctorLogin";
@@ -74,7 +76,7 @@ export const router = createBrowserRouter([
         path: "departments/department-details",
         element: <DepartmentDetails />,
       },
-      {
+       {
         path: "gallery",
         element: <Gallery />,
       },
@@ -105,6 +107,11 @@ export const router = createBrowserRouter([
       {
         path: "user/profile/:id",
         element: <UserProfile />,
+      },
+         {
+        path:'department-dashboard/doctors_request',
+        element: <DepartmentDash/>,
+        loader: departmentDashLoader,
       },
     ],
   },
