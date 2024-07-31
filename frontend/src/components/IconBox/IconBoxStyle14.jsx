@@ -2,7 +2,7 @@ import React from "react";
 import parser from "html-react-parser";
 import { Link } from "react-router-dom";
 
-export default function IconBoxStyle14({ title }) {
+export default function IconBoxStyle14({ title, subtitle, href }) {
   return (
     <div className="cs_iconbox cs_style_7">
       <div className="cs_iconbox_icon">
@@ -12,8 +12,8 @@ export default function IconBoxStyle14({ title }) {
         />
       </div>
       <h2 className="cs_iconbox_title cs_fs_32">{parser(title)}</h2>
-      <p className="cs_iconbox_subtitle m-0"></p>
-      <Link className="cs_iconbox_btn cs_center">
+      <p className="cs_iconbox_subtitle m-0">{parser(subtitle)}</p>
+      <Link to={href} className="cs_iconbox_btn cs_center">
         <img src="images/icons/arrow_white.svg" alt="Icon" />
         <img src="images/icons/arrow_white.svg" alt="Icon" />
       </Link>
