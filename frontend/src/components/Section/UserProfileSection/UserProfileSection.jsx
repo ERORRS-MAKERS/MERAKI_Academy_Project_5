@@ -1,5 +1,5 @@
 import React from "react";
-import IconBoxStyle15 from '../../IconBox/IconBoxStyle15'
+import IconBoxStyle15 from '../../IconBox/IconBoxStyle-15'
 import SectionHeading from "../../SectionHeading";
 import Spacing from "../../Spacing";
 

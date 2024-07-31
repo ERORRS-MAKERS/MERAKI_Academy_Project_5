@@ -1,7 +1,6 @@
 import React from "react";
 import parser from "html-react-parser";
 import { Link } from "react-router-dom";
-
 export default function IconBoxStyle15({ title, subtitle, href }) {
   return (
     <div className="cs_iconbox cs_style_7">
@@ -13,7 +12,6 @@ export default function IconBoxStyle15({ title, subtitle, href }) {
       </div>
       <h2 className="cs_iconbox_title cs_fs_32">{parser(title)}</h2>
       <p className="cs_iconbox_subtitle m-0">{parser(subtitle)}</p>
-
       <Link to={href} className="cs_iconbox_btn cs_center">
       <img
           src="https://prohealth-react.vercel.app/images/icons/arrow_white.svg"
