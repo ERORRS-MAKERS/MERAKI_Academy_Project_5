@@ -15,8 +15,14 @@ export default function IconBoxStyle14({ title, subtitle, href }) {
       <p className="cs_iconbox_subtitle m-0">{parser(subtitle)}</p>
 
       <Link to={href} className="cs_iconbox_btn cs_center">
-        <img src="images/icons/arrow_white.svg" alt="Icon" />
-        <img src="images/icons/arrow_white.svg" alt="Icon" />
+      <img
+          src="https://prohealth-react.vercel.app/images/icons/arrow_white.svg"
+          alt="Icon"
+        />
+        <img
+          src="https://prohealth-react.vercel.app/images/icons/arrow_white.svg"
+          alt="Icon"
+        />
       </Link>
     </div>
   );
