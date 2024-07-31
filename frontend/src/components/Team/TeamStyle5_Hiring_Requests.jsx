@@ -26,6 +26,27 @@ export default function TeamStyle5({
           <p className="cs_member_description">{description}</p>
         </div>
       </div>
+      <li className="menu-item-has-children">
+                      <div to="/">Home</div>
+                   
+                        <ul>
+                          <li>
+                            Home Version-1
+                          </li>
+                          <li>
+                           Home Version-2``
+                          </li>
+                          <li>
+                           Home Version-3
+                          </li>
+                          <li>
+                          Home Version-4
+                          </li>
+                         
+                        </ul>
+                    
+                    </li>
+                    
     </div>
   );
 }
