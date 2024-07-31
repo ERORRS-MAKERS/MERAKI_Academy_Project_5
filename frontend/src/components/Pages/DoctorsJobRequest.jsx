@@ -1,11 +1,8 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, {  useEffect, useState } from 'react';
 import BannerSectionStyle5 from '../Section/BannerSection/BannerSectionStyle5';
 import BannerSectionStyle4 from '../Section/BannerSection/BannerSectionStyle4';
 import Section from '../Section';
 import { pageTitle } from '../../helpers/PageTitle';
-import { useLoaderData, Await } from 'react-router-dom';
-import ErrorPage from './ErrorPage';
-import Loading from './Loading';
 import ScrollUp from '../ScrollUp/ScrollUp';
 import HiringDoctors from '../Section/AdminSection/GetDoctorsRequests';
 import { getDoctorsHiringRequests } from '../../service/api/getDoctorsHirigRequests';

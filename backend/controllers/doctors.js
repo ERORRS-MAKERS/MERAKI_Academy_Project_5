@@ -134,8 +134,9 @@ const deleteDoctorById = (req, res) => {
 
 const getDoctorsByStatusOfHiring = (req, res) => {
   const status = req.params.is_hired;
-  const query = `SELECT *
-   FROM doctors
+  const query = `SELECT doctors.*,departments.department_name
+  FROM doctors 
+JOIN departments  ON doctors.department_id = departments.id
    WHERE is_hired=($1)`;
   const data = [status];
 
