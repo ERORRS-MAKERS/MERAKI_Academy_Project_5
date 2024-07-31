@@ -135,7 +135,6 @@ export const router = createBrowserRouter([
   {
     path: '/admin/requests',
     element: <DoctorsJobRequest />,
-    loader: doctorsLoader,
 
   }, 
   

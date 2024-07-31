@@ -133,7 +133,7 @@ const deleteDoctorById = (req, res) => {
 };
 
 const getDoctorsByStatusOfHiring = (req, res) => {
-  const status = req.body.is_hired;
+  const status = req.params.is_hired;
   const query = `SELECT *
    FROM doctors
    WHERE is_hired=($1)`;
