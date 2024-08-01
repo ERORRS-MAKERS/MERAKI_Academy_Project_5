@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import updateRequest from "../../service/api/adminDoctorsRequest/updateRequest"
+import { updateHiringRequestById } from "../../service/redux/reducers/doctorsHiringRequest/index"
+import { useDispatch} from "react-redux";
 
 export default function TeamStyle5({
   img_url,
@@ -10,12 +12,13 @@ export default function TeamStyle5({
   is_hired,
   id,
 }) {
+  const dispatch = useDispatch()
   const [is_hired0,setIs_hired]=useState(is_hired)
   const updatIsHiringStatus=async (id,value)=>{
 //
 const result =await updateRequest(id,value) 
-console.log(result)
-  }
+console.log('from update',result)
+dispatch(updateHiringRequestById(result.doctor))  }
   return (
     <div className="cs_team cs_style_1 cs_type_2 text-center cs_radius_20 overflow-hidden ">
       <div className="cs_member_img">
