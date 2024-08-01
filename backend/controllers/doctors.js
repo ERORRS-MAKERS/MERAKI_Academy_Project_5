@@ -70,17 +70,18 @@ WHERE doctors.is_deleted=0;`;
 
 const updateDoctorById = (req, res) => {
   const id = req.params.id;
-  let { name, department_id, specialist, description } = req.body;
+  let { doctor_name, department_id, specialist, description,is_hired } = req.body;
 
   const query = `UPDATE doctors SET 
-  name = COALESCE ($1,name),
+  doctor_name = COALESCE ($1,doctor_name),
   department_id = COALESCE($2, department_id),
   specialist = COALESCE($3, specialist),
-  description = COALESCE($4, description)
-  WHERE id=$5 AND is_deleted = 0  RETURNING *;
+  description = COALESCE($4, description),
+  is_hired=COALESCE($5, is_hired)
+  WHERE id=$6 AND is_deleted = 0  RETURNING *;
    `;
 
-  const data = [name, department_id, specialist, description, id];
+  const data = [doctor_name, department_id, specialist, description,is_hired, id];
 
   pool
     .query(query, data)
