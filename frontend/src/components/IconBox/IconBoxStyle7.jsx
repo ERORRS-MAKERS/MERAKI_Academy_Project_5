@@ -2,7 +2,8 @@ import React from 'react';
 import parser from 'html-react-parser';
 import { Link } from 'react-router-dom';
 
-export default function IconBoxStyle6({ department_name, department_description, href }) {
+export default function IconBoxStyle6({ department_name, department_description,href }) {
+
   return (
     <div className="cs_iconbox cs_style_7">
       <div className="cs_iconbox_icon">

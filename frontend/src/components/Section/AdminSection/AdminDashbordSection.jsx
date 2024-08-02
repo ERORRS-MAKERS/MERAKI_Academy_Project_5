@@ -1,12 +1,12 @@
 import React from "react";
-import UserProfileStyle from '../../IconBox/UserProfileStyle'
 import SectionHeading from "../../SectionHeading";
 import Spacing from "../../Spacing";
 
-export default function UserProfileSections({ userId, sectionTitle }) {
+export default function AdminDashbordSections({ userId, sectionTitle }) {
   return (
     <div className="container cs_mt_minus_110">
-      <SectionHeading title={sectionTitle} center />
+      Admin Test Section
+     {/*  <SectionHeading title={sectionTitle} center />
       <Spacing md="72" lg="50" />
       <div className="row justify-content-start">
         <div className="col-xl-4 col-md-6">
@@ -23,7 +23,7 @@ export default function UserProfileSections({ userId, sectionTitle }) {
             href={`/user/prescription/${userId}`}
           />
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

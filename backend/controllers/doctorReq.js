@@ -25,7 +25,7 @@ const doctorSendRequest = async (req, res) => {
 const getAllRequests = (req, res) => {
     const departmentId = req.params.id;
     pool
-        .query('SELECT * FROM doctors_request WHERE department_id = $1 ',
+        .query('SELECT * FROM doctors_request WHERE department_id = $1',
             [departmentId])
         .then((result) => {
             res.status(200).json({

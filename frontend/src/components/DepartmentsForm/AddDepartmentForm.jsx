@@ -5,22 +5,21 @@ import {getImgUrl} from '../../service/api/CloudinaryApi'
 const NewDepartment = () => {
   const [name, setName] = useState();
   const [description, setDescription] = useState();
-  const [imgUrl, setimgUrl] = useState();
   const [image,setImage]=useState()
 
   const add= async()=>{
-    await addNewDepartment(name,description,imgUrl);
-
-  }
-  const upload =async () => {
     const data = new FormData();
     data.append("file", image);
     data.append("upload_preset", "maintain solutions");
     data.append("cloud_name", "dkr5xxdly");
 
     const url = await getImgUrl(data)
-   setimgUrl(url)
-  };
+
+   
+    
+    await addNewDepartment(name,description,url);
+
+  }
  
   return (
     <form action="#" className="row">
@@ -51,21 +50,20 @@ const NewDepartment = () => {
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
 
-      <div className="col-lg-12">
-      
-          <input
-          
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
 
-          <button
-            component="label"
-            onClick={upload}  >
-            upload
-          </button>
-     
-      </div>
+      <div className="col-lg-6">
+              <label className="cs_input_label cs_heading_color">
+              Department Logo
+              </label>
+              <input
+                type="file"
+                className="cs_form_field"
+                placeholder="Department Logo"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <div className="cs_height_42 cs_height_xl_25" />
+            </div>
+
 
       <div className="col-lg-12">
         <button className="cs_btn cs_style_1" onClick={add}>
