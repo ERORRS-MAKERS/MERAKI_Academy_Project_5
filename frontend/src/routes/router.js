@@ -26,10 +26,10 @@ import MedicalReportsRequest from "../components/Pages/Medical_reports";
 import Pharmacy from "../components/Pages/Pharmacy";
 import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
+import AddDepartment from '../components/Pages/AddDepartment'
 import DepartmentDash from '../components/Pages/DepartmentDash';
 import {departmentDashLoader} from '../service/api/departmentDash'
-
-import AddDepartment from "../components/Pages/AddDepartment";
+import DoctorsJobRequest from '../components/Pages/DoctorsJobRequest'
 import DoctorLogin from "../components/Pages/DoctorLogin";
 export const router = createBrowserRouter([
   {
@@ -142,7 +142,15 @@ export const router = createBrowserRouter([
     element: <DoctorLogin />,
   },
   {
-    path: "*",
+
+    path: '/admin/requests',
+    element: <DoctorsJobRequest />,
+
+  }, 
+  
+  {
+    path: '*',
+
     element: <ErrorPage />,
   },
 ]);
