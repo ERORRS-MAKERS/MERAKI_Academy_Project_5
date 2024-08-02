@@ -24,8 +24,8 @@ export default function AdminDashbord() {
         bottomLg={150}
         bottomXl={110}
       >
-{/*         <AdminDashbordSection />
- */}      </Section>
+        <AdminDashbordSection />
+      </Section>
     </>
   );
 }

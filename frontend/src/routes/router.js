@@ -31,6 +31,7 @@ import DepartmentDash from '../components/Pages/DepartmentDash';
 import {departmentDashLoader} from '../service/api/departmentDash'
 import DoctorsJobRequest from '../components/Pages/DoctorsJobRequest'
 import DoctorLogin from "../components/Pages/DoctorLogin";
+import AdminDashbord from "../components/Pages/AdminDashbord";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -134,7 +135,7 @@ export const router = createBrowserRouter([
     loader: departmentLoader,
   },
   {
-    path: "/add_deparment",
+    path: "/add_department",
     element: <AddDepartment />,
   },
   {
@@ -147,7 +148,12 @@ export const router = createBrowserRouter([
     element: <DoctorsJobRequest />,
 
   }, 
-  
+  {
+
+    path: '/admin/dashbord',
+    element: <AdminDashbord />,
+
+  }, 
   {
     path: '*',
 
