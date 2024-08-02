@@ -50,15 +50,20 @@ const NewDepartment = () => {
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
 
-      <div className="col-lg-12">
-      
-          <input
-          
-            type="file"
-            onChange={(e) => setImage(e.target.files[0])}
-          />
-     
-      </div>
+
+      <div className="col-lg-6">
+              <label className="cs_input_label cs_heading_color">
+              Department Logo
+              </label>
+              <input
+                type="file"
+                className="cs_form_field"
+                placeholder="Department Logo"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+              <div className="cs_height_42 cs_height_xl_25" />
+            </div>
+
 
       <div className="col-lg-12">
         <button className="cs_btn cs_style_1" onClick={add}>
