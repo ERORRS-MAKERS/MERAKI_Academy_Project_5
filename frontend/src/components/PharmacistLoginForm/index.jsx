@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
+import { setLogin, setPharmacistId } from '../../service/redux/reducers/pharmacist/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
@@ -24,8 +24,8 @@ const Form = () => {
     try {
       const results = await pharmacistLogin(email, password);
       dispatch(setLogin(results));
-      dispatch(setUserId(results.userId));
-      navigate(`/pharmacy/${results.userId}`);
+      dispatch(setPharmacistId(results.pharmacistId));
+      navigate(`/pharmacy`);
       console.log(results);
       
     } catch (err) {

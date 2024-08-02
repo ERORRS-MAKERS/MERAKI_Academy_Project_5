@@ -103,10 +103,6 @@ export const router = createBrowserRouter([
         loader: userPrescriptionLoader,
       },
       {
-        path: "/pharmacy",
-        element: <Pharmacy />,
-      },
-      {
         path: "user/profile/:id",
         element: <UserProfile />,
       },
@@ -144,8 +140,12 @@ export const router = createBrowserRouter([
     element: <DoctorLogin />,
   },
   {
-    path: "/login/pharmacist/:id",
+    path: "/login/pharmacist",
     element: <PharmacistLogin />,
+  },
+  {
+    path: "/pharmacy",
+    element: <Pharmacy />,
   },
   {
     path: "*",
