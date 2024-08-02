@@ -26,6 +26,8 @@ const Form = () => {
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
       navigate(`/pharmacy/${results.userId}`);
+      console.log(results);
+      
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {

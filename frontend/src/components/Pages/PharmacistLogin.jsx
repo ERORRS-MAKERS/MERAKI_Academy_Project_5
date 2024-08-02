@@ -1,9 +1,10 @@
 import React from 'react'
-import pharmacistLoginSection from '../Section/LoginSection/pharmacistLoginSection'
+import PharmacistLoginSection from '../Section/LoginSection/pharmacistLoginSection'
+
 
 const PharmacistLogin = () => {
   return (
-    <pharmacistLoginSection />
+    <PharmacistLoginSection />
   )
 }
 

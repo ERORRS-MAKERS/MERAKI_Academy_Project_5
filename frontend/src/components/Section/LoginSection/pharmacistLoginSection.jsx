@@ -1,14 +1,14 @@
 import React from 'react'
-import Form from '../../DoctorLoginForm/pharmacistLoginForm'
+import Form from '../../PharmacistLoginForm/index'
 
 
-const pharmacistLoginSection = () => {
+const PharmacistLoginSection = () => {
   return (
 <>
 <div className="container">
     <div className="row align-items-center cs_gap_y_40">
       <div className="col-lg-6">
-        <h2 className="cs_fs_40 cs_medium mb-0">Login</h2>
+        <h2 className="cs_fs_40 cs_medium mb-0">Pharmacist Login</h2>
         <div className="cs_height_42 cs_height_xl_25" />
 
        <Form />
@@ -22,4 +22,4 @@ const pharmacistLoginSection = () => {
   )
 }
 
-export default pharmacistLoginSection
+export default PharmacistLoginSection
