@@ -29,9 +29,39 @@ const updateAppointmentById = (req, res) => {
     });
 };
 
+const getAllAppointmentsByUserId = (req, res) => {
+  const id = req.params.id;
+  const query = `SELECT users.first_name,users.last_name, departments.department_name, appointments.*
+  FROM appointments
+   INNER JOIN users ON appointments.user_id  =  users.id
+   INNER JOIN departments ON appointments.department_id  = departments.id
+   WHERE appointments.user_id=($1)`;
+  pool
+    .query(query, [id])
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `all appointments for user${id}`,
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+};
+
 const getAllAppointments = (req, res) => {
   pool
-    .query('SELECT * FROM appointments')
+    .query(
+      `SELECT users.first_name,users.last_name, departments.department_name, appointments.*
+  FROM appointments
+   INNER JOIN users ON appointments.user_id  =  users.id
+   INNER JOIN departments ON appointments.department_id  = departments.id`
+    )
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -80,4 +110,5 @@ module.exports = {
   updateAppointmentById,
   getAllAppointments,
   addNewAppointments,
+  getAllAppointmentsByUserId,
 };

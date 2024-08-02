@@ -1,3 +1,5 @@
+
+
 import { createBrowserRouter } from "react-router-dom";
 
 import Layout from "../components/Layout";
@@ -32,6 +34,9 @@ import {departmentDashLoader} from '../service/api/departmentDash'
 import DoctorsJobRequest from '../components/Pages/DoctorsJobRequest'
 import DoctorLogin from "../components/Pages/DoctorLogin";
 import AdminDashbord from "../components/Pages/AdminDashbord";
+import AppointmentsTable from '../components/Pages/AppointmentsTable';
+
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -102,18 +107,22 @@ export const router = createBrowserRouter([
         loader: userPrescriptionLoader,
       },
       {
-        path: "/pharmacy",
+        path: '/pharmacy',
         element: <Pharmacy />,
       },
       {
-        path: "user/profile/:id",
+        path: 'user/profile/:id',
         element: <UserProfile />,
       },
+
          {
         path:'department-dashboard/doctors_request',
         element: <DepartmentDash/>,
         loader: departmentDashLoader,
-      },
+
+      }, {
+        path: 'appointments/table',
+        element: <AppointmentsTable />,}
     ],
   },
   {
