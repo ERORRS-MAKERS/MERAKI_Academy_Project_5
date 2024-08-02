@@ -25,7 +25,7 @@ const Form = () => {
       const results = await pharmacistLogin(email, password);
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
-      navigate(`/doctor/profile/${results.userId}`);
+      navigate(`/pharmacy/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
