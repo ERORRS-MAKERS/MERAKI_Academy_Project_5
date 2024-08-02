@@ -2,22 +2,36 @@ import React, { useState } from 'react';
 import Spacing from '../../Spacing';
 import Pagination from '../../Pagination';
 import TeamStyle5 from '../../Team/TeamStyle5_Hiring_Requests';
+import { useSelector,useDispatch } from 'react-redux';
+import {sethiringRequest} from "../../../service/redux/reducers/doctorsHiringRequest/index"
 
-export default function HiringDoctors({ data }) {
+export default function HiringDoctors() {
+  const dispatch=useDispatch()
+  const { hiringRequest } = useSelector((state) => {
+    return {
+      hiringRequest: state.hiringRequest.hiringRequest,
+    };
+  });
+  console.log('from', hiringRequest)
+
    const [view, setView] = useState('grid');
   const [active, setActive] = useState('all');
-  const [filteredData, setFilteredData] = useState(data);
+  const [filteredData, setFilteredData] = useState(hiringRequest);
   const uniqueCategories = [
-    ...new Set(data.map((doctor) => doctor.department_name)),
+   ...new Set(hiringRequest.map((doctor) => doctor.department_name)),
   ];
   const handleFilter = (department_name) => {
     if (department_name === 'all') {
-      setFilteredData(data);
+      setFilteredData(hiringRequest);
+      dispatch(sethiringRequest(hiringRequest))
+      
     } else {
-      const filtered = data.filter(
+      const filtered = hiringRequest.filter(
         (doctor) => doctor.department_name === department_name
       );
       setFilteredData(filtered);
+      dispatch(sethiringRequest(hiringRequest))
+
     }
     setActive(department_name);
   }; 
@@ -82,9 +96,9 @@ export default function HiringDoctors({ data }) {
       </div> 
       <Spacing md="65" />
       <div className={`cs_team_grid cs_${view}_view_wrap`}>
-        {filteredData?.map((item, index) => (
-          <TeamStyle5 {...item} key={index} />
-        ))}
+      
+          <TeamStyle5/>
+       
       </div>
       <Spacing md="90" />
       <Pagination /> 

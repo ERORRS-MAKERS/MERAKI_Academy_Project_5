@@ -6,7 +6,7 @@ import { pageTitle } from '../../helpers/PageTitle';
 import ScrollUp from '../ScrollUp/ScrollUp';
 import HiringDoctors from '../Section/AdminSection/GetDoctorsRequests';
 import { getDoctorsHiringRequests } from '../../service/api/getDoctorsHirigRequests';
-import { useDispatch ,useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 import {sethiringRequest} from "../../service/redux/reducers/doctorsHiringRequest/index"
 
 
@@ -14,13 +14,6 @@ export default function  DoctorsJobRequest() {
   pageTitle('Doctors');
   const [data,setData]=useState(false)
   const dispatch = useDispatch();
-
-  const { hiringRequest } = useSelector((state) => {
-    return {
-      hiringRequest: state.hiringRequest.hiringRequest,
-    };
-  });
-
   
   const getHiringResult=async ()=>{
     const results  = await getDoctorsHiringRequests(false)
@@ -30,7 +23,7 @@ export default function  DoctorsJobRequest() {
   }
   useEffect(()=>{
 getHiringResult()
-  },[])
+  })
 
   return (
     <>
@@ -43,7 +36,7 @@ getHiringResult()
       />
        <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
         
-      {data &&<HiringDoctors  data={hiringRequest} />}
+      {data &&<HiringDoctors />}
           
       </Section> 
       <Section className="cs_footer_margin_0">
