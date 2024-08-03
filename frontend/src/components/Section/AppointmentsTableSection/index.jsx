@@ -20,20 +20,12 @@ export default function AppointmentsSection({ sectionTitle, sectionTitleUp }) {
   });
 
   return (
-    <div className="container">
-      <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} center />
+    <>
+      <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
       <Spacing md="72" lg="50" />
-      <div
-        className="cs_iconbox cs_style_12"
-        style={{
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3,1fr)',
-          alignItems: 'center',
-        }}
-      >
+      <div className="cs_iconbox cs_style_12">
         <AppointmentsTable />
       </div>
-    </div>
+    </>
   );
 }
