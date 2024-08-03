@@ -5,7 +5,7 @@ export default function Pagination() {
     <ul className="cs_pagination_box">
       <li>
         <button className="cs_pagination_arrow cs_center">
-          <img src="images/icons/left_arrow_blue.svg" alt="Icon" />
+          <img src="https://prohealth-react.vercel.app/images/icons/left_arrow_blue.svg" alt="Icon" />
         </button>
       </li>
       <li>
@@ -25,7 +25,7 @@ export default function Pagination() {
       </li>
       <li>
         <button className="cs_pagination_arrow cs_center">
-          <img src="images/icons/right_arrow_blue.svg" alt="Icon" />
+          <img src="https://prohealth-react.vercel.app/images/icons/right_arrow_blue.svg" alt="Icon" />
         </button>
       </li>
     </ul>

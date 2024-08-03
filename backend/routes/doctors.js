@@ -10,11 +10,12 @@ const {
 
 const doctorsRouter = express.Router();
 
-doctorsRouter.post("/", addNewDoctor);
-doctorsRouter.get("/", getAllDoctors);
-doctorsRouter.put("/:id", updateDoctorById);
-doctorsRouter.delete("/:id", deleteDoctorById);
-doctorsRouter.get("/hiring_status", getDoctorsByStatusOfHiring);
+doctorsRouter.post('/', addNewDoctor);
+doctorsRouter.get('/', getAllDoctors);
+doctorsRouter.put('/:id', updateDoctorById);
+doctorsRouter.delete('/:id', deleteDoctorById);
+doctorsRouter.get('/hiring/:is_hired',getDoctorsByStatusOfHiring)
 doctorsRouter.post("/add/pharmacist", addNewpharmacist);
+
 
 module.exports = doctorsRouter;
