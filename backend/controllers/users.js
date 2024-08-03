@@ -118,7 +118,7 @@ const doctorLogin = (req, res) => {
           if (response) {
             const payload = {
               doctorId: result.rows[0].id,
-              doctorName: result.rows[0].name,
+              doctorName: result.rows[0].doctor_name,
               specialist: result.rows[0].specialist,
             };
             const options = { expiresIn: "1d" };
