@@ -13,12 +13,19 @@ export const appointmentsSlice = createSlice({
       });
     },
 
+    deleteAppointments: (state, action) => {
+      state.appointment = state.appointment.filter(
+        (appointment) => appointment.id !== action.payload
+      );
+    },
+
     clearAppointments: (state) => {
       state.appointment = [];
     },
   },
 });
 
-export const { setAppointments, clearAppointments } = appointmentsSlice.actions;
+export const { setAppointments, clearAppointments, deleteAppointments } =
+  appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;
