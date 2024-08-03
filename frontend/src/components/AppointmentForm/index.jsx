@@ -1,14 +1,14 @@
-import { Icon } from '@iconify/react';
-import React, { useState, Suspense } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import DatePicker from 'react-datepicker';
-import 'react-datepicker/dist/react-datepicker.css';
-import { useLoaderData, Await } from 'react-router-dom';
-import ErrorPage from '../Pages/ErrorPage';
-import Loading from '../Pages/Loading';
-import { format } from 'date-fns';
-import { bookAppointment } from '../../service/api/book_appointment';
+import { Icon } from "@iconify/react";
+import React, { useState, Suspense } from "react";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { useLoaderData, Await } from "react-router-dom";
+import ErrorPage from "../Pages/ErrorPage";
+import Loading from "../Pages/Loading";
+import { format } from "date-fns";
+import { bookAppointment } from "../../service/api/book_appointment";
 
 export default function AppointmentForm() {
   const navigate = useNavigate();
@@ -22,8 +22,10 @@ export default function AppointmentForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const formattedDate = format(new Date(selectedDate), 'yyyy-MM-dd');
-  const time = formattedDate + ' ' + selectedTime + ':00';
+  const [department_name, setDepartmentName] = useState();
+
+  const formattedDate = format(new Date(selectedDate), "yyyy-MM-dd");
+  const time = formattedDate + " " + selectedTime + ":00";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,12 +36,13 @@ export default function AppointmentForm() {
         user_id,
         department_id,
         time,
-        notes
+        notes,
+        department_name
       );
       console.log(response);
-      navigate('/');
+      navigate("/");
     } catch (err) {
-      setError(err.message || 'Registration failed');
+      setError(err.message || "Registration failed");
     } finally {
       setLoading(false);
     }
@@ -160,7 +163,10 @@ export default function AppointmentForm() {
                         name="department"
                         id={item.department_name}
                         defaultValue={item.department_name}
-                        onClick={(e) => setDepartment_id(item.id)}
+                        onClick={(e) => {
+                          setDepartmentName(item.name);
+                          setDepartment_id(item.id);
+                        }}
                       />
                       <label
                         className="cs_radio_label"
