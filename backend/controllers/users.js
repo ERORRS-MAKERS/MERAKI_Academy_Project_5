@@ -173,19 +173,20 @@ const pharmacistLogin = (req, res) => {
           if (err) res.json(err);
           if (response) {
             const payload = {
-              userId: result.rows[0].id,
-              country: result.rows[0].country,
-              role: result.rows[0].role_id,
+              pharmacistId: result.rows[0].id,
+              pharmacistName: result.rows[0].pharmacist_name,
+              // country: result.rows[0].country,
+              // role: result.rows[0].role_id,
             };
             const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
-            const token = jwt.sign(payload, secret, options);
-            if (token) {
+            const pharmacisttoken = jwt.sign(payload, secret, options);
+            if (pharmacisttoken) {
               return res.status(200).json({
-                token,
+                pharmacisttoken,
                 success: true,
                 message: `Valid login credentials`,
-                userId: result.rows[0].id,
+                pharmacistId: result.rows[0].id,
               });
             } else {
               throw Error;
