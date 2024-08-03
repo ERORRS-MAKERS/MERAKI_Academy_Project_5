@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
+import { setLogin, setDoctorId } from '../../service/redux/reducers/doctorsAuth/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
@@ -24,8 +24,10 @@ const Form = () => {
     try {
       const results = await doctorLogin(email, password);
       dispatch(setLogin(results));
-      dispatch(setUserId(results.userId));
-      navigate(`/doctor/profile/${results.userId}`);
+      dispatch(setDoctorId(results.doctorId));
+      navigate(`/doctor/profile/${results.doctorId}`);
+      console.log(results);
+      
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
