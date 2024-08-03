@@ -26,3 +26,18 @@ export const doctorLogin = async (email, password) => {
     throw error.response.data;
   }
 };
+
+export const pharmacistLogin = async (email, password) => {
+  try {
+    const response = await axios.post(
+      "http://localhost:5000/users/pharmacist/login",
+      {
+        email,
+        password,
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error.response.data;
+  }
+};

@@ -118,8 +118,16 @@ CREATE TABLE prescription(
     FOREIGN KEY (doctor_id) REFERENCES doctors(id),
     FOREIGN KEY (pharmacist_id) REFERENCES pharmacy(id),
 );
-
-
+-- Create a table called **blog** in the database
+CREATE TABLE blog (
+    id SERIAL NOT NULL,
+    article_title VARCHAR(255),
+    article_body VARCHAR(255),
+    image_url VARCHAR(255),
+    is_deleted SMALLINT DEFAULT 0,
+    created_time  TIMESTAMP NOT NULL,
+     FOREIGN KEY (doctor_id) REFERENCES doctors(id),
+)
 -- create roles and permessions 
 INSERT INTO
   roles (role)

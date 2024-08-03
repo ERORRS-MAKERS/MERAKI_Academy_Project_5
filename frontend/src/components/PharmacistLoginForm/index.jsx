@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLogin, setDoctorId } from '../../service/redux/reducers/doctorsAuth/index';
+import { setLogin, setPharmacistId } from '../../service/redux/reducers/pharmacist/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
-import  {doctorLogin}  from '../../service/api/userLogin';
+import  {pharmacistLogin}  from '../../service/api/userLogin';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -22,10 +22,10 @@ const Form = () => {
     setError(null);
 
     try {
-      const results = await doctorLogin(email, password);
+      const results = await pharmacistLogin(email, password);
       dispatch(setLogin(results));
-      dispatch(setDoctorId(results.doctorId));
-      navigate(`/doctor/profile/${results.doctorId}`);
+      dispatch(setPharmacistId(results.pharmacistId));
+      navigate(`/pharmacy`);
       console.log(results);
       
     } catch (err) {
