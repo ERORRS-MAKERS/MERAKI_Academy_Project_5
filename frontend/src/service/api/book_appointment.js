@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { SendEmail } from './EmailJsApi';
+
 
 export const bookAppointment = async (user_id, department_id, time, notes) => {
   try {
@@ -8,7 +10,9 @@ export const bookAppointment = async (user_id, department_id, time, notes) => {
       time,
       notes,
     });
-    return response.data;
+  SendEmail()
+  return response.data;
+
   } catch (error) {
     throw error.response.data;
   }
