@@ -153,8 +153,30 @@ const doctorLogin = (req, res) => {
     });
 };
 
+const getUserDetails=(req,res)=>{
+  const id = req.params.id;
+  const query = `SELECT * FROM users WHERE id=($1)`;
+  pool
+    .query(query, [id])
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `user ${id} details`,
+        result: result.rows[0],
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+}
+
 module.exports = {
   register,
   login,
   doctorLogin,
+  getUserDetails,
 };

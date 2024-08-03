@@ -10,7 +10,8 @@ export const bookAppointment = async (user_id, department_id, time, notes) => {
       time,
       notes,
     });
-  SendEmail()
+ 
+ // SendEmail()
   return response.data;
 
   } catch (error) {
