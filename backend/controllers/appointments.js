@@ -28,6 +28,33 @@ const updateAppointmentById = (req, res) => {
       });
     });
 };
+const deleteAppointmentById = (req, res) => {
+  const id = req.params.id;
+
+  const query = `DELETE FROM appointments WHERE id = $1 RETURNING *;`;
+  const data = [id];
+
+  pool
+    .query(query, data)
+    .then((result) => {
+      if (result.rows.length !== 0) {
+        res.status(200).json({
+          success: true,
+          message: `Appointments with id: ${id} deleted successfully`,
+          result: result.rows[0],
+        });
+      } else {
+        throw new Error('Error happened while updating article');
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({
+        success: false,
+        message: 'Server error',
+        err: err,
+      });
+    });
+};
 
 const getAllAppointmentsByUserId = (req, res) => {
   const id = req.params.id;
@@ -111,4 +138,5 @@ module.exports = {
   getAllAppointments,
   addNewAppointments,
   getAllAppointmentsByUserId,
+  deleteAppointmentById,
 };
