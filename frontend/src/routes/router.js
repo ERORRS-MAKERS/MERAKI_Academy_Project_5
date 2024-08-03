@@ -28,6 +28,7 @@ import MedicalReportsRequest from "../components/Pages/Medical_reports";
 import Pharmacy from "../components/Pages/Pharmacy";
 import DoctorRequest from "../components/Pages/CreateDoctorsRequest";
 import UserProfile from "../components/Pages/UserProfile";
+
 import AddDepartment from '../components/Pages/AddDepartment'
 import DepartmentDash from '../components/Pages/DepartmentDash';
 import {departmentDashLoader} from '../service/api/departmentDash'
@@ -35,7 +36,7 @@ import DoctorsJobRequest from '../components/Pages/DoctorsJobRequest'
 import DoctorLogin from "../components/Pages/DoctorLogin";
 import AdminDashbord from "../components/Pages/AdminDashbord";
 import AppointmentsTable from '../components/Pages/AppointmentsTable';
-
+import PharmacistLogin from "../components/Pages/PharmacistLogin";
 
 export const router = createBrowserRouter([
   {
@@ -82,7 +83,7 @@ export const router = createBrowserRouter([
         path: "departments/department-details",
         element: <DepartmentDetails />,
       },
-       {
+      {
         path: "gallery",
         element: <Gallery />,
       },
@@ -107,20 +108,19 @@ export const router = createBrowserRouter([
         loader: userPrescriptionLoader,
       },
       {
-        path: '/pharmacy',
-        element: <Pharmacy />,
-      },
+        path: "user/profile/:id",
+        element: <UserProfile />,
+      },    
       {
         path: 'user/profile/:id',
         element: <UserProfile />,
       },
-
-         {
+        {
         path:'department-dashboard/doctors_request',
         element: <DepartmentDash/>,
         loader: departmentDashLoader,
-
-      }, {
+      },
+       {
         path: 'appointments/table',
         element: <AppointmentsTable />,}
     ],
@@ -152,20 +152,24 @@ export const router = createBrowserRouter([
     element: <DoctorLogin />,
   },
   {
-
     path: '/admin/requests',
     element: <DoctorsJobRequest />,
-
   }, 
   {
-
     path: '/admin/dashbord',
     element: <AdminDashbord />,
-
-  }, 
+  },
+  {
+  path: "/login/pharmacist",
+    element: <PharmacistLogin />,
+  },
+  {
+    path: "/pharmacy",
+    element: <Pharmacy />,
+  },
+                                          
   {
     path: '*',
-
     element: <ErrorPage />,
   },
 ]);
