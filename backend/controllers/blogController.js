@@ -5,10 +5,10 @@ const postNewBlog = (req, res) => {
     const doctor_id = req.params.id
 
     const { article_title, article_body, image_url } = req.body
-    const query = `INSERT INTO blog (article_title, article_body, image_url, doctor_id, created_time)
-    VALUES ($1, $2, $3, $4, CURRENT_TIMESTAMP)
+    const query = `INSERT INTO blog (article_title, article_body, image_url, doctor_id, created_time )
+    VALUES ($1, $2, $3, $4, $5 )
     RETURNING *;`
-    const data = [article_title, article_body, image_url, doctor_id]
+    const data = [article_title, article_body, image_url, doctor_id, new Date()]
     pool
         .query(query, data)
         .then((result) => {
