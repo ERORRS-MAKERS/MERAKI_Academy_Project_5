@@ -3,17 +3,17 @@ import { createSlice } from "@reduxjs/toolkit";
 export const pharmacistSlice = createSlice({
   name: "pharmacist",
   initialState: {
-    token: localStorage.getItem("token") || null,
+    pharmacisttoken: localStorage.getItem("pharmacisttoken") || null,
     pharmacistId: localStorage.getItem("pharmacistId") || null,
     isLoggedIn: false,
   },
 
   reducers: {
     setLogin: (state, action) => {
-      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("pharmacisttoken", action.payload.pharmacisttoken);
       localStorage.setItem("pharmacistId", action.payload.pharmacistId);
 
-      state.token = action.payload.token;
+      state.pharmacisttoken = action.payload.pharmacisttoken;
       state.isLoggedIn = action.payload.success;
     },
 
@@ -22,7 +22,7 @@ export const pharmacistSlice = createSlice({
     },
 
     setLogout: (state) => {
-      state.token = null;
+      state.pharmacisttoken = null;
       state.pharmacistId = null;
       state.isLoggedIn = false;
       localStorage.clear();
