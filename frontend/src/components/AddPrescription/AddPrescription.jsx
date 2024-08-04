@@ -99,7 +99,7 @@ const AddPrescriptionForm = () => {
             <input
               type="number"
               className="cs_form_field"
-              placeholder="Quantiti"
+              placeholder="Quantity"
               onChange={(e) => {
                 setQuantity(e.target.value);
               }}

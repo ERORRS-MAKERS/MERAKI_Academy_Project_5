@@ -28,7 +28,7 @@ export default function UserProfileSections({ userId, sectionTitle }) {
           <UserProfileStyle
             title="Prescriptions"
             subtitle="Create A Prescription"
-            href={`/user/prescription/${userId}`}
+            href={`/add_prescription`}
           />
         </div>
       </div>
