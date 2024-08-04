@@ -115,7 +115,7 @@ export const router = createBrowserRouter([
         loader: departmentDashLoader,
       },
       {
-        path: "appointments/table",
+        path: "appointments/table/:userId",
         element: <AppointmentsTable />,
       },
     ],
