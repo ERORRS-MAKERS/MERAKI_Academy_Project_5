@@ -5,7 +5,7 @@ import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
-import { userLogin } from '../../service/api/userLogin';
+import { userLogin , guestLogin  } from '../../service/api/userLogin';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -28,6 +28,23 @@ const Form = () => {
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Login failed');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+  const handleGuestLogin = async () => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const results = await guestLogin();
+      dispatch(setLogin(results));
+      dispatch(setUserId(results.userId));
+      navigate(`/user/profile/${results.userId}`);
+    } catch (err) {
+      setError(err.message || 'Guest login failed');
     } finally {
       setLoading(false);
     }
@@ -74,6 +91,19 @@ const Form = () => {
             }}
              className="cs_btn cs_style_1">
             <span>Register</span>
+            <i>
+              <img src="/images/icons/arrow_white.svg" alt="Icon" />
+              <img src="/images/icons/arrow_white.svg" alt="Icon" />
+            </i>
+          </button>
+        </div>
+        <div className="col-lg-12">
+        <button
+            type="button"
+            onClick={handleGuestLogin}
+            className="cs_btn cs_style_1"
+          >
+            <span>Login as Guest</span>
             <i>
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
               <img src="/images/icons/arrow_white.svg" alt="Icon" />

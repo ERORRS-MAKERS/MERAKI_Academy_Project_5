@@ -44,13 +44,10 @@ export const pharmacistLogin = async (email, password) => {
 
 export const guestLogin = async (email, password) => {
   try {
-    const response = await axios.post(
-      "http://localhost:5000/users/guest/login",
-      {
-        email,
-        password,
-      }
-    );
+    const response = await axios.post("http://localhost:5000/users/login", {
+      email: "guest@example.com",
+      password: "123456",
+    });
     return response.data;
   } catch (error) {
     throw error.response.data;
