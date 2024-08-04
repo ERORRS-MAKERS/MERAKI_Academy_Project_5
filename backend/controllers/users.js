@@ -210,68 +210,9 @@ const pharmacistLogin = (req, res) => {
     });
 };
 
-const guestLogin = (req, res) => {
-  const guestCredentials = {
-    email: "guest@example.com",
-    password: "123456",
-  };
-
-  const query = `SELECT * FROM users WHERE email = $1`;
-  const data = [guestCredentials.email.toLowerCase()];
-
-  pool
-    .query(query, data)
-    .then((result) => {
-      if (result.rows.length === 0) {
-        return res.status(403).json({
-          success: false,
-          message:
-            "The email doesn’t exist or the password you’ve entered is incorrect",
-        });
-      }
-      const user = result.rows[0];
-
-      bcrypt.compare(
-        guestCredentials.password,
-        user.password,
-        (err, isMatch) => {
-          if (err || !isMatch) {
-            return res.status(403).json({
-              success: false,
-              message:
-                "The email doesn’t exist or the password you’ve entered is incorrect",
-            });
-          }
-          const token = jwt.sign(
-            { id: user.id, role: user.role },
-            "your_jwt_secret",
-            {
-              expiresIn: "1h",
-            }
-          );
-
-          res.json({
-            success: true,
-            message: "Guest login successful",
-            token,
-          });
-        }
-      );
-    })
-    .catch((err) => {
-      res.status(403).json({
-        success: false,
-        message:
-          "The email doesn’t exist or the password you’ve entered is incorrect",
-        err,
-      });
-    });
-};
-
 module.exports = {
   register,
   login,
   doctorLogin,
   pharmacistLogin,
-  guestLogin,
 };
