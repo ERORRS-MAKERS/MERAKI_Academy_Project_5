@@ -19,13 +19,26 @@ export const appointmentsSlice = createSlice({
       );
     },
 
+    updateAppointments: (state, action) => {
+      state.appointment = state.appointment.map((element) => {
+        if (action.payload.id === element.id) {
+          element = action.payload;
+        }
+        return element;
+      });
+    },
+
     clearAppointments: (state) => {
       state.appointment = [];
     },
   },
 });
 
-export const { setAppointments, clearAppointments, deleteAppointments } =
-  appointmentsSlice.actions;
+export const {
+  setAppointments,
+  clearAppointments,
+  deleteAppointments,
+  updateAppointments,
+} = appointmentsSlice.actions;
 
 export default appointmentsSlice.reducer;

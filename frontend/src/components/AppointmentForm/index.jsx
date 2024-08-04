@@ -1,14 +1,14 @@
-import { Icon } from "@iconify/react";
-import React, { useState, Suspense } from "react";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { useLoaderData, Await } from "react-router-dom";
-import ErrorPage from "../Pages/ErrorPage";
-import Loading from "../Pages/Loading";
-import { format } from "date-fns";
-import { bookAppointment } from "../../service/api/book_appointment";
+import { Icon } from '@iconify/react';
+import React, { useState, Suspense } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { useLoaderData, Await } from 'react-router-dom';
+import ErrorPage from '../Pages/ErrorPage';
+import Loading from '../Pages/Loading';
+import { format } from 'date-fns';
+import { bookAppointment } from '../../service/api/book_appointment';
 
 export default function AppointmentForm() {
   const navigate = useNavigate();
@@ -24,8 +24,8 @@ export default function AppointmentForm() {
 
   const [department_name, setDepartmentName] = useState();
 
-  const formattedDate = format(new Date(selectedDate), "yyyy-MM-dd");
-  const time = formattedDate + " " + selectedTime + ":00";
+  const formattedDate = format(new Date(selectedDate), 'yyyy-MM-dd');
+  const time = formattedDate + ' ' + selectedTime + ':00';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,9 +40,9 @@ export default function AppointmentForm() {
         department_name
       );
       console.log(response);
-      navigate("/");
+      navigate('/');
     } catch (err) {
-      setError(err.message || "Registration failed");
+      setError(err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }
@@ -58,7 +58,7 @@ export default function AppointmentForm() {
             Preferred Date
           </label>
 
-          <div className="cs_with_icon_input">
+          <div className="cs_with_icon_input" style={{ zIndex: '99999' }}>
             <DatePicker
               selected={selectedDate}
               onChange={(date) => setSelectedDate(date)}
@@ -77,7 +77,7 @@ export default function AppointmentForm() {
           <label className="cs_input_label cs_heading_color">
             Preferred Time
           </label>
-          <div className="cs_with_icon_input">
+          <div className="cs_with_icon_input" style={{ zIndex: '99999' }}>
             <input
               type="time"
               className="cs_form_field cs_timepicker"
