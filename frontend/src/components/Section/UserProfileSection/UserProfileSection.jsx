@@ -23,6 +23,13 @@ export default function UserProfileSections({ userId, sectionTitle }) {
             href={`/user/prescription/${userId}`}
           />
         </div>
+        <div className="col-xl-4 col-md-6">
+          <UserProfileStyle
+            title="Appointments"
+            subtitle="View your Appointments"
+            href={`/appointments/table/${userId}`}
+          />
+        </div>
       </div>
     </div>
   );

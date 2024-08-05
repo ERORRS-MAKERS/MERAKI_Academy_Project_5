@@ -1,5 +1,4 @@
 import { createBrowserRouter } from 'react-router-dom';
-
 import Layout from '../components/Layout';
 import Home from '../components/Pages/Home';
 import About from '../components/Pages/About';
@@ -26,7 +25,6 @@ import MedicalReportsRequest from '../components/Pages/Medical_reports';
 import Pharmacy from '../components/Pages/Pharmacy';
 import DoctorRequest from '../components/Pages/CreateDoctorsRequest';
 import UserProfile from '../components/Pages/UserProfile';
-
 import AddDepartment from '../components/Pages/AddDepartment';
 import DepartmentDash from '../components/Pages/DepartmentDash';
 import { departmentDashLoader } from '../service/api/departmentDash';
@@ -37,6 +35,7 @@ import AppointmentsTable from '../components/Pages/AppointmentsTable';
 import PharmacistLogin from '../components/Pages/PharmacistLogin';
 import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
 import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
+
 
 export const router = createBrowserRouter([
   {
@@ -110,24 +109,23 @@ export const router = createBrowserRouter([
       {
         path: 'user/profile/:id',
         element: <UserProfile />,
-      },
+        },
       {
-        path: 'user/profile/:id',
-        element: <UserProfile />,
-      },
-      {
-        path: 'department-dashboard/doctors_request',
+        path: "department-dashboard/doctors_request",
+
         element: <DepartmentDash />,
         loader: departmentDashLoader,
       },
-      {
-        path: 'appointments/table',
-        element: <AppointmentsTable />,
-      },
+
       {
         path: 'department_dashboard',
         element: <DepartmentDashboard />,
       },
+
+        path: "appointments/table/:userId",
+        element: <AppointmentsTable />,
+      },
+
     ],
   },
   {
@@ -157,28 +155,30 @@ export const router = createBrowserRouter([
     element: <DoctorLogin />,
   },
   {
-    path: '/admin/requests',
+    path: "/admin/requests",
     element: <DoctorsJobRequest />,
   },
   {
-    path: '/admin/dashbord',
+    path: "/admin/dashbord",
     element: <AdminDashbord />,
   },
   {
-    path: '/login/pharmacist',
+    path: "/login/pharmacist",
     element: <PharmacistLogin />,
   },
   {
     path: '/pharmacy',
     element: <Pharmacy />,
   },
+
   {
     path: '/add_prescription',
     element: <AddPrescriptionForm />,
   },
 
+
   {
-    path: '*',
+    path: "*",
     element: <ErrorPage />,
   },
 ]);
