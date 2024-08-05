@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Loading from '.././Pages/Loading';
 import ErrorPage from '../Pages/ErrorPage';
+import { useSelector } from 'react-redux';
 import { addPrescriptions } from '../../service/api/addPrescription';
+import { useNavigate } from 'react-router-dom';
 
 const AddPrescriptionForm = () => {
-  // TODO: Delete the national id
-  // ! Read the User Id From The Redux Store
-  // ! Read the Doctor Id From The Redux Store
+  const user_id = useSelector((store) => store.auth.userId);
+  const doctor_id = useSelector((store) => store.doctor.doctorId);
+  const navigate = useNavigate();
 
   const [quantity, setQuantity] = useState(null);
   const [title, setTitle] = useState();
@@ -18,15 +20,15 @@ const AddPrescriptionForm = () => {
     setLoading(true);
     setError(null);
     try {
-      const prescription = await addPrescriptions({
-        doctor_id: 2,
-        user_id: 3,
+      await addPrescriptions({
+        doctor_id,
+        user_id,
         pharmacist_id: 3,
         title,
         description,
         quantity,
       });
-      console.log(prescription);
+      navigate('/department_dashboard');
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {

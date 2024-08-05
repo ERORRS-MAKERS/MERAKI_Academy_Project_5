@@ -42,7 +42,7 @@ export default function AppointmentForm() {
         department_name
       );
       console.log(response);
-      doctorLoggedIn ? navigate('/department_dashboard1') : navigate('/');
+      doctorLoggedIn ? navigate('/department_dashboard') : navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {

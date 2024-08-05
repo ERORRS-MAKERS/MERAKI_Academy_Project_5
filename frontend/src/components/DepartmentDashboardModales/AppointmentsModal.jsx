@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import UserProfileStyle from '../../components/IconBox/UserProfileStyle';
 import SectionHeading from '../SectionHeading';
 import Spacing from '../Spacing';
 
-export default function UserProfileSections({ userId, sectionTitle }) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const openModal = () => setIsModalOpen(true);
-  const closeModal = () => setIsModalOpen(false);
+export default function UserProfileSections({ isModalOpen, sectionTitle }) {
+  const closeModal = () => isModalOpen.setIsModalOpen(false);
 
   return (
     <div>
-      {/* Button to open the modal */}
-      <button onClick={openModal} className="btn btn-primary">
-        Open Modal
-      </button>
-
-      {/* Conditional rendering of the modal */}
       {isModalOpen && (
         <div
           className="modal show modal-xl"
