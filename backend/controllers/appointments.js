@@ -80,6 +80,31 @@ const getAllAppointmentsByUserId = (req, res) => {
       });
     });
 };
+const getAllAppointmentsForToday = (req, res) => {
+  const query = `
+  SELECT users.first_name,users.last_name, departments.department_name, appointments.*
+  FROM appointments
+   INNER JOIN users ON appointments.user_id  =  users.id
+   INNER JOIN departments ON appointments.department_id  = departments.id
+  WHERE DATE(appointments.time) = current_date`;
+
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `all appointments for Today`,
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+};
 
 const getAllAppointments = (req, res) => {
   pool
@@ -139,4 +164,5 @@ module.exports = {
   addNewAppointments,
   getAllAppointmentsByUserId,
   deleteAppointmentById,
+  getAllAppointmentsForToday,
 };
