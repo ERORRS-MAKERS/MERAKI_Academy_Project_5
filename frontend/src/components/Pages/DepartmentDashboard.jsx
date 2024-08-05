@@ -3,9 +3,14 @@ import Spacing from '../Spacing';
 import { getDoctorRequests } from '../../service/api/getDoctorRequest';
 import { getAppointmentsForToday } from '../../service/api/getAppointmentsByDate';
 import { format } from 'date-fns';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUserId } from '../../service/redux/reducers/auth/index';
+import { useNavigate } from 'react-router-dom';
 const DepartmentDashboard = () => {
   // const userId = useSelector((store) => store.auth.userId);
-  // const dispatch = useDispatch();
+  // console.log(userId);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [doctorRequestData, setDoctorRequestData] = useState([]);
 
   const getDoctorRequest = async (department_id) => {
@@ -51,7 +56,15 @@ const DepartmentDashboard = () => {
               <td>{item.last_name}</td>
               <td>{item.test}</td>
               <td>
-                <button>Actions</button>
+                <button
+                  className="btn btn-primary"
+                  onClick={() => {
+                    dispatch(setUserId(item.user_id));
+                    navigate('/appointments');
+                  }}
+                >
+                  Actions
+                </button>
               </td>
             </tr>
           ))}
@@ -81,7 +94,7 @@ const DepartmentDashboard = () => {
                 <td>{item.notes}</td>
                 <td>{format(new Date(item.time), 'HH:mm a')}</td>
                 <td>
-                  <button>Actions</button>
+                  <button className="btn btn-primary">Actions</button>
                 </td>
               </tr>
             </>

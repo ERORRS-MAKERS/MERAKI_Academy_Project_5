@@ -126,7 +126,7 @@ export const router = createBrowserRouter([
         element: <AppointmentsTable />,
       },
       {
-        path: 'department_dashboard',
+        path: 'department_dashboard1',
         element: <DepartmentDashboard />,
       },
     ],
