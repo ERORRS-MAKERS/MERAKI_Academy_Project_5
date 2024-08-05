@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import { userInfo } from "../../service/api/reportsApi/getReportByNationalId";
-import { SendReport } from "../../service/api/reportsApi/SendMedicalReport";
+import React, { useState } from 'react';
+import { userInfo } from '../../service/api/reportsApi/getReportByNationalId';
+import { SendReport } from '../../service/api/reportsApi/SendMedicalReport';
 
 const MedicalReportsForm = () => {
+  // TODO: Delete the national id
+  // ! Read the User Id From The Redux Store
   const [userData, setUserData] = useState();
   const [title, setTitle] = useState();
   const [description, setDescription] = useState();
@@ -13,11 +15,17 @@ const MedicalReportsForm = () => {
     setUserData(data);
     setUser_id(data.user_id);
   };
-  const sendMedicalReport =async () => {
-    let doctor_id=2
-    let image_url='l'
-  const report=await SendReport(title, description, user_id, doctor_id, image_url);
-   console.log(report)
+  const sendMedicalReport = async () => {
+    let doctor_id = 2;
+    let image_url = 'l';
+    const report = await SendReport(
+      title,
+      description,
+      user_id,
+      doctor_id,
+      image_url
+    );
+    console.log(report);
   };
   return (
     <form action="#" className="row">
@@ -35,7 +43,7 @@ const MedicalReportsForm = () => {
           }}
         />
         {userData && (
-          <span>Name :{userData.first_name + " " + userData.last_name}</span>
+          <span>Name :{userData.first_name + ' ' + userData.last_name}</span>
         )}
         <div className="cs_height_42 cs_height_xl_25" />
       </div>
@@ -56,7 +64,7 @@ const MedicalReportsForm = () => {
         <input
           type="text"
           className="cs_form_field"
-          style={{ height: "80px" }}
+          style={{ height: '80px' }}
           placeholder="Write description of patient report here..."
           onChange={(e) => {
             setDescription(e.target.value);

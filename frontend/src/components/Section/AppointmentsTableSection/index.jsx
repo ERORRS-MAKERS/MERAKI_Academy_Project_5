@@ -10,13 +10,13 @@ export default function AppointmentsSection({ sectionTitle, sectionTitleUp }) {
   const userId = useSelector((store) => store.auth.userId);
   const dispatch = useDispatch();
 
-  const getUserAppointments = async () => {
+  const getUserAppointments = async (userId) => {
     const results = await getAppointmentsByUserId(userId);
     console.log('test', results);
     dispatch(setAppointments(results));
   };
   useEffect(() => {
-    getUserAppointments();
+    getUserAppointments(userId);
   });
 
   return (

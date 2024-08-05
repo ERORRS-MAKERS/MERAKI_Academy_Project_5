@@ -13,6 +13,8 @@ import { bookAppointment } from '../../service/api/book_appointment';
 export default function AppointmentForm() {
   const navigate = useNavigate();
   const user_id = useSelector((store) => store.auth.userId);
+  const doctorLoggedIn = useSelector((store) => store.doctor.isLoggedIn);
+  console.log(doctorLoggedIn);
 
   const { results } = useLoaderData();
   const [selectedDate, setSelectedDate] = useState(null);
@@ -40,7 +42,7 @@ export default function AppointmentForm() {
         department_name
       );
       console.log(response);
-      navigate('/');
+      doctorLoggedIn ? navigate('/department_dashboard') : navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {
