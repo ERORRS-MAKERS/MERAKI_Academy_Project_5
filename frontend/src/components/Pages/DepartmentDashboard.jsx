@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Spacing from '../Spacing';
 import { getDoctorRequests } from '../../service/api/getDoctorRequest';
-
+import { getAppointmentsForToday } from '../../service/api/getAppointmentsByDate';
+import { format } from 'date-fns';
 const DepartmentDashboard = () => {
   // const userId = useSelector((store) => store.auth.userId);
   // const dispatch = useDispatch();
@@ -9,14 +10,23 @@ const DepartmentDashboard = () => {
 
   const getDoctorRequest = async (department_id) => {
     const results = await getDoctorRequests(department_id);
-    console.log('test', results);
+    console.log('request', results);
     setDoctorRequestData(results);
+    // dispatch(setAppointments(results));
+  };
+  const [appointmentsForToday, setAppointmentsForToday] = useState([]);
+
+  const getAppointments = async () => {
+    const results = await getAppointmentsForToday();
+    console.log('appointment', results);
+    setAppointmentsForToday(results);
     // dispatch(setAppointments(results));
   };
 
   useEffect(() => {
     // getDoctorRequest(2);
     getDoctorRequest(2);
+    getAppointments();
   }, []);
 
   return (
@@ -56,28 +66,26 @@ const DepartmentDashboard = () => {
             <th scope="col">#</th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Notes</th>
+            <th scope="col">Time</th>
+            <th scope="col">Actions</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-          </tr>
+          {appointmentsForToday.map((item, index) => (
+            <>
+              <tr key={index}>
+                <th scope="row">{index}</th>
+                <td>{item.first_name}</td>
+                <td>{item.last_name}</td>
+                <td>{item.notes}</td>
+                <td>{format(new Date(item.time), 'HH:mm a')}</td>
+                <td>
+                  <button>Actions</button>
+                </td>
+              </tr>
+            </>
+          ))}
         </tbody>
       </table>
       <Spacing md="72" lg="50" />
