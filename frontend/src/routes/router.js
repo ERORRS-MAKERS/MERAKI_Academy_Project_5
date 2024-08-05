@@ -37,6 +37,7 @@ import AppointmentsTable from '../components/Pages/AppointmentsTable';
 import PharmacistLogin from '../components/Pages/PharmacistLogin';
 import AppointmentsModal from '../components/DepartmentDashboardModales/AppointmentsModal';
 import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
+import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
 
 export const router = createBrowserRouter([
   {
@@ -123,6 +124,10 @@ export const router = createBrowserRouter([
       {
         path: 'appointments/table',
         element: <AppointmentsTable />,
+      },
+      {
+        path: 'department_dashboard',
+        element: <DepartmentDashboard />,
       },
     ],
   },

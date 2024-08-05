@@ -61,8 +61,11 @@ const DoctorsRequestForm = () => {
       <div className="col-lg-12">
         <label className="cs_input_label cs_heading_color">Department</label>
         <div className="cs_radio_group">
-          <Suspense fallback={<Loading />}>
-            <Await resolve={results} errorElement={<ErrorPage />}>
+          <Suspense fallback={<p>Departments Loading...</p>}>
+            <Await
+              resolve={results}
+              errorElement={<p>Error Loading Department</p>}
+            >
               {(results) => {
                 return results.data.result?.map((item, index) => (
                   <div className="cs_radio_wrap" key={index}>

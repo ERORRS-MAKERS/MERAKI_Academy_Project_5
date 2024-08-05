@@ -2,7 +2,6 @@ import React from 'react';
 import UserProfileStyle from '../../components/IconBox/UserProfileStyle';
 import SectionHeading from '../SectionHeading';
 import Spacing from '../Spacing';
-// import DoctorsRequestForm from '../../DoctorsRequestForm/DoctorsRequestForm.jsx';
 
 export default function UserProfileSections({ userId, sectionTitle }) {
   return (
