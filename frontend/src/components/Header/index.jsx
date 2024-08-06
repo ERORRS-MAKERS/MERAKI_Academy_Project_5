@@ -137,10 +137,10 @@ export default function Header({ logoSrc, variant }) {
                           <Link to="/about">About</Link>
                         </li>
                         <li>
-                          <Link to="/doctors">Find Doctor</Link>
+                          <Link to="/departments">Departments</Link>
                         </li>
                         <li>
-                          <Link to="/contact">Contact</Link>
+                          <Link to="/doctors">Our Doctors</Link>
                         </li>
                         <li>
                           <Link
