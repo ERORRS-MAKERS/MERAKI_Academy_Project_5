@@ -43,7 +43,7 @@ export default function MedicalReportsForm (){
       setError('Upload failed');
     }
   };
-
+  
   const saveData = async (national_id) => {
     setLoading(true);
     setError(null);
