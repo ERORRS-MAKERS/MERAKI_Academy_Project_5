@@ -124,17 +124,18 @@ export const router = createBrowserRouter([
         path: 'appointments/table/:userId',
         element: <AppointmentsTable />,
       },
+      {
+        path: '/register',
+        element: <Register />,
+      },
+      {
+        path: '/login',
+        element: <Login />,
+        // loader: userLogin,
+      },
     ],
   },
-  {
-    path: '/register',
-    element: <Register />,
-  },
-  {
-    path: '/login',
-    element: <Login />,
-    // loader: userLogin,
-  },
+
   {
     path: '/medical_reports',
     element: <MedicalReportsRequest />,

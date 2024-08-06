@@ -5,7 +5,8 @@ import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
-import { userLogin , guestLogin  } from '../../service/api/userLogin';
+import { userLogin, guestLogin } from '../../service/api/userLogin';
+import Spacing from '../Spacing';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -32,7 +33,6 @@ const Form = () => {
       setLoading(false);
     }
   };
-
 
   const handleGuestLogin = async () => {
     setLoading(true);
@@ -77,6 +77,7 @@ const Form = () => {
           />
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
+
         <div className="col-lg-12">
           <button type="submit" className="cs_btn cs_style_1">
             <span>Login</span>
@@ -85,11 +86,15 @@ const Form = () => {
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
             </i>
           </button>
-          <button            
-           onClick={() => {
-              navigate('/register')
+        </div>
+        <Spacing md="20" lg="50" />
+        <div className="col-lg-12">
+          <button
+            onClick={() => {
+              navigate('/register');
             }}
-             className="cs_btn cs_style_1">
+            className="cs_btn cs_style_1"
+          >
             <span>Register</span>
             <i>
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
@@ -97,8 +102,9 @@ const Form = () => {
             </i>
           </button>
         </div>
+        <Spacing md="20" lg="50" />
         <div className="col-lg-12">
-        <button
+          <button
             type="button"
             onClick={handleGuestLogin}
             className="cs_btn cs_style_1"
