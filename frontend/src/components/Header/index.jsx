@@ -72,15 +72,16 @@ export default function Header({ logoSrc, variant }) {
                           <Link to="/doctors">Find Doctor</Link>
                         </li>
                         <li>
-                          <Link to="/blog">Blog</Link>
+                          <Link to="/appointments">Appointments</Link>
+                        </li>
+
+                        <li>
+                          <Link to={`/user/profile/${userId}`}>Profile</Link>
                         </li>
                         <li className="menu-item-has-children">
-                          <Link to="/">Pages</Link>
+                          <Link to="">Pages</Link>
                           <DropDown>
                             <ul>
-                              <li>
-                                <Link to="/appointments">Appointments</Link>
-                              </li>
                               <li>
                                 <Link to="/departments">Departments</Link>
                               </li>
@@ -88,16 +89,13 @@ export default function Header({ logoSrc, variant }) {
                                 <Link to="/doctors">Doctors</Link>
                               </li>
                               <li>
-                                <Link to="/gallery">Gallery</Link>
+                                <Link to="/blog">Blog</Link>
                               </li>
                               <li>
-                                <Link to="/timetable">Timetable</Link>
+                                <Link to="/gallery">Gallery</Link>
                               </li>
                             </ul>
                           </DropDown>
-                        </li>
-                        <li>
-                          <Link to={`/user/profile/${userId}`}>MyProfile</Link>
                         </li>
                         <li>
                           <Link
@@ -141,6 +139,9 @@ export default function Header({ logoSrc, variant }) {
                         </li>
                         <li>
                           <Link to="/doctors">Our Doctors</Link>
+                        </li>
+                        <li>
+                          <Link to="/blog">Blog</Link>
                         </li>
                         <li>
                           <Link

@@ -9,7 +9,10 @@ const LoginSection = () => {
         <div className="row  cs_gap_y_40">
           <div className="col-lg-6">
             <h2 className="cs_fs_40 cs_medium mb-0">Login</h2>
-            <div className="cs_height_42 cs_height_xl_25" />
+            <div
+              className="cs_height_42 cs_height_xl_25"
+              style={{ position: 'relative' }}
+            />
 
             <Form />
           </div>

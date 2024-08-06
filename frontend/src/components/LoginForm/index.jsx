@@ -52,7 +52,16 @@ const Form = () => {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && (
+        <Loading
+          customStyle={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
       {error && <ErrorPage message={error} />}
       <form className="row" onSubmit={handleLogin}>
         <div className="col-lg-12">

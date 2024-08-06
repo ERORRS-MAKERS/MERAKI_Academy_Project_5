@@ -7,7 +7,10 @@ const RegisterSection = () => {
       <div className="row align-items-center cs_gap_y_40">
         <div className="col-lg-6">
           <h2 className="cs_fs_60 cs_medium mb-0">Register</h2>
-          <div className="cs_height_42 cs_height_xl_25" />
+          <div
+            className="cs_height_42 cs_height_xl_25"
+            style={{ position: 'relative' }}
+          />
           <RegisterForm />
         </div>
         <div className="col-lg-5 offset-lg-1 text-center">
