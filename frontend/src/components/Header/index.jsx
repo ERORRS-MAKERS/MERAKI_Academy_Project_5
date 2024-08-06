@@ -104,7 +104,7 @@ export default function Header({ logoSrc, variant }) {
                               dispatch(setLogout());
                             }}
                           >
-                            logout
+                            Logout
                           </Link>
                         </li>
                       </ul>
