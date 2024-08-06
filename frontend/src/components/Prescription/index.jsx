@@ -19,10 +19,14 @@ export default function Prescription({
         <h3 className="cs_white_color cs_fs_24 cs_semibold">
           <span className="cs_accent_bg">Pharmacist: {pharmacist_name}</span>
         </h3>
-        <h2 className="cs_white_color mb-0 cs_fs_72 cs_semibold">{title}</h2>
+        <br />
+        <h2 className="cs_white_color mb-0 cs_fs_50 cs_semibold">
+          {' '}
+          Medicine: {title}
+        </h2>
       </div>
       <div className="cs_pricing_card_body">
-        <p>{description}</p>
+        <p>instruction: {description}</p>
         <span>Quantity: {quantity}</span>
         <span>Served: {status.toString()}</span>
       </div>
