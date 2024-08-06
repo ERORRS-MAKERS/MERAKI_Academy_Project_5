@@ -36,7 +36,6 @@ import PharmacistLogin from '../components/Pages/PharmacistLogin';
 import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
 import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
 
-
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -109,9 +108,9 @@ export const router = createBrowserRouter([
       {
         path: 'user/profile/:id',
         element: <UserProfile />,
-        },
+      },
       {
-        path: "department-dashboard/doctors_request",
+        path: 'department-dashboard/doctors_request',
 
         element: <DepartmentDash />,
         loader: departmentDashLoader,
@@ -121,11 +120,10 @@ export const router = createBrowserRouter([
         path: 'department_dashboard',
         element: <DepartmentDashboard />,
       },
-
-        path: "appointments/table/:userId",
+      {
+        path: 'appointments/table/:userId',
         element: <AppointmentsTable />,
       },
-
     ],
   },
   {
@@ -155,15 +153,15 @@ export const router = createBrowserRouter([
     element: <DoctorLogin />,
   },
   {
-    path: "/admin/requests",
+    path: '/admin/requests',
     element: <DoctorsJobRequest />,
   },
   {
-    path: "/admin/dashbord",
+    path: '/admin/dashbord',
     element: <AdminDashbord />,
   },
   {
-    path: "/login/pharmacist",
+    path: '/login/pharmacist',
     element: <PharmacistLogin />,
   },
   {
@@ -176,9 +174,8 @@ export const router = createBrowserRouter([
     element: <AddPrescriptionForm />,
   },
 
-
   {
-    path: "*",
+    path: '*',
     element: <ErrorPage />,
   },
 ]);
