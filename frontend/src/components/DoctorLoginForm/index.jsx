@@ -39,8 +39,29 @@ const Form = () => {
 
   return (
     <>
-      {loading && <Loading />}
-      {error && <ErrorPage message={error} />}
+      {loading && (
+        <Loading
+          customStyle={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
+      {error && (
+        <ErrorPage
+          message={error}
+          customStyle={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            backgroundColor: '#fff',
+            borderRadius: '11px',
+          }}
+        />
+      )}
       <form className="row" onSubmit={handleLogin}>
         <div className="col-lg-12">
           <label className="cs_input_label cs_heading_color">Email</label>

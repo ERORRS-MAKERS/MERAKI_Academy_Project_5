@@ -52,7 +52,16 @@ export default function AppointmentForm() {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && (
+        <Loading
+          customStyle={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
       {error && <ErrorPage message={error} />}
       <form onSubmit={handleSubmit} className="row">
         <div className="col-lg-6">

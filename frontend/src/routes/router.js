@@ -133,6 +133,10 @@ export const router = createBrowserRouter([
         element: <Login />,
         // loader: userLogin,
       },
+      {
+        path: '/login/doctor',
+        element: <DoctorLogin />,
+      },
     ],
   },
 
@@ -148,10 +152,6 @@ export const router = createBrowserRouter([
   {
     path: '/add_department',
     element: <AddDepartment />,
-  },
-  {
-    path: '/login/doctor',
-    element: <DoctorLogin />,
   },
   {
     path: '/admin/requests',
