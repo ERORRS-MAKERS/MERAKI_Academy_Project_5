@@ -33,8 +33,9 @@ import DoctorLogin from '../components/Pages/DoctorLogin';
 import AdminDashbord from '../components/Pages/AdminDashbord';
 import AppointmentsTable from '../components/Pages/AppointmentsTable';
 import PharmacistLogin from '../components/Pages/PharmacistLogin';
-import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
+// import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
 import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
+import AddPrescriptionPage from '../components/Pages/AddPrescription';
 
 export const router = createBrowserRouter([
   {
@@ -146,6 +147,10 @@ export const router = createBrowserRouter([
         element: <DoctorRequest />,
         loader: departmentLoader,
       },
+      {
+        path: '/add_prescription',
+        element: <AddPrescriptionPage />,
+      },
     ],
   },
 
@@ -168,11 +173,6 @@ export const router = createBrowserRouter([
   {
     path: '/pharmacy',
     element: <Pharmacy />,
-  },
-
-  {
-    path: '/add_prescription',
-    element: <AddPrescriptionForm />,
   },
 
   {
