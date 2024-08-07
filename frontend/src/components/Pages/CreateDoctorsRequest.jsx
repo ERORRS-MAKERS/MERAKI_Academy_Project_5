@@ -21,6 +21,7 @@ export default function DoctorRequest() {
         bottomMd={200}
         bottomLg={150}
         bottomXl={110}
+        style={{ position: 'relative' }}
       >
         <DepartmentReportSection />
       </Section>

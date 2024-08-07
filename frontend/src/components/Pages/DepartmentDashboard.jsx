@@ -28,6 +28,7 @@ const DepartmentDashboard = () => {
   };
 
   useEffect(() => {
+    // !Edit to be dynamic depending on loggedin doctor
     getDoctorRequest(2);
     getAppointments();
   }, []);
@@ -51,7 +52,7 @@ const DepartmentDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {doctorRequestData.map((item, index) => (
+            {doctorRequestData?.map((item, index) => (
               <tr key={index}>
                 <th scope="row">{index}</th>
                 <td>{item.first_name}</td>
@@ -87,27 +88,25 @@ const DepartmentDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {appointmentsForToday.map((item, index) => (
-              <>
-                <tr key={index}>
-                  <th scope="row">{index}</th>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.notes}</td>
-                  <td>{format(new Date(item.time), 'HH:mm a')}</td>
-                  <td>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        dispatch(setUserId(item.user_id));
-                        openModal();
-                      }}
-                    >
-                      Actions
-                    </button>
-                  </td>
-                </tr>
-              </>
+            {appointmentsForToday?.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{index}</th>
+                <td>{item.first_name}</td>
+                <td>{item.last_name}</td>
+                <td>{item.notes}</td>
+                <td>{format(new Date(item.time), 'HH:mm a')}</td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      dispatch(setUserId(item.user_id));
+                      openModal();
+                    }}
+                  >
+                    Actions
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>
