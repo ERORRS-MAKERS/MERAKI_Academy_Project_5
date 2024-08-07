@@ -33,7 +33,7 @@ export default function AppointmentForm() {
     setLoading(true);
     setError(null);
     try {
-      const response = await bookAppointment(
+      await bookAppointment(
         user_id,
         department_id,
         time,
