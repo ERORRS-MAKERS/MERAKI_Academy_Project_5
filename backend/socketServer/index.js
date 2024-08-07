@@ -18,6 +18,7 @@ const socketMiddelwares =require('../middlewares/NotifiMiddelware')
 io.use(auth)
 
 io.on("connection",(socket)=>{
+  console.log('connected')
   socket.use(socketMiddelwares)
   socket.on('error',(error)=>{
 socket.emit('error',(error.message))

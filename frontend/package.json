@@ -24,6 +24,7 @@
     "react-water-wave": "^2.0.1",
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {

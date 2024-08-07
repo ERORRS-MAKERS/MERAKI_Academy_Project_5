@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import DropDown from './DropDown';
-import SocialWidget from '../Widget/SocialWidget';
-import Newsletter from '../Widget/Newsletter';
-import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
-import Spacing from '../Spacing';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import DropDown from "./DropDown";
+import SocialWidget from "../Widget/SocialWidget";
+import Newsletter from "../Widget/Newsletter";
+import IconBoxStyle11 from "../IconBox/IconBoxStyle11";
+import Spacing from "../Spacing";
 import { useSelector, useDispatch } from "react-redux";
-import { setLogin, setLogout } from "../../service/redux/reducers/auth/index";
-
+import {
+  setLogin,
+  setLogout,
+  setNotification,
+} from "../../service/redux/reducers/auth/index";
+import SocketConnection from "../Notifications/SocketConnection";
 
 export default function Header({ logoSrc, variant }) {
-
   const dispatch = useDispatch();
   const { isLoggedIn } = useSelector((state) => {
     return {
@@ -18,11 +21,16 @@ export default function Header({ logoSrc, variant }) {
     };
   });
 
-  const {userId} = useSelector((state)=>{
-    return{
-      userId:state.auth.userId
-    }
-  })
+  const { userId } = useSelector((state) => {
+    return {
+      userId: state.auth.userId,
+    };
+  });
+  const { showNotification } = useSelector((state) => {
+    return {
+      showNotification: state.auth.showNotification,
+    };
+  });
 
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
@@ -36,18 +44,18 @@ export default function Header({ logoSrc, variant }) {
         setIsSticky(false);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     // Cleanup function to remove the event listener
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
   return (
     <>
       <header
         className={`cs_site_header cs_style1 cs_sticky_header ${
-          mobileToggle ? 'cs_mobile_toggle_active' : ''
-        } ${variant} ${isSticky ? 'cs_active_sticky' : ''}`}
+          mobileToggle ? "cs_mobile_toggle_active" : ""
+        } ${variant} ${isSticky ? "cs_active_sticky" : ""}`}
       >
         <div className="cs_main_header">
           <div className="container">
@@ -56,108 +64,118 @@ export default function Header({ logoSrc, variant }) {
                 <Link className="cs_site_branding" to="/">
                   <img src={logoSrc} alt="Logo" />
                 </Link>
-                {isLoggedIn ? (<>
-                <nav className="cs_nav">
-                  <ul
-                    className={`${
-                      mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
-                    }`}
-                  >
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="/doctors">Find Doctor</Link>
-                    </li>
-                    <li>
-                      <Link to="/blog">Blog</Link>
-                    </li>
-                    <li className="menu-item-has-children">
-                      <Link to="/">Pages</Link>
-                      <DropDown>
-                        <ul>
-                          <li>
-                            <Link to="/appointments">Appointments</Link>
-                          </li>
-                          <li>
-                            <Link to="/departments">Departments</Link>
-                          </li>
-                          <li>
-                            <Link to="/doctors">Doctors</Link>
-                          </li>
-                          <li>
-                            <Link to="/gallery">Gallery</Link>
-                          </li>
-                          <li>
-                            <Link to="/timetable">Timetable</Link>
-                          </li>
-                        </ul>
-                      </DropDown>
-                    </li>
-                    <li>
-                        <Link to={`/user/profile/${userId}`} 
-                          >MyProfile</Link>
-                      </li>
-                  <li>
-                       <Link to="/"  onClick={() => {
-                          dispatch(setLogout());
-                          }}>logout</Link>
-                      </li>
-                  </ul>
-                  <span
-                    className={
-                      mobileToggle
-                        ? 'cs_menu_toggle cs_teggle_active'
-                        : 'cs_menu_toggle'
-                    }
-                    onClick={() => setMobileToggle(!mobileToggle)}
-                  >
-                    <span></span>
-                  </span>
-                  </nav>
-                  </> ) : (
-                      <>
-                  <nav className="cs_nav">
-                  <ul
-                    className={`${
-                      mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
-                    }`}
-                  >
-                    <li>
-                      <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                      <Link to="/about">About</Link>
-                    </li>
-                    <li>
-                      <Link to="/doctors">Find Doctor</Link>
-                    </li>
-                    <li>
-                      <Link to="/contact">Contact</Link>
-                    </li>
-                  <li>
-                     <Link to="/login"  onClick={() => {
-                         dispatch(setLogin());
-                        }}>Login</Link>
-                      </li>
-                  </ul>
-                  <span
-                    className={
-                      mobileToggle
-                        ? 'cs_menu_toggle cs_teggle_active'
-                        : 'cs_menu_toggle'
-                    }
-                    onClick={() => setMobileToggle(!mobileToggle)}
-                  >
-                    <span></span>
-                  </span>
-                  </nav>                   
-                   </>
-              )}
-                
+                {isLoggedIn ? (
+                  <>
+                    <nav className="cs_nav">
+                      <ul
+                        className={`${
+                          mobileToggle ? "cs_nav_list cs_active" : "cs_nav_list"
+                        }`}
+                      >
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                          <Link to="/doctors">Find Doctor</Link>
+                        </li>
+                        <li>
+                          <Link to="/blog">Blog</Link>
+                        </li>
+                        <li className="menu-item-has-children">
+                          <Link to="/">Pages</Link>
+                          <DropDown>
+                            <ul>
+                              <li>
+                                <Link to="/appointments">Appointments</Link>
+                              </li>
+                              <li>
+                                <Link to="/departments">Departments</Link>
+                              </li>
+                              <li>
+                                <Link to="/doctors">Doctors</Link>
+                              </li>
+                              <li>
+                                <Link to="/gallery">Gallery</Link>
+                              </li>
+                              <li>
+                                <Link to="/timetable">Timetable</Link>
+                              </li>
+                            </ul>
+                          </DropDown>
+                        </li>
+                        <li>
+                          <Link to={`/user/profile/${userId}`}>MyProfile</Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/"
+                            onClick={() => {
+                              dispatch(setLogout());
+                            }}
+                          >
+                            logout
+                          </Link>
+                        </li>
+                      </ul>
+                      <span
+                        className={
+                          mobileToggle
+                            ? "cs_menu_toggle cs_teggle_active"
+                            : "cs_menu_toggle"
+                        }
+                        onClick={() => setMobileToggle(!mobileToggle)}
+                      >
+                        <span></span>
+                      </span>
+                    </nav>
+                  </>
+                ) : (
+                  <>
+                    <nav className="cs_nav">
+                      <ul
+                        className={`${
+                          mobileToggle ? "cs_nav_list cs_active" : "cs_nav_list"
+                        }`}
+                      >
+                        <li>
+                          <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                          <Link to="/about">About</Link>
+                        </li>
+                        <li>
+                          <Link to="/doctors">Find Doctor</Link>
+                        </li>
+                        <li>
+                          <Link to="/contact">Contact</Link>
+                        </li>
+                        <li>
+                          <Link
+                            to="/login"
+                            onClick={() => {
+                              dispatch(setLogin());
+                            }}
+                          >
+                            Login
+                          </Link>
+                        </li>
+                      </ul>
+                      <span
+                        className={
+                          mobileToggle
+                            ? "cs_menu_toggle cs_teggle_active"
+                            : "cs_menu_toggle"
+                        }
+                        onClick={() => setMobileToggle(!mobileToggle)}
+                      >
+                        <span></span>
+                      </span>
+                    </nav>
+                  </>
+                )}
               </div>
               <div className="cs_main_header_right">
                 <div className="cs_toolbox">
@@ -166,7 +184,7 @@ export default function Header({ logoSrc, variant }) {
                     type="button"
                     onClick={() => setSearchToggle(!searchToggle)}
                   >
-                    <svg
+                    {/*   <svg
                       width={30}
                       height={30}
                       viewBox="0 0 30 30"
@@ -177,8 +195,25 @@ export default function Header({ logoSrc, variant }) {
                         d="M13.1684 0C5.91146 0 0 5.90944 0 13.164C0 20.4184 5.91146 26.3394 13.1684 26.3394C16.2681 26.3394 19.1188 25.2535 21.3719 23.4505L26.8571 28.931C27.1339 29.1962 27.5036 29.3426 27.887 29.3386C28.2704 29.3347 28.6371 29.1809 28.9084 28.91C29.1797 28.6392 29.3342 28.2729 29.3386 27.8896C29.3431 27.5064 29.1972 27.1365 28.9322 26.8595L23.4471 21.3762C25.2521 19.1204 26.3397 16.2662 26.3397 13.164C26.3397 5.90944 20.4254 0 13.1684 0ZM13.1684 2.926C18.8435 2.926 23.4099 7.49078 23.4099 13.164C23.4099 18.8371 18.8435 23.4134 13.1684 23.4134C7.4933 23.4134 2.92695 18.8371 2.92695 13.164C2.92695 7.49078 7.4933 2.926 13.1684 2.926Z"
                         fill="currentColor"
                       />
-                    </svg>
+                    </svg> */}
                   </button>
+                  {isLoggedIn && (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="35px"
+                      height="30px"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        fill="currentColor"
+                        d="M4 19v-2h2v-7q0-2.075 1.25-3.687T10.5 4.2v-.7q0-.625.438-1.062T12 2t1.063.438T13.5 3.5v.7q2 .5 3.25 2.113T18 10v7h2v2zm8 3q-.825 0-1.412-.587T10 20h4q0 .825-.587 1.413T12 22"
+                        onClick={() => {
+                          dispatch(setNotification());
+                        }}
+                      />
+                    </svg>
+                  )}
+                  { <SocketConnection />}
                   <button
                     className="cs_toolbox_btn cs_sidebar_toggle_btn"
                     type="button"
@@ -211,7 +246,7 @@ export default function Header({ logoSrc, variant }) {
           </div>
         </div>
       </header>
-      <div className={`cs_sidenav ${sideNav ? 'active' : ''}`}>
+      <div className={`cs_sidenav ${sideNav ? "active" : ""}`}>
         <div
           className="cs_sidenav_overlay"
           onClick={() => setSideNav(!sideNav)}
@@ -259,7 +294,7 @@ export default function Header({ logoSrc, variant }) {
           <SocialWidget />
         </div>
       </div>
-      <div className={`cs_header_search ${searchToggle ? 'active' : ''}`}>
+      <div className={`cs_header_search ${searchToggle ? "active" : ""}`}>
         <div className="cs_header_search_in">
           <div className="container">
             <div className="cs_header_search_box">
