@@ -137,18 +137,18 @@ export const router = createBrowserRouter([
         path: '/login/doctor',
         element: <DoctorLogin />,
       },
+      {
+        path: '/medical_reports',
+        element: <MedicalReportsRequest />,
+      },
+      {
+        path: '/doctor_request',
+        element: <DoctorRequest />,
+        loader: departmentLoader,
+      },
     ],
   },
 
-  {
-    path: '/medical_reports',
-    element: <MedicalReportsRequest />,
-  },
-  {
-    path: '/doctor_request',
-    element: <DoctorRequest />,
-    loader: departmentLoader,
-  },
   {
     path: '/add_department',
     element: <AddDepartment />,
