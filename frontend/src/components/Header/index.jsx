@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import DropDown from "./DropDown";
-import SocialWidget from "../Widget/SocialWidget";
-import Newsletter from "../Widget/Newsletter";
-import IconBoxStyle11 from "../IconBox/IconBoxStyle11";
-import Spacing from "../Spacing";
-import { useSelector, useDispatch } from "react-redux";
-import {
-  setLogin,
-  setLogout,
-  setNotification,
-} from "../../service/redux/reducers/auth/index";
+
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import DropDown from './DropDown';
+import SocialWidget from '../Widget/SocialWidget';
+import Newsletter from '../Widget/Newsletter';
+import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
+import Spacing from '../Spacing';
+import { useSelector, useDispatch } from 'react-redux';
+import { setLogin, setLogout , setNotification,} from '../../service/redux/reducers/auth/index';
+import { setDoctorLogout } from '../../service/redux/reducers/doctorsAuth/index';
 import SocketConnection from "../Notifications/SocketConnection";
+
 
 export default function Header({ logoSrc, variant }) {
   const dispatch = useDispatch();
@@ -21,16 +20,21 @@ export default function Header({ logoSrc, variant }) {
     };
   });
 
+
+  const isDoctorLoggedIn = useSelector((state) => state.doctor.isLoggedIn);
+
   const { userId } = useSelector((state) => {
     return {
       userId: state.auth.userId,
     };
   });
+
   const { showNotification } = useSelector((state) => {
     return {
       showNotification: state.auth.showNotification,
     };
   });
+
 
   const [isSticky, setIsSticky] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
@@ -69,7 +73,9 @@ export default function Header({ logoSrc, variant }) {
                     <nav className="cs_nav">
                       <ul
                         className={`${
+
                           mobileToggle ? "cs_nav_list cs_active" : "cs_nav_list"
+
                         }`}
                       >
                         <li>
@@ -82,6 +88,7 @@ export default function Header({ logoSrc, variant }) {
                           <Link to="/doctors">Find Doctor</Link>
                         </li>
                         <li>
+
                           <Link to="/blog">Blog</Link>
                         </li>
                         <li className="menu-item-has-children">
@@ -91,6 +98,14 @@ export default function Header({ logoSrc, variant }) {
                               <li>
                                 <Link to="/appointments">Appointments</Link>
                               </li>
+
+                        <li>
+                          <Link to={`/user/profile/${userId}`}>Profile</Link>
+                        </li>
+                        <li className="menu-item-has-children">
+                          <Link to="">Pages</Link>
+                          <DropDown>
+                            <ul>
                               <li>
                                 <Link to="/departments">Departments</Link>
                               </li>
@@ -98,15 +113,16 @@ export default function Header({ logoSrc, variant }) {
                                 <Link to="/doctors">Doctors</Link>
                               </li>
                               <li>
-                                <Link to="/gallery">Gallery</Link>
+                                <Link to="/blog">Blog</Link>
                               </li>
                               <li>
-                                <Link to="/timetable">Timetable</Link>
+                                <Link to="/gallery">Gallery</Link>
                               </li>
                             </ul>
                           </DropDown>
                         </li>
                         <li>
+
                           <Link to={`/user/profile/${userId}`}>MyProfile</Link>
                         </li>
                         <li>
@@ -116,7 +132,7 @@ export default function Header({ logoSrc, variant }) {
                               dispatch(setLogout());
                             }}
                           >
-                            logout
+                            Logout
                           </Link>
                         </li>
                       </ul>
@@ -131,6 +147,38 @@ export default function Header({ logoSrc, variant }) {
                         <span></span>
                       </span>
                     </nav>
+                  </>
+
+                ) : isDoctorLoggedIn ? (
+                  <>
+                    {/* <nav className="cs_nav">
+                      <ul
+                        className={`${
+                          mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
+                        }`}
+                      >
+                        <li style={{}}>
+                          <Link
+                            to="/login/doctor"
+                            onClick={() => {
+                              dispatch(setDoctorLogout());
+                            }}
+                          >
+                            Logout
+                          </Link>
+                        </li>
+                      </ul>
+                      <span
+                        className={
+                          mobileToggle
+                            ? 'cs_menu_toggle cs_teggle_active'
+                            : 'cs_menu_toggle'
+                        }
+                        onClick={() => setMobileToggle(!mobileToggle)}
+                      >
+                        <span></span>
+                      </span>
+                    </nav> */}
                   </>
                 ) : (
                   <>
@@ -147,10 +195,13 @@ export default function Header({ logoSrc, variant }) {
                           <Link to="/about">About</Link>
                         </li>
                         <li>
-                          <Link to="/doctors">Find Doctor</Link>
+                          <Link to="/departments">Departments</Link>
                         </li>
                         <li>
-                          <Link to="/contact">Contact</Link>
+                          <Link to="/doctors">Our Doctors</Link>
+                        </li>
+                        <li>
+                          <Link to="/blog">Blog</Link>
                         </li>
                         <li>
                           <Link
@@ -166,8 +217,8 @@ export default function Header({ logoSrc, variant }) {
                       <span
                         className={
                           mobileToggle
-                            ? "cs_menu_toggle cs_teggle_active"
-                            : "cs_menu_toggle"
+                            ? 'cs_menu_toggle cs_teggle_active'
+                            : 'cs_menu_toggle'
                         }
                         onClick={() => setMobileToggle(!mobileToggle)}
                       >
@@ -178,6 +229,38 @@ export default function Header({ logoSrc, variant }) {
                 )}
               </div>
               <div className="cs_main_header_right">
+                <div>
+                  {isDoctorLoggedIn && (
+                    <nav className="cs_nav" style={{ marginRight: '30px' }}>
+                      <ul
+                        className={`${
+                          mobileToggle ? 'cs_nav_list cs_active' : 'cs_nav_list'
+                        }`}
+                      >
+                        <li style={{}}>
+                          <Link
+                            to="/login/doctor"
+                            onClick={() => {
+                              dispatch(setDoctorLogout());
+                            }}
+                          >
+                            Logout
+                          </Link>
+                        </li>
+                      </ul>
+                      <span
+                        className={
+                          mobileToggle
+                            ? 'cs_menu_toggle cs_teggle_active'
+                            : 'cs_menu_toggle'
+                        }
+                        onClick={() => setMobileToggle(!mobileToggle)}
+                      >
+                        <span></span>
+                      </span>
+                    </nav>
+                  )}
+                </div>
                 <div className="cs_toolbox">
                   <button
                     className="cs_toolbox_btn cs_search_toggle_btn"

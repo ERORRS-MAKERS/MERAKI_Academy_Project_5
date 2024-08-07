@@ -3,20 +3,15 @@ import ContactInfoWidget from '../Widget/ContactInfoWidget';
 import MenuWidget from '../Widget/MenuWidget';
 import SocialWidget from '../Widget/SocialWidget';
 import Newsletter from '../Widget/Newsletter';
-import TextWidget from '../Widget/TextWidget';
 const menuDataOne = [
   { title: 'About Us', href: '/about' },
   { title: 'Departments', href: '/departments' },
   { title: 'Doctors', href: '/doctors' },
-  { title: 'Timetable', href: '/timetable' },
-  { title: 'Appointment', href: '/appointments' },
 ];
 const menuDataTwo = [
   { title: 'Blog', href: '/blog' },
-  { title: 'Contact Us', href: '/contact' },
   { title: 'FAQs', href: '/' },
   { title: 'Privacy Policy', href: '/' },
-  { title: 'Terms and Conditions', href: '/' },
 ];
 
 export default function Footer() {
@@ -43,7 +38,6 @@ export default function Footer() {
           <div className="row">
             <div className="col-lg-4">
               <div className="cs_footer_item">
-                <TextWidget text="ProHealth Medical & <br />Healthcare Center" />
                 <ContactInfoWidget />
               </div>
             </div>

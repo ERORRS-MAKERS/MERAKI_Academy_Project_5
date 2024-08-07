@@ -160,7 +160,7 @@ export default function Home() {
   return (
     <>
       <ScrollUp />
-    <Hero
+      <Hero
         title="Your Partner in Health and Wellness"
         subTitle="We are committed to providing you with the best medical and healthcare services to help you live healthier and happier."
         bgUrl="/images/home_1/hero_bg.jpeg"
@@ -170,12 +170,12 @@ export default function Home() {
         infoList={[
           {
             title: 'Hotline',
-            subTitle: '079-000-0000',
+            subTitle: '079-123-4567',
             iconUrl: '/images/contact/icon_1.svg',
           },
           {
             title: 'Ambulance',
-            subTitle: '079-000-0000',
+            subTitle: '079-123-4567',
             iconUrl: '/images/icons/ambulance.svg',
           },
           {
@@ -270,8 +270,8 @@ export default function Home() {
       <Section topMd={190} topLg={145} topXl={105}>
         <FaqSection
           data={faqData}
-          sectionTitle="Usually Asked"
-          sectionTitleUp="What People"
+          sectionTitle="FAQ"
+          sectionTitleUp="Frequently Asked "
         />
       </Section>
       {/* End FAQ Section */}
