@@ -25,13 +25,11 @@ const DepartmentDashboard = () => {
   const getAppointments = async () => {
     const results = await getAppointmentsForToday();
     setAppointmentsForToday(results);
-    console.log(results);
   };
 
   useEffect(() => {
     getDoctorRequest(2);
     getAppointments();
-    console.log(appointmentsForToday);
   }, []);
 
   return (
@@ -64,8 +62,6 @@ const DepartmentDashboard = () => {
                     className="btn btn-primary"
                     onClick={() => {
                       dispatch(setUserId(item.user_id));
-                      console.log('inside', item.user_id);
-
                       navigate('/appointments');
                     }}
                   >
