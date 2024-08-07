@@ -22,8 +22,24 @@ export default function Departments() {
         subTitle="At ProHealth, we offer a wide range of medical and healthcare services that are designed to meet your individual needs and help you achieve optimal health."
       />
 
-      <Section bottomMd={140} bottomLg={100} bottomXl={60}>
-        <Suspense fallback={<Loading />}>
+      <Section
+        bottomMd={140}
+        bottomLg={100}
+        bottomXl={60}
+        style={{ position: 'relative' }}
+      >
+        <Suspense
+          fallback={
+            <Loading
+              customStyle={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+          }
+        >
           <Await resolve={results} errorElement={<ErrorPage />}>
             {(results) => {
               return <DepartmentSectionStyle3 data={results.data.result} />;

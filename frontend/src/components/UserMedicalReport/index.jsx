@@ -16,11 +16,14 @@ export default function Reports({
         <h3 className="cs_white_color cs_fs_24 cs_semibold">
           <span className="cs_accent_bg">{doctor_name}</span>
         </h3>
-        <h2 className="cs_white_color mb-0 cs_fs_72 cs_semibold">{title}</h2>
+        <h2 className="cs_white_color mb-0 cs_fs_40 cs_semibold">
+          Report Name: {title}
+        </h2>
+        <br />
         <span>{formattedDate}</span>
       </div>
       <div className="cs_pricing_card_body">
-        <p>{description}</p>
+        <p>Summary: {description}</p>
         <div className="cs_pricing_card_btn">
           <a href={image_url} className="cs_btn cs_style_1 w-100">
             <span>{btnText}</span>

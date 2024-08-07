@@ -23,7 +23,7 @@ export default function AppointmentsSection({ sectionTitle, sectionTitleUp }) {
     <>
       <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} />
       <Spacing md="72" lg="50" />
-      <div className="cs_iconbox cs_style_12">
+      <div className="cs_iconbox cs_style_12" style={{ position: 'relative' }}>
         <AppointmentsTable />
       </div>
     </>

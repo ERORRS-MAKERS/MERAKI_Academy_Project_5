@@ -28,8 +28,20 @@ export default function UserMedicalReports() {
         bottomMd={200}
         bottomLg={150}
         bottomXl={110}
+        style={{ position: 'relative' }}
       >
-        <Suspense fallback={<Loading />}>
+        <Suspense
+          fallback={
+            <Loading
+              customStyle={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+          }
+        >
           <Await resolve={results} errorElement={<ErrorPage />}>
             {(results) => {
               return (

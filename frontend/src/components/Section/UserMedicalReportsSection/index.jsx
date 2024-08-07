@@ -7,7 +7,7 @@ export default function UserMedicalReportsSection({ sectionTitle, data }) {
   return (
     <div className="container">
       <SectionHeading title={sectionTitle} center />
-      <Spacing md="72" lg="50" />
+      <Spacing md="30" lg="50" />
       <div className="row cs_gap_y_50">
         {data?.map((item, index) => (
           <div className="col-xl-4" key={index}>

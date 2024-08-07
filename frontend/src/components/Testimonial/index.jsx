@@ -17,7 +17,7 @@ export default function Testimonial() {
                 alt="Avatar"
               />
               <div className="cs_testimonial_1_avatar_right">
-                <h3 className="cs_fs_24 cs_semibold mb-0">PAULO HUBERT</h3>
+                <h3 className="cs_fs_24 cs_semibold mb-0">Ahmad Mohammed</h3>
                 <p className="cs_heading_color mb-0">Irbid, Jordan</p>
               </div>
             </div>
@@ -31,7 +31,7 @@ export default function Testimonial() {
                 alt="Avatar"
               />
               <div className="cs_testimonial_1_avatar_right">
-                <h3 className="cs_fs_24 cs_semibold mb-0">LAURENCE VENDETTA</h3>
+                <h3 className="cs_fs_24 cs_semibold mb-0">Sarah Ahmad</h3>
                 <p className="cs_heading_color mb-0">Amman, Jordan</p>
               </div>
             </div>
@@ -45,7 +45,7 @@ export default function Testimonial() {
                 alt="Avatar"
               />
               <div className="cs_testimonial_1_avatar_right">
-                <h3 className="cs_fs_24 cs_semibold mb-0">CASSANDRA RAUL</h3>
+                <h3 className="cs_fs_24 cs_semibold mb-0">Samar Ahmad</h3>
                 <p className="cs_heading_color mb-0">Zarqa, Jordan</p>
               </div>
             </div>

@@ -3,14 +3,11 @@ import Spacing from '../Spacing';
 import { getDoctorRequests } from '../../service/api/getDoctorRequest';
 import { getAppointmentsForToday } from '../../service/api/getAppointmentsByDate';
 import { format } from 'date-fns';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setUserId } from '../../service/redux/reducers/auth/index';
 import { useNavigate } from 'react-router-dom';
 import AppointmentsModal from '../DepartmentDashboardModales/AppointmentsModal';
 const DepartmentDashboard = () => {
-  const userId = useSelector((store) => store.auth.userId);
-  console.log('outside', userId);
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [doctorRequestData, setDoctorRequestData] = useState([]);
@@ -21,20 +18,20 @@ const DepartmentDashboard = () => {
 
   const getDoctorRequest = async (department_id) => {
     const results = await getDoctorRequests(department_id);
-    console.log('request', results);
     setDoctorRequestData(results);
   };
   const [appointmentsForToday, setAppointmentsForToday] = useState([]);
 
   const getAppointments = async () => {
     const results = await getAppointmentsForToday();
-    console.log('appointment', results);
     setAppointmentsForToday(results);
+    console.log(results);
   };
 
   useEffect(() => {
     getDoctorRequest(2);
     getAppointments();
+    console.log(appointmentsForToday);
   }, []);
 
   return (

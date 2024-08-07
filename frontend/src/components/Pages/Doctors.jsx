@@ -22,8 +22,25 @@ export default function Doctors() {
         title="Introduce You to <br />Our Experts"
         subTitle="The list of certified doctors with years of <br />professional experiences"
       />
-      <Section topMd={65} bottomMd={200} bottomLg={150} bottomXl={110}>
-        <Suspense fallback={<Loading />}>
+      <Section
+        topMd={65}
+        bottomMd={200}
+        bottomLg={150}
+        bottomXl={110}
+        style={{ position: 'relative' }}
+      >
+        <Suspense
+          fallback={
+            <Loading
+              customStyle={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+          }
+        >
           <Await resolve={results} errorElement={<ErrorPage />}>
             {(results) => {
               return <TeamSectionStyle2 data={results.data.result} />;
