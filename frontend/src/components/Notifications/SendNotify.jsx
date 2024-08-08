@@ -23,7 +23,6 @@ const SendNotify = ({ socket, user_id }) => {
   };
   return (
     <>
-      <div>Notification</div>
       <input
         type="text"
         placeholder="to"
@@ -48,17 +47,7 @@ const SendNotify = ({ socket, user_id }) => {
       <button onClick={()=>{
         sendMessage()
       }}>send</button> 
-<div>console</div>
-     {/*  {allMesgs.length > 0 &&
-        allMesgs.map((message,i) => {
-          return (
-            <p key={i}>
-              <small>
-                To {message.to}:{message.message}{" "}
-              </small>
-            </p>
-          );
-        })} */}
+
     </>
   );
 };

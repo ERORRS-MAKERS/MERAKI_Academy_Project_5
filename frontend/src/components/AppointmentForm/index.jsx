@@ -9,6 +9,7 @@ import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 import { format } from 'date-fns';
 import { bookAppointment } from '../../service/api/book_appointment';
+import DoctorsConnection from '../Notifications/DoctorsConnection';
 
 export default function AppointmentForm() {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ export default function AppointmentForm() {
   const [department_id, setDepartment_id] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [sendNotify,setSendNotify]=useState(false)
 
   const [department_name, setDepartmentName] = useState();
 
@@ -32,6 +34,7 @@ export default function AppointmentForm() {
     e.preventDefault();
     setLoading(true);
     setError(null);
+    setSendNotify(true)
     try {
       await bookAppointment(
         user_id,
@@ -200,6 +203,7 @@ export default function AppointmentForm() {
             </i>
           </button>
         </div>
+      {sendNotify&&  <DoctorsConnection/>}
       </form>
     </>
   );
