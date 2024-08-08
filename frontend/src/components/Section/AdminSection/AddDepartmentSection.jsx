@@ -1,8 +1,8 @@
-import React from "react";
-import NewDepartment from '../../DepartmentsForm/AddDepartmentForm'
+import React from 'react';
+import NewDepartment from '../../DepartmentsForm/AddDepartmentForm';
 const NewDepartmentSection = () => {
   return (
-    <div className="container">
+    <div className="container" style={{ position: 'relative' }}>
       <div className="row">
         <div className="col-lg-7">
           <h2 className="cs_fs_40 cs_medium mb-0">Add New Department</h2>
@@ -15,4 +15,4 @@ const NewDepartmentSection = () => {
   );
 };
 
-export default  NewDepartmentSection;
+export default NewDepartmentSection;
