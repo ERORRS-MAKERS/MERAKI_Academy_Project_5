@@ -37,6 +37,9 @@ import PharmacistLogin from '../components/Pages/PharmacistLogin';
 import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
 import AddPrescriptionPage from '../components/Pages/AddPrescription';
 
+import Connection from '../components/Notifications/SocketConnection';
+import DoctorsConnection from '../components/Notifications/DoctorsConnection'
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -174,7 +177,14 @@ export const router = createBrowserRouter([
     path: '/pharmacy',
     element: <Pharmacy />,
   },
-
+  {
+    path: '/notification',
+    element: <Connection />,
+  },
+  {
+    path: '/notification/Doctors',
+    element: <DoctorsConnection />,
+  },
   {
     path: '*',
     element: <ErrorPage />,
