@@ -81,15 +81,26 @@ const getAllAppointmentsByUserId = (req, res) => {
     });
 };
 const getAllAppointmentsForToday = (req, res) => {
+  const id = req.params.id;
   const query = `
-  SELECT users.first_name,users.last_name, departments.department_name, appointments.*
-  FROM appointments
-   INNER JOIN users ON appointments.user_id  =  users.id
-   INNER JOIN departments ON appointments.department_id  = departments.id
-  WHERE DATE(appointments.time) = current_date`;
+  SELECT 
+    users.first_name,
+    users.last_name,
+    departments.department_name,
+    appointments.*
+FROM 
+    appointments
+INNER JOIN 
+    users ON appointments.user_id = users.id
+INNER JOIN 
+    departments ON appointments.department_id = departments.id
+WHERE 
+    DATE(appointments.time) = CURRENT_DATE
+    AND appointments.department_id = ($1);
+`;
 
   pool
-    .query(query)
+    .query(query, [id])
     .then((result) => {
       res.status(200).json({
         success: true,

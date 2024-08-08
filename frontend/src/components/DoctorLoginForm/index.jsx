@@ -27,7 +27,7 @@ const Form = () => {
     try {
       const results = await doctorLogin(email, password);
       dispatch(setLogin(results));
-      dispatch(setDoctorId(results.doctorId));
+      dispatch(setDoctorId(results));
       navigate(`/department_dashboard`);
       console.log(results);
     } catch (err) {

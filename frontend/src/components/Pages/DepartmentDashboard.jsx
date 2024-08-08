@@ -3,14 +3,17 @@ import Spacing from '../Spacing';
 import { getDoctorRequests } from '../../service/api/getDoctorRequest';
 import { getAppointmentsForToday } from '../../service/api/getAppointmentsByDate';
 import { format } from 'date-fns';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserId } from '../../service/redux/reducers/auth/index';
 import { useNavigate } from 'react-router-dom';
 import AppointmentsModal from '../DepartmentDashboardModales/AppointmentsModal';
+
 const DepartmentDashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [doctorRequestData, setDoctorRequestData] = useState([]);
+
+  const doctorDepartment = useSelector((store) => store.doctor.departmentId);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -22,15 +25,14 @@ const DepartmentDashboard = () => {
   };
   const [appointmentsForToday, setAppointmentsForToday] = useState([]);
 
-  const getAppointments = async () => {
-    const results = await getAppointmentsForToday();
+  const getAppointments = async (id) => {
+    const results = await getAppointmentsForToday(id);
     setAppointmentsForToday(results);
   };
 
   useEffect(() => {
-    // !Edit to be dynamic depending on loggedin doctor
-    getDoctorRequest(2);
-    getAppointments();
+    getDoctorRequest(doctorDepartment);
+    getAppointments(doctorDepartment);
   }, []);
 
   return (
