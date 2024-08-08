@@ -602,34 +602,7 @@ export default function Header({ logoSrc, variant }) {
                 )}
               </div>
               <div className="cs_main_header_right">
-                {/* <div>
-                  {isDoctorLoggedIn && (
-                    <nav className="cs_nav" style={{ marginRight: '30px' }}>
-                      <ul
-                        className={`cs_nav_list ${
-                          mobileToggle ? 'cs_active' : ''
-                        }`}
-                      >
-                        <li>
-                          <Link
-                            to="/login/doctor"
-                            onClick={() => dispatch(setDoctorLogout())}
-                          >
-                            Logout
-                          </Link>
-                        </li>
-                      </ul>
-                      <span
-                        className={`cs_menu_toggle ${
-                          mobileToggle ? 'cs_toggle_active' : ''
-                        }`}
-                        onClick={() => setMobileToggle(!mobileToggle)}
-                      >
-                        <span></span>
-                      </span>
-                    </nav>
-                  )}
-                </div> */}
+            
                 <div className="cs_toolbox">
                   {isLoggedIn && (
                     <svg
@@ -647,25 +620,8 @@ export default function Header({ logoSrc, variant }) {
                       />
                     </svg>
                   )}
-                  <SocketConnection />
-                  {/* <button
-                    className="cs_toolbox_btn cs_sidebar_toggle_btn"
-                    type="button"
-                    onClick={() => setSideNav(!sideNav)}
-                  >
-                    <svg
-                      width={35}
-                      height={30}
-                      viewBox="0 0 35 30"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0.483673 6.17176C0.183673 6.47176 0 6.97511 0 7.50011C0 8.02511 0.183673 8.52843 0.483673 8.82843L27.9662 27.2195C28.5122 27.6425 29.2659 27.6442 29.8038 27.2212L33.0164 24.3765C33.5692 23.9276 33.7728 23.2757 33.4894 22.6632C33.2334 22.0922 32.5697 22.0526 32.2482 22.6448L28.3944 25.7497L3.15587 7.82732L3.15587 7.82732C3.10519 7.78665 3.05812 7.74397 3.01371 7.69848L0.473658 5.28782L0.483673 6.17176Z"
-                        fill="currentColor"
-                      />
-                    </svg>
-                  </button> */}
+                 {showNotification&& <SocketConnection />}
+                  
                 </div>
               </div>
             </div>

@@ -9,9 +9,6 @@ const DoctorsConnection = () => {
   const [socket, setSocket] = useState(null);
   const [isConnected, setIsConnected] = useState(false);
 
-  useEffect(() => {
-    //
-  });
 
   useEffect(() => {
     if (!socket) {
@@ -34,7 +31,7 @@ const DoctorsConnection = () => {
 
   return (
     <>
-      {isConnected && <SendNotify socket={socket} user_id={user_id} />}
+      {isConnected && <SendNotify socket={socket} />}
     </>
   );
 };

@@ -1,52 +1,46 @@
 import React, { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-const SendNotify = ({ socket, user_id }) => {
-  const [to, setTo] = useState();
-  const [message, setMessage] = useState(); 
+
+const SendNotify = ({ socket }) => {
   const [allMesgs, setAllMesgs] = useState([]);
   const [title,setTitle]=useState()
+
+  const { user_id,time,department_name ,department_id} = useSelector((state) => {
+    return {
+      user_id: state.notification.user_id,
+      time: state.notification.time,
+      department_name:state.notification.department_name,
+      department_id:state.notification.department_id
+
+    };
+  });
   
 
   useEffect(() => {
+    console.log(user_id)
     socket.on("notification", reciveMsg);
+    sendMessage()
+    
     return () => {
       socket.off("notification", reciveMsg);
     };
-  }, [allMesgs]);
+  }, []);
 
   const reciveMsg = (data) => {
-    console.log(data);
     setAllMesgs([...allMesgs, data]);
+
   };
    const sendMessage = () => {
-    socket.emit("notification", { to, from:user_id, message,title }); 
+    console.log(department_name)
+    socket.emit("notification", { to:user_id, from:department_id, message:time,title:department_name, }); 
   };
   return (
     <>
-      <input
-        type="text"
-        placeholder="to"
-        onChange={(e) => {
-          setTo(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        placeholder="message"
-        onChange={(e) => {
-          setMessage(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        placeholder="title"
-        onChange={(e) => {
-          setTitle(e.target.value);
-        }}
-      />
-      <button onClick={()=>{
-        sendMessage()
-      }}>send</button> 
+     
+   
+        
+      
 
     </>
   );

@@ -35,7 +35,7 @@ const Connection = () => {
   }, [socket]);
 
   return (
-    <>{isConnected&& <UserNotify socket={socket} user_id={user_id} />}</>
+    <>{isConnected && <UserNotify socket={socket} user_id={user_id} />}</>
   );
 };
 

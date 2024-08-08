@@ -7,6 +7,7 @@ export const notificationSlice = createSlice({
     department_name: '',
     user_id: '',
     notes: '',
+    department_id:''
   },
 
   reducers: {
@@ -15,6 +16,7 @@ export const notificationSlice = createSlice({
         state.department_name=action.payload.department_name
         state.user_id=action.payload.user_id
         state.notes=action.payload.notes
+        state.department_id=action.payload.department_id
 
 
     },
