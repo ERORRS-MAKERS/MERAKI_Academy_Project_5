@@ -14,7 +14,6 @@ export default function AppointmentForm() {
   const navigate = useNavigate();
   const user_id = useSelector((store) => store.auth.userId);
   const doctorLoggedIn = useSelector((store) => store.doctor.isLoggedIn);
-  console.log(doctorLoggedIn);
 
   const { results } = useLoaderData();
   const [selectedDate, setSelectedDate] = useState(null);
@@ -34,14 +33,13 @@ export default function AppointmentForm() {
     setLoading(true);
     setError(null);
     try {
-      const response = await bookAppointment(
+      await bookAppointment(
         user_id,
         department_id,
         time,
         notes,
         department_name
       );
-      console.log(response);
       doctorLoggedIn ? navigate('/department_dashboard') : navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');

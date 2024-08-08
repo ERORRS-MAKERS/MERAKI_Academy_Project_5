@@ -16,5 +16,5 @@ appointmentsRouter.delete('/:id', deleteAppointmentById);
 appointmentsRouter.get('/:id', getAllAppointmentsByUserId);
 appointmentsRouter.get('/', getAllAppointments);
 appointmentsRouter.post('/', addNewAppointments);
-appointmentsRouter.get('/search/today', getAllAppointmentsForToday);
+appointmentsRouter.get('/search/today/:id', getAllAppointmentsForToday);
 module.exports = appointmentsRouter;
