@@ -2,56 +2,40 @@ import React, { useState } from 'react';
 import Spacing from '../../Spacing';
 import Pagination from '../../Pagination';
 import TeamStyle5 from '../../Team/TeamStyle5_Hiring_Requests';
-import { useSelector,useDispatch } from 'react-redux';
-import {sethiringRequest} from "../../../service/redux/reducers/doctorsHiringRequest/index"
+import { useSelector, useDispatch } from 'react-redux';
+import { sethiringRequest } from '../../../service/redux/reducers/doctorsHiringRequest/index';
 
 export default function HiringDoctors() {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const { hiringRequest } = useSelector((state) => {
     return {
       hiringRequest: state.hiringRequest.hiringRequest,
     };
   });
-  console.log('from', hiringRequest)
 
-   const [view, setView] = useState('grid');
+  const [view, setView] = useState('grid');
   const [active, setActive] = useState('all');
   const [filteredData, setFilteredData] = useState(hiringRequest);
   const uniqueCategories = [
-   ...new Set(hiringRequest.map((doctor) => doctor.department_name)),
+    ...new Set(hiringRequest.map((doctor) => doctor.department_name)),
   ];
   const handleFilter = (department_name) => {
     if (department_name === 'all') {
       setFilteredData(hiringRequest);
-      dispatch(sethiringRequest(hiringRequest))
-      
+      dispatch(sethiringRequest(hiringRequest));
     } else {
       const filtered = hiringRequest.filter(
         (doctor) => doctor.department_name === department_name
       );
       setFilteredData(filtered);
-      dispatch(sethiringRequest(hiringRequest))
-
+      dispatch(sethiringRequest(hiringRequest));
     }
     setActive(department_name);
-  }; 
+  };
 
   return (
     <div className="container">
-          <div className="cs_doctors_heading">
-        <div className="cs_isotop_filter cs_style1">
-          <p className="mb-0">Sort by</p>
-          <ul className="cs_mp0">
-            <li className={active === 'all' ? 'active' : ''}>
-              <span onClick={() => handleFilter('all')}>All</span>
-            </li>
-            {uniqueCategories?.map((item) => (
-              <li className={active === item ? 'active' : ''} key={item}>
-                <span onClick={() => handleFilter(item)}>{item}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
+      <div className="cs_doctors_heading">
         <div className="cs_view_box">
           <span>Showing {filteredData.length} items</span>
           <div className="cs_view_box_in">
@@ -93,15 +77,13 @@ export default function HiringDoctors() {
             </button>
           </div>
         </div>
-      </div> 
+      </div>
       <Spacing md="65" />
       <div className={`cs_team_grid cs_${view}_view_wrap`}>
-      
-          <TeamStyle5/>
-       
+        <TeamStyle5 />
       </div>
       <Spacing md="90" />
-      <Pagination /> 
+      {filteredData.length >= 9 && <Pagination />}
     </div>
   );
 }

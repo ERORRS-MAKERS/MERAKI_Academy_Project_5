@@ -16,7 +16,6 @@ export default function DoctorsJobRequest() {
 
   const getHiringResult = async () => {
     const results = await getDoctorsHiringRequests(false);
-    console.log('test', results.result);
     dispatch(sethiringRequest(results.result));
     setData(true);
   };
