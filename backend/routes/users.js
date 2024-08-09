@@ -1,4 +1,4 @@
-const express = require("express");
+const express = require('express');
 const usersRouter = express.Router();
 
 // import functions
@@ -8,16 +8,16 @@ const {
   login,
   doctorLogin,
   pharmacistLogin,
-    getUserDetails 
-} = require("../controllers/users");
-
+  getUserDetails,
+  getAllUser,
+} = require('../controllers/users');
 
 // End points
-usersRouter.post("/register", register);
-usersRouter.post("/login", login);
-usersRouter.post("/doctor/login", doctorLogin)
-usersRouter.get("/:id",getUserDetails)
-usersRouter.post("/pharmacist/login", pharmacistLogin);
-
+usersRouter.post('/register', register);
+usersRouter.post('/login', login);
+usersRouter.post('/doctor/login', doctorLogin);
+usersRouter.get('/userstotal', getAllUser);
+usersRouter.get('/:id', getUserDetails);
+usersRouter.post('/pharmacist/login', pharmacistLogin);
 
 module.exports = usersRouter;

@@ -3,14 +3,18 @@ import Spacing from '../Spacing';
 import { getDoctorRequests } from '../../service/api/getDoctorRequest';
 import { getAppointmentsForToday } from '../../service/api/getAppointmentsByDate';
 import { format } from 'date-fns';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserId } from '../../service/redux/reducers/auth/index';
 import { useNavigate } from 'react-router-dom';
 import AppointmentsModal from '../DepartmentDashboardModales/AppointmentsModal';
+
 const DepartmentDashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [doctorRequestData, setDoctorRequestData] = useState([]);
+
+  const doctorDepartment = useSelector((store) => store.doctor.departmentId);
+  console.log(doctorDepartment);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -18,20 +22,21 @@ const DepartmentDashboard = () => {
 
   const getDoctorRequest = async (department_id) => {
     const results = await getDoctorRequests(department_id);
+    console.log('doctor Request', results);
+
     setDoctorRequestData(results);
   };
   const [appointmentsForToday, setAppointmentsForToday] = useState([]);
 
-  const getAppointments = async () => {
-    const results = await getAppointmentsForToday();
+  const getAppointments = async (id) => {
+    const results = await getAppointmentsForToday(id);
+    console.log('Appointments', results);
     setAppointmentsForToday(results);
-    console.log(results);
   };
 
   useEffect(() => {
-    getDoctorRequest(2);
-    getAppointments();
-    console.log(appointmentsForToday);
+    getDoctorRequest(doctorDepartment);
+    getAppointments(doctorDepartment);
   }, []);
 
   return (
@@ -53,7 +58,7 @@ const DepartmentDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {doctorRequestData.map((item, index) => (
+            {doctorRequestData?.map((item, index) => (
               <tr key={index}>
                 <th scope="row">{index}</th>
                 <td>{item.first_name}</td>
@@ -64,8 +69,6 @@ const DepartmentDashboard = () => {
                     className="btn btn-primary"
                     onClick={() => {
                       dispatch(setUserId(item.user_id));
-                      console.log('inside', item.user_id);
-
                       navigate('/appointments');
                     }}
                   >
@@ -91,27 +94,25 @@ const DepartmentDashboard = () => {
             </tr>
           </thead>
           <tbody>
-            {appointmentsForToday.map((item, index) => (
-              <>
-                <tr key={index}>
-                  <th scope="row">{index}</th>
-                  <td>{item.first_name}</td>
-                  <td>{item.last_name}</td>
-                  <td>{item.notes}</td>
-                  <td>{format(new Date(item.time), 'HH:mm a')}</td>
-                  <td>
-                    <button
-                      className="btn btn-primary"
-                      onClick={() => {
-                        dispatch(setUserId(item.user_id));
-                        openModal();
-                      }}
-                    >
-                      Actions
-                    </button>
-                  </td>
-                </tr>
-              </>
+            {appointmentsForToday?.map((item, index) => (
+              <tr key={index}>
+                <th scope="row">{index}</th>
+                <td>{item.first_name}</td>
+                <td>{item.last_name}</td>
+                <td>{item.notes}</td>
+                <td>{format(new Date(item.time), 'HH:mm a')}</td>
+                <td>
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      dispatch(setUserId(item.user_id));
+                      openModal();
+                    }}
+                  >
+                    Actions
+                  </button>
+                </td>
+              </tr>
             ))}
           </tbody>
         </table>

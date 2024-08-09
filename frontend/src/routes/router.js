@@ -33,8 +33,12 @@ import DoctorLogin from '../components/Pages/DoctorLogin';
 import AdminDashbord from '../components/Pages/AdminDashbord';
 import AppointmentsTable from '../components/Pages/AppointmentsTable';
 import PharmacistLogin from '../components/Pages/PharmacistLogin';
-import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
+// import AddPrescriptionForm from '../components/AddPrescription/AddPrescription';
 import DepartmentDashboard from '../components/Pages/DepartmentDashboard';
+import AddPrescriptionPage from '../components/Pages/AddPrescription';
+
+import Connection from '../components/Notifications/SocketConnection';
+import DoctorsConnection from '../components/Notifications/DoctorsConnection'
 
 export const router = createBrowserRouter([
   {
@@ -137,18 +141,22 @@ export const router = createBrowserRouter([
         path: '/login/doctor',
         element: <DoctorLogin />,
       },
+      {
+        path: '/medical_reports',
+        element: <MedicalReportsRequest />,
+      },
+      {
+        path: '/doctor_request',
+        element: <DoctorRequest />,
+        loader: departmentLoader,
+      },
+      {
+        path: '/add_prescription',
+        element: <AddPrescriptionPage />,
+      },
     ],
   },
 
-  {
-    path: '/medical_reports',
-    element: <MedicalReportsRequest />,
-  },
-  {
-    path: '/doctor_request',
-    element: <DoctorRequest />,
-    loader: departmentLoader,
-  },
   {
     path: '/add_department',
     element: <AddDepartment />,
@@ -169,12 +177,14 @@ export const router = createBrowserRouter([
     path: '/pharmacy',
     element: <Pharmacy />,
   },
-
   {
-    path: '/add_prescription',
-    element: <AddPrescriptionForm />,
+    path: '/notification',
+    element: <Connection />,
   },
-
+  {
+    path: '/notification/Doctors',
+    element: <DoctorsConnection />,
+  },
   {
     path: '*',
     element: <ErrorPage />,

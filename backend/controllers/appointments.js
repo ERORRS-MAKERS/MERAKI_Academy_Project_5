@@ -81,15 +81,26 @@ const getAllAppointmentsByUserId = (req, res) => {
     });
 };
 const getAllAppointmentsForToday = (req, res) => {
+  const id = req.params.id;
   const query = `
-  SELECT users.first_name,users.last_name, departments.department_name, appointments.*
-  FROM appointments
-   INNER JOIN users ON appointments.user_id  =  users.id
-   INNER JOIN departments ON appointments.department_id  = departments.id
-  WHERE DATE(appointments.time) = current_date`;
+  SELECT 
+    users.first_name,
+    users.last_name,
+    departments.department_name,
+    appointments.*
+FROM 
+    appointments
+INNER JOIN 
+    users ON appointments.user_id = users.id
+INNER JOIN 
+    departments ON appointments.department_id = departments.id
+WHERE 
+    DATE(appointments.time) = CURRENT_DATE
+    AND appointments.department_id = ($1);
+`;
 
   pool
-    .query(query)
+    .query(query, [id])
     .then((result) => {
       res.status(200).json({
         success: true,
@@ -106,6 +117,37 @@ const getAllAppointmentsForToday = (req, res) => {
     });
 };
 
+const getAppointmentsTotal = (req, res) => {
+  pool
+    .query(
+      `SELECT a.*, d.department_name, total_by_department.total_appointments
+        FROM appointments a
+        JOIN (
+        SELECT department_id, COUNT(*) AS total_appointments
+        FROM appointments
+        WHERE time >= DATE_TRUNC('month', CURRENT_DATE)
+          AND time < DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month'
+        GROUP BY department_id
+        ) AS total_by_department ON a.department_id = total_by_department.department_id
+        JOIN departments d ON a.department_id = d.id
+        WHERE a.time >= DATE_TRUNC('month', CURRENT_DATE)
+          AND a.time < DATE_TRUNC('month', CURRENT_DATE) + INTERVAL '1 month';`
+    )
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: 'all appointments',
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+};
 const getAllAppointments = (req, res) => {
   pool
     .query(
@@ -165,4 +207,5 @@ module.exports = {
   getAllAppointmentsByUserId,
   deleteAppointmentById,
   getAllAppointmentsForToday,
+  getAppointmentsTotal,
 };

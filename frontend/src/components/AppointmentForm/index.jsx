@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData, Await } from 'react-router-dom';
@@ -9,12 +9,15 @@ import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 import { format } from 'date-fns';
 import { bookAppointment } from '../../service/api/book_appointment';
+import DoctorsConnection from '../Notifications/DoctorsConnection';
+import {setData} from '../../service/redux/reducers/notificationData/index'
+
 
 export default function AppointmentForm() {
+  const dispatch=useDispatch()
   const navigate = useNavigate();
   const user_id = useSelector((store) => store.auth.userId);
   const doctorLoggedIn = useSelector((store) => store.doctor.isLoggedIn);
-  console.log(doctorLoggedIn);
 
   const { results } = useLoaderData();
   const [selectedDate, setSelectedDate] = useState(null);
@@ -23,6 +26,7 @@ export default function AppointmentForm() {
   const [department_id, setDepartment_id] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [sendNotify,setSendNotify]=useState(false)
 
   const [department_name, setDepartmentName] = useState();
 
@@ -30,25 +34,27 @@ export default function AppointmentForm() {
   const time = formattedDate + ' ' + selectedTime + ':00';
 
   const handleSubmit = async (e) => {
+    dispatch(setData({time,department_name,user_id,notes,department_id}))
+    console.log(department_name)
     e.preventDefault();
     setLoading(true);
     setError(null);
-    try {
-      const response = await bookAppointment(
+    setSendNotify(true)
+  try {
+      await bookAppointment(
         user_id,
         department_id,
         time,
         notes,
         department_name
       );
-      console.log(response);
       doctorLoggedIn ? navigate('/department_dashboard') : navigate('/');
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {
       setLoading(false);
     }
-  };
+  }; 
 
   return (
     <>
@@ -175,7 +181,8 @@ export default function AppointmentForm() {
                         id={item.department_name}
                         defaultValue={item.department_name}
                         onClick={(e) => {
-                          setDepartmentName(item.name);
+                          setDepartmentName(item.department_name);
+                          
                           setDepartment_id(item.id);
                         }}
                       />
@@ -202,6 +209,7 @@ export default function AppointmentForm() {
             </i>
           </button>
         </div>
+      {sendNotify&&  <DoctorsConnection/>}
       </form>
     </>
   );

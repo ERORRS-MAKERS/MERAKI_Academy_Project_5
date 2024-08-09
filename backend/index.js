@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 require('./models/db');
+require('./socketServer/index')
 
 //routers
 const app = express();
@@ -16,6 +17,7 @@ const blogRouter=require('./routes/blog')
 //built-in middleware
 app.use(express.json());
 app.use(cors());
+
 
 app.use('/appointments', appointmentsRouter);
 app.use('/prescription', prescriptionRouter);

@@ -1,7 +1,7 @@
-const pool = require("../models/db");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcryptjs");
-const { response } = require("express");
+const pool = require('../models/db');
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const { response } = require('express');
 const saltRounds = parseInt(process.env.SALT);
 
 const register = async (req, res) => {
@@ -29,13 +29,13 @@ const register = async (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: "Account created successfully",
+        message: 'Account created successfully',
       });
     })
     .catch((err) => {
       res.status(409).json({
         success: false,
-        message: "The email already exists",
+        message: 'The email already exists',
         err,
       });
     });
@@ -47,7 +47,7 @@ const login = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: "Email and password are required",
+      message: 'Email and password are required',
     });
   }
 
@@ -65,7 +65,7 @@ const login = (req, res) => {
               country: result.rows[0].country,
               role: result.rows[0].role_id,
             };
-            const options = { expiresIn: "1d" };
+            const options = { expiresIn: '1d' };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
             if (token) {
@@ -91,7 +91,7 @@ const login = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          "The email doesn’t exist or the password you’ve entered is incorrect",
+          'The email doesn’t exist or the password you’ve entered is incorrect',
         err,
       });
     });
@@ -103,7 +103,7 @@ const doctorLogin = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: "Email and password are required",
+      message: 'Email and password are required',
     });
   }
 
@@ -121,7 +121,7 @@ const doctorLogin = (req, res) => {
               doctorName: result.rows[0].doctor_name,
               specialist: result.rows[0].specialist,
             };
-            const options = { expiresIn: "1d" };
+            const options = { expiresIn: '1d' };
             const secret = process.env.SECRET;
             const doctorToken = jwt.sign(payload, secret, options);
             if (doctorToken) {
@@ -130,6 +130,7 @@ const doctorLogin = (req, res) => {
                 success: true,
                 message: `Valid login credentials`,
                 doctorId: result.rows[0].id,
+                departmentId: result.rows[0].department_id,
               });
             } else {
               throw Error;
@@ -147,7 +148,7 @@ const doctorLogin = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          "The email doesn’t exist or the password you’ve entered is incorrect",
+          'The email doesn’t exist or the password you’ve entered is incorrect',
         err,
       });
     });
@@ -159,7 +160,7 @@ const pharmacistLogin = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: "Email and password are required",
+      message: 'Email and password are required',
     });
   }
   const query = `SELECT * FROM pharmacy WHERE email = $1`;
@@ -178,7 +179,7 @@ const pharmacistLogin = (req, res) => {
               // country: result.rows[0].country,
               // role: result.rows[0].role_id,
             };
-            const options = { expiresIn: "1d" };
+            const options = { expiresIn: '1d' };
             const secret = process.env.SECRET;
             const pharmacisttoken = jwt.sign(payload, secret, options);
             if (pharmacisttoken) {
@@ -204,13 +205,13 @@ const pharmacistLogin = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          "The email doesn’t exist or the password you’ve entered is incorrect",
+          'The email doesn’t exist or the password you’ve entered is incorrect',
         err,
       });
     });
 };
 
-const getUserDetails=(req,res)=>{
+const getUserDetails = (req, res) => {
   const id = req.params.id;
   const query = `SELECT * FROM users WHERE id=($1)`;
   pool
@@ -229,7 +230,27 @@ const getUserDetails=(req,res)=>{
         error: error.message,
       });
     });
-}
+};
+
+const getAllUser = (req, res) => {
+  const query = `SELECT * FROM users`;
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `user details`,
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+};
 
 module.exports = {
   register,
@@ -237,5 +258,5 @@ module.exports = {
   doctorLogin,
   getUserDetails,
   pharmacistLogin,
-
+  getAllUser,
 };

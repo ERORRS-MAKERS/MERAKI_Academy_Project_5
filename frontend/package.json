@@ -5,6 +5,8 @@
   "dependencies": {
     "@iconify/react": "^4.1.1",
     "@react-oauth/google": "^0.12.1",
+    "@nivo/core": "^0.87.0",
+    "@nivo/pie": "^0.87.0",
     "@reduxjs/toolkit": "^2.2.6",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -14,6 +16,7 @@
     "date-fns": "^3.6.0",
     "html-react-parser": "^5.0.6",
     "jwt-decode": "^4.0.0",
+    "nivo": "^0.31.0",
     "react": "^18.2.0",
     "react-datepicker": "^4.24.0",
     "react-dom": "^18.3.1",
@@ -26,6 +29,7 @@
     "react-water-wave": "^2.0.1",
     "sass": "^1.69.5",
     "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.7.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
