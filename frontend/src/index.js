@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick.css";
 import "./sass/index.scss";
 import { GoogleOAuthProvider } from "@react-oauth/google";
 const clientId =
-  "635113684331-8366vub6b4vggccnhvbo9m69dubkrid0.apps.googleusercontent.com";
+  "428051908911-bf5tql17jbekpe5r56ph8q3u8l5jk1h2.apps.googleusercontent.com";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

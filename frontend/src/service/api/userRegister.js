@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const userRegister = async (
   username,
-  national_id,
+  patientId,
   password,
   first_name,
   last_name,
@@ -12,7 +12,7 @@ export const userRegister = async (
   try {
     const response = await axios.post("http://localhost:5000/users/register", {
       username,
-      national_id,
+      patientId,
       password,
       first_name,
       last_name,
