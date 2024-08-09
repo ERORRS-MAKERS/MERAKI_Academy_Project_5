@@ -3,19 +3,21 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const { response } = require('express');
 const saltRounds = parseInt(process.env.SALT);
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const register = async (req, res) => {
-  const { username, national_id, password, first_name, last_name, age, email } =
-    req.body;
-
+  const { username, patientId, password, first_name, last_name, age, email } =
+  req.body;
+  
   const role_id = 1;
 
   const encryptedPassword = await bcrypt.hash(password, saltRounds);
 
-  const query = `INSERT INTO users ( username	, national_id, password, first_name, last_name, age, email, role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`;
+  const query = `INSERT INTO users ( username	, patientId, password, first_name, last_name, age, email, role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`;
   const data = [
     username,
-    national_id,
+    patientId,
     encryptedPassword,
     first_name,
     last_name,
@@ -23,7 +25,7 @@ const register = async (req, res) => {
     email.toLowerCase(),
     role_id,
   ];
-
+  
   pool
     .query(query, data)
     .then((result) => {
