@@ -1,21 +1,23 @@
-const pool = require('../models/db');
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const { response } = require('express');
+const pool = require("../models/db");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const { response } = require("express");
 const saltRounds = parseInt(process.env.SALT);
+const { OAuth2Client } = require("google-auth-library");
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const register = async (req, res) => {
-  const { username, national_id, password, first_name, last_name, age, email } =
+  const { username, patientId, password, first_name, last_name, age, email } =
     req.body;
 
   const role_id = 1;
 
   const encryptedPassword = await bcrypt.hash(password, saltRounds);
 
-  const query = `INSERT INTO users ( username	, national_id, password, first_name, last_name, age, email, role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`;
+  const query = `INSERT INTO users ( username	, patientId, password, first_name, last_name, age, email, role_id) VALUES ($1,$2,$3,$4,$5,$6,$7,$8)`;
   const data = [
     username,
-    national_id,
+    patientId,
     encryptedPassword,
     first_name,
     last_name,
@@ -29,13 +31,13 @@ const register = async (req, res) => {
     .then((result) => {
       res.status(200).json({
         success: true,
-        message: 'Account created successfully',
+        message: "Account created successfully",
       });
     })
     .catch((err) => {
       res.status(409).json({
         success: false,
-        message: 'The email already exists',
+        message: "The email already exists",
         err,
       });
     });
@@ -47,7 +49,7 @@ const login = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: 'Email and password are required',
+      message: "Email and password are required",
     });
   }
 
@@ -65,7 +67,7 @@ const login = (req, res) => {
               country: result.rows[0].country,
               role: result.rows[0].role_id,
             };
-            const options = { expiresIn: '1d' };
+            const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const token = jwt.sign(payload, secret, options);
             if (token) {
@@ -93,7 +95,7 @@ const login = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          'The email doesn’t exist or the password you’ve entered is incorrect',
+          "The email doesn’t exist or the password you’ve entered is incorrect",
         err,
       });
     });
@@ -105,7 +107,7 @@ const doctorLogin = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: 'Email and password are required',
+      message: "Email and password are required",
     });
   }
 
@@ -123,7 +125,7 @@ const doctorLogin = (req, res) => {
               doctorName: result.rows[0].doctor_name,
               specialist: result.rows[0].specialist,
             };
-            const options = { expiresIn: '1d' };
+            const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const doctorToken = jwt.sign(payload, secret, options);
             if (doctorToken) {
@@ -150,7 +152,7 @@ const doctorLogin = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          'The email doesn’t exist or the password you’ve entered is incorrect',
+          "The email doesn’t exist or the password you’ve entered is incorrect",
         err,
       });
     });
@@ -162,7 +164,7 @@ const pharmacistLogin = (req, res) => {
   if (!email || !password) {
     return res.status(400).json({
       success: false,
-      message: 'Email and password are required',
+      message: "Email and password are required",
     });
   }
   const query = `SELECT * FROM pharmacy WHERE email = $1`;
@@ -181,7 +183,7 @@ const pharmacistLogin = (req, res) => {
               // country: result.rows[0].country,
               // role: result.rows[0].role_id,
             };
-            const options = { expiresIn: '1d' };
+            const options = { expiresIn: "1d" };
             const secret = process.env.SECRET;
             const pharmacisttoken = jwt.sign(payload, secret, options);
             if (pharmacisttoken) {
@@ -207,7 +209,7 @@ const pharmacistLogin = (req, res) => {
       res.status(403).json({
         success: false,
         message:
-          'The email doesn’t exist or the password you’ve entered is incorrect',
+          "The email doesn’t exist or the password you’ve entered is incorrect",
         err,
       });
     });
@@ -228,7 +230,7 @@ const getUserDetails = (req, res) => {
     .catch((error) => {
       res.status(500).json({
         success: false,
-        message: 'server error',
+        message: "server error",
         error: error.message,
       });
     });
@@ -248,10 +250,90 @@ const getAllUser = (req, res) => {
     .catch((error) => {
       res.status(500).json({
         success: false,
-        message: 'server error',
+        message: "server error",
         error: error.message,
       });
     });
+};
+
+const googleLogin = async (req, res) => {
+  const { token } = req.body;
+
+  try {
+    // Verify the token with Google
+    const ticket = await client.verifyIdToken({
+      idToken: token,
+      audience: process.env.GOOGLE_CLIENT_ID,
+    });
+
+    const payload = ticket.getPayload();
+    const email = payload.email.toLowerCase();
+    const first_name = payload.given_name;
+    const last_name = payload.family_name;
+    const userame = payload.name;
+
+    // Check if the user already exists
+    const userCheck = await pool.query("SELECT * FROM users WHERE email = $1", [
+      email,
+    ]);
+
+    if (userCheck.rows.length > 0) {
+      // User exists, log them in
+      const user = userCheck.rows[0];
+      return res.status(200).json({
+        success: true,
+        message: "Login successful",
+        user: {
+          id: user.id,
+          username: user.username || `${first_name}.${last_name}`,
+          email: user.email,
+          firstName: user.first_name,
+          lastName: user.last_name,
+          patientId: user.patientid,
+        },
+      });
+    }
+
+    // User doesn't exist, create a new account
+    const role_id = 1; // Default role ID for registered users
+    const encryptedPassword = await bcrypt.hash("defaultPassword", saltRounds); // Set a default password
+
+    const newUserQuery = `INSERT INTO users (username, patientID, password, first_name, last_name, age, email, role_id)
+                          VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+                          RETURNING id, username, first_name, last_name, email`;
+
+    const newUserData = [
+      `${firstName}.${lastName}`, // Generate a default username
+      Math.floor(100000 + Math.random() * 900000), // Generate a random patient ID
+      encryptedPassword,
+      firstName,
+      lastName,
+      null, // Age, as it might not be available from Google
+      email,
+      role_id,
+    ];
+
+    const newUser = await pool.query(newUserQuery, newUserData);
+
+    res.status(200).json({
+      success: true,
+      message: "Account created successfully",
+      user: {
+        id: newUser.rows[0].id,
+        username: newUser.rows[0].username,
+        email: newUser.rows[0].email,
+        firstName: newUser.rows[0].first_name,
+        lastName: newUser.rows[0].last_name,
+        patientId: newUser.rows[0].patientid,
+      },
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Google login failed",
+      error: err.message,
+    });
+  }
 };
 
 module.exports = {
@@ -261,4 +343,5 @@ module.exports = {
   getUserDetails,
   pharmacistLogin,
   getAllUser,
+  googleLogin,
 };

@@ -12,8 +12,8 @@ const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -30,7 +30,7 @@ const Form = () => {
       dispatch(setPatientId(results.patientId))
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
-      setError(err.message || "Login failed");
+      setError(err.message || 'Login failed');
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,7 @@ const Form = () => {
       dispatch(setUserId(results.userId));
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
-      setError(err.message || "Guest login failed");
+      setError(err.message || 'Guest login failed');
     } finally {
       setLoading(false);
     }
@@ -60,10 +60,10 @@ const Form = () => {
       const token = credentialResponse.credential;
       console.log(token);
 
-      const response = await fetch("http://localhost:5000/users/google-login", {
-        method: "POST",
+      const response = await fetch('http://localhost:5000/users/google-login', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({ token }),
       });
@@ -81,17 +81,17 @@ const Form = () => {
         );
         navigate(`/user/profile/${data.user.id}`);
       } else {
-        setError(data.message || "Google login failed");
+        setError(data.message || 'Google login failed');
       }
     } catch (err) {
-      setError(err.message || "Google login failed");
+      setError(err.message || 'Google login failed');
     } finally {
       setLoading(false);
     }
   };
 
   const handleLoginFailure = (error) => {
-    console.log("Login Failed:", error);
+    console.log('Login Failed:', error);
   };
 
   return (
@@ -99,10 +99,10 @@ const Form = () => {
       {loading && (
         <Loading
           customStyle={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
           }}
         />
       )}
@@ -132,7 +132,11 @@ const Form = () => {
         </div>
 
         <div className="col-lg-12">
-          <button type="submit" className="cs_btn cs_style_1">
+          <button
+            type="submit"
+            className="cs_btn cs_style_1"
+            style={{ width: '100%' }}
+          >
             <span>Login</span>
             <i>
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
@@ -141,33 +145,44 @@ const Form = () => {
           </button>
         </div>
         <Spacing md="20" lg="50" />
-        <div className="col-lg-12">
-          <button
-            onClick={() => {
-              navigate("/register");
-            }}
-            className="cs_btn cs_style_1"
-          >
-            <span>Register</span>
-            <i>
-              <img src="/images/icons/arrow_white.svg" alt="Icon" />
-              <img src="/images/icons/arrow_white.svg" alt="Icon" />
-            </i>
-          </button>
-        </div>
-        <Spacing md="20" lg="50" />
-        <div className="col-lg-12">
-          <button
-            type="button"
-            onClick={handleGuestLogin}
-            className="cs_btn cs_style_1"
-          >
-            <span>Login as Guest</span>
-            <i>
-              <img src="/images/icons/arrow_white.svg" alt="Icon" />
-              <img src="/images/icons/arrow_white.svg" alt="Icon" />
-            </i>
-          </button>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            gap: '20px',
+          }}
+        >
+          <div style={{ width: '50%' }}>
+            <div className="col-lg-12" style={{ width: '100%' }}>
+              <button
+                style={{ width: '100%' }}
+                onClick={() => {
+                  navigate('/register');
+                }}
+                className="cs_btn cs_style_1"
+              >
+                <span>Register</span>
+                <i>
+                  <img src="/images/icons/arrow_white.svg" alt="Icon" />
+                  <img src="/images/icons/arrow_white.svg" alt="Icon" />
+                </i>
+              </button>
+            </div>
+          </div>
+          <div className="col-lg-12" style={{ width: '50%' }}>
+            <button
+              style={{ width: '100%' }}
+              type="button"
+              onClick={handleGuestLogin}
+              className="cs_btn cs_style_1"
+            >
+              <span>Login as Guest</span>
+              <i>
+                <img src="/images/icons/arrow_white.svg" alt="Icon" />
+                <img src="/images/icons/arrow_white.svg" alt="Icon" />
+              </i>
+            </button>
+          </div>
         </div>
         <Spacing md="20" lg="50" />
          <div className="col-lg-12">
