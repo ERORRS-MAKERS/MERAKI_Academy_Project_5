@@ -2,7 +2,7 @@ import React from 'react';
 import ContactInfoWidget from '../Widget/ContactInfoWidget';
 import MenuWidget from '../Widget/MenuWidget';
 import SocialWidget from '../Widget/SocialWidget';
-import Newsletter from '../Widget/Newsletter';
+import { useNavigate } from 'react-router-dom';
 const menuDataOne = [
   { title: 'About Us', href: '/about' },
   { title: 'Departments', href: '/departments' },
@@ -15,6 +15,7 @@ const menuDataTwo = [
 ];
 
 export default function Footer() {
+  const navigate = useNavigate();
   return (
     <footer className="cs_footer cs_style_1 cs_heading_color">
       <div
@@ -53,10 +54,20 @@ export default function Footer() {
             </div>
             <div className="col-lg-4">
               <div className="cs_footer_item">
-                <Newsletter
-                  title="Be Our Subscribers"
-                  subTitle="To get the latest news about health from our experts"
-                />
+                <h3>You Are A Doctor...?</h3>
+                <button
+                  type="button"
+                  onClick={() => {
+                    navigate('/doctor_register');
+                  }}
+                  className="cs_btn cs_style_1"
+                >
+                  <span>JOIN US</span>
+                  <i>
+                    <img src="/images/icons/arrow_white.svg" alt="Icon" />
+                    <img src="/images/icons/arrow_white.svg" alt="Icon" />
+                  </i>
+                </button>
               </div>
             </div>
           </div>
