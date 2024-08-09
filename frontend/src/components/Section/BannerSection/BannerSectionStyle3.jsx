@@ -11,6 +11,7 @@ export default function BannerSectionStyle3({
   btnText,
   btnUrl,
 }) {
+  
   return (
     <section
       className="cs_banner cs_style_3 cs_bg_filed"

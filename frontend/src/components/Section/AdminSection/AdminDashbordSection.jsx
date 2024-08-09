@@ -92,7 +92,7 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
           className="container"
           style={{ display: 'flex', justifyContent: 'space-around' }}
         >
-          <div style={{ width: '400px', height: '400px' }}>
+           <div style={{ width: '400px', height: '400px' }}>
             <h3>Departments Statics</h3>
             <ResponsivePie
               data={data}
@@ -162,7 +162,7 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
                 },
               ]}
             />
-          </div>
+          </div> 
           <div
             style={{
               display: 'flex',
