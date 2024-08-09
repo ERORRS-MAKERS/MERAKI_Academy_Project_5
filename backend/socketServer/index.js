@@ -34,6 +34,11 @@ socket.emit('error',(error.message))
     
 
     socket.on("disconnect",()=>{
+      for(key in clients){
+        if (clients[key].socket_id===socket.id){
+          delete clients[key]
+        }
+      }
     })
  })
  

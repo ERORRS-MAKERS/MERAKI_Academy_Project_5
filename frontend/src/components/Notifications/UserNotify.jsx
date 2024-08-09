@@ -27,21 +27,6 @@ const UserNotify = ({ socket, user_id }) => {
   };
   return (<>
     {showNotification && <>
-      <div>Notification</div>
-
-      <div className="cs_sidenav_in">
-        <button
-          className="cs_close"
-          type="button"
-          onClick={() => dispatch(setNotification())}
-        >
-          <img src="/images/icons/close.svg" alt="Close" />
-        </button>
-        <>
-          <div className="cs_logo_box">
-            <div className="cs_height_15" />
-            <h3 className="cs_fs_24 cs_semibold mb-0">Your Notification</h3>
-          </div>
           <Spacing md="35" lg="35" xl="35" />
           <hr />
           {( allMesgs.length > 0) &&
@@ -57,9 +42,11 @@ const UserNotify = ({ socket, user_id }) => {
                 </>
               );
             })}
-        </>
-      </div>
+     
+   
     </>}
+    
+    
     </>);
 };
 
