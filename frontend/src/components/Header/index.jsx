@@ -70,9 +70,6 @@ export default function Header({ logoSrc, variant }) {
                       <li>
                         <Link to="/appointments">Appointments</Link>
                       </li>
-                      {/*   <li>
-                        <Link to="/blog">Blog</Link>
-                      </li> */}
                       <li className="menu-item-has-children">
                         <Link>Pages</Link>
                         <DropDown>

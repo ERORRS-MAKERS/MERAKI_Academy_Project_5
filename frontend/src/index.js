@@ -13,10 +13,10 @@ const clientId =
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <GoogleOAuthProvider clientId={clientId}>
+    <GoogleOAuthProvider clientId={clientId}> 
       <Provider store={store}>
         <App />
       </Provider>
-    </GoogleOAuthProvider>
+   </GoogleOAuthProvider>
   </React.StrictMode>
 );

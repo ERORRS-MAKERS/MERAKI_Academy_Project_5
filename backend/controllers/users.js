@@ -76,6 +76,8 @@ const login = (req, res) => {
                 success: true,
                 message: `Valid login credentials`,
                 userId: result.rows[0].id,
+                patientId:result.rows[0].patientid
+
               });
             } else {
               throw Error;

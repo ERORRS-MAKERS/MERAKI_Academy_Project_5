@@ -69,33 +69,6 @@ const faqData = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesent voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui.',
   },
 ];
-const blogData = [
-  {
-    title: 'Healthy Eating on a Budget: Tips and Strategies',
-    thumbUrl: 'https://prohealth-react.vercel.app/images/home_1/post_2.jpeg',
-    date: 'May 1, 2023',
-    btnText: 'Learn More',
-    href: '/blog/blog-details',
-    socialShare: true,
-  },
-  {
-    title:
-      'The Importance of Mental Health: Understanding and Managing Anxiety Disorders',
-    thumbUrl: 'https://prohealth-react.vercel.app/images/blog/post_1.jpeg',
-    date: 'May 4, 2023',
-    btnText: 'Learn More',
-    href: '/blog/blog-details',
-    socialShare: true,
-  },
-  {
-    title: 'Managing Chronic Pain: Treatment Options and Strategies',
-    thumbUrl: 'https://prohealth-react.vercel.app/images/blog/post_4.jpeg',
-    date: 'May 1, 2023',
-    btnText: 'Learn More',
-    href: '/blog/blog-details',
-    socialShare: true,
-  },
-];
 const awardData = [
   {
     title: 'Malcolm Baldrige National Quality Award',
@@ -258,13 +231,7 @@ export default function Home() {
       </Section>
       {/* End Banner Section */}
       {/* Start Blog Section */}
-      <Section topMd={190} topLg={145} topXl={105}>
-        <BlogSection
-          sectionTitle="Latest Update"
-          sectionTitleUp="BLOG POSTS"
-          data={blogData}
-        />
-      </Section>
+     
       {/* End Blog Section */}
       {/* Start FAQ Section */}
       <Section topMd={190} topLg={145} topXl={105}>
