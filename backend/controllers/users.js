@@ -232,10 +232,31 @@ const getUserDetails = (req, res) => {
     });
 };
 
+const getAllUser = (req, res) => {
+  const query = `SELECT * FROM users`;
+  pool
+    .query(query)
+    .then((result) => {
+      res.status(200).json({
+        success: true,
+        message: `user details`,
+        result: result.rows,
+      });
+    })
+    .catch((error) => {
+      res.status(500).json({
+        success: false,
+        message: 'server error',
+        error: error.message,
+      });
+    });
+};
+
 module.exports = {
   register,
   login,
   doctorLogin,
   getUserDetails,
   pharmacistLogin,
+  getAllUser,
 };

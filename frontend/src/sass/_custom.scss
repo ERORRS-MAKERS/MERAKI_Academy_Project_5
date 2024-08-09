@@ -363,3 +363,56 @@
     width: 350px;
   }
 }
+.card {
+  width: 280px;
+  height: 150px;
+  background: linear-gradient(to right, #307bc4, rgba(48, 123, 196, 0.5));
+  border-radius: 15px;
+  border: 0;
+  display: flex;
+  color: white;
+  justify-content: center;
+  position: relative;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background 0.5s ease-in-out, box-shadow 0.5s ease-in-out;
+  overflow: hidden;
+
+  &:hover {
+    background: linear-gradient(to right, rgba(48, 123, 196, 0.5), #307bc4);
+    transition: background 0.3s ease-in-out;
+
+    & > .moon {
+      font-size: 23px;
+    }
+  }
+}
+
+.time-text {
+  font-size: 50px;
+  margin-top: 0;
+  margin-left: 15px;
+  font-weight: 600;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.time-sub-text {
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.day-text {
+  font-size: 18px;
+  margin-top: 0;
+  margin-left: 15px;
+  font-weight: 500;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.moon {
+  font-size: 20px;
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  transition: font-size 0.3s ease-in-out;
+}
