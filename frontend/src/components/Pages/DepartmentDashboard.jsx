@@ -14,6 +14,7 @@ const DepartmentDashboard = () => {
   const [doctorRequestData, setDoctorRequestData] = useState([]);
 
   const doctorDepartment = useSelector((store) => store.doctor.departmentId);
+  console.log(doctorDepartment);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,12 +22,15 @@ const DepartmentDashboard = () => {
 
   const getDoctorRequest = async (department_id) => {
     const results = await getDoctorRequests(department_id);
+    console.log('doctor Request', results);
+
     setDoctorRequestData(results);
   };
   const [appointmentsForToday, setAppointmentsForToday] = useState([]);
 
   const getAppointments = async (id) => {
     const results = await getAppointmentsForToday(id);
+    console.log('Appointments', results);
     setAppointmentsForToday(results);
   };
 

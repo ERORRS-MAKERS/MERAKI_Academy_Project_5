@@ -14,24 +14,7 @@ export default function HiringDoctors() {
   });
 
   const [view, setView] = useState('grid');
-  const [active, setActive] = useState('all');
   const [filteredData, setFilteredData] = useState(hiringRequest);
-  const uniqueCategories = [
-    ...new Set(hiringRequest.map((doctor) => doctor.department_name)),
-  ];
-  const handleFilter = (department_name) => {
-    if (department_name === 'all') {
-      setFilteredData(hiringRequest);
-      dispatch(sethiringRequest(hiringRequest));
-    } else {
-      const filtered = hiringRequest.filter(
-        (doctor) => doctor.department_name === department_name
-      );
-      setFilteredData(filtered);
-      dispatch(sethiringRequest(hiringRequest));
-    }
-    setActive(department_name);
-  };
 
   return (
     <div className="container">
