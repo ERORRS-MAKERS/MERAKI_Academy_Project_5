@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
-import ErrorPage from '../Pages/ErrorPage';
-import Loading from '../Pages/Loading';
-
-import { userLogin, guestLogin } from '../../service/api/userLogin';
-import Spacing from '../Spacing';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setLogin, setUserId } from "../../service/redux/reducers/auth/index";
+import ErrorPage from "../Pages/ErrorPage";
+import Loading from "../Pages/Loading";
+import { GoogleLogin } from "@react-oauth/google";
+import { userLogin, guestLogin } from "../../service/api/userLogin";
+import Spacing from "../Spacing";
 
 const Form = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -28,7 +28,7 @@ const Form = () => {
       dispatch(setUserId(results.userId));
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
-      setError(err.message || 'Login failed');
+      setError(err.message || "Login failed");
     } finally {
       setLoading(false);
     }
@@ -44,10 +44,52 @@ const Form = () => {
       dispatch(setUserId(results.userId));
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
-      setError(err.message || 'Guest login failed');
+      setError(err.message || "Guest login failed");
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleLogin = async (credentialResponse) => {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const token = credentialResponse.credential;
+      console.log(token);
+
+      const response = await fetch("http://localhost:5000/users/google-login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        dispatch(
+          setLogin({
+            token: data.token,
+            userId: data.user.id,
+            userName: data.user.username,
+            patientId: data.user.patientId,
+          })
+        );
+        navigate(`/user/profile/${data.user.id}`);
+      } else {
+        setError(data.message || "Google login failed");
+      }
+    } catch (err) {
+      setError(err.message || "Google login failed");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLoginFailure = (error) => {
+    console.log("Login Failed:", error);
   };
 
   return (
@@ -55,10 +97,10 @@ const Form = () => {
       {loading && (
         <Loading
           customStyle={{
-            position: 'absolute',
-            top: '50%',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         />
       )}
@@ -100,7 +142,7 @@ const Form = () => {
         <div className="col-lg-12">
           <button
             onClick={() => {
-              navigate('/register');
+              navigate("/register");
             }}
             className="cs_btn cs_style_1"
           >
@@ -124,6 +166,13 @@ const Form = () => {
               <img src="/images/icons/arrow_white.svg" alt="Icon" />
             </i>
           </button>
+        </div>
+        <Spacing md="20" lg="50" />
+        <div className="col-lg-12">
+          <GoogleLogin
+            onSuccess={handleGoogleLogin}
+            onError={handleLoginFailure}
+          />
         </div>
       </form>
     </>

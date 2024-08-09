@@ -11,7 +11,7 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const [username, setUername] = useState('');
-  const [national_id, setNational_id] = useState('');
+  const [patientId, setpatientId] = useState('');
   const [password, setPassword] = useState('');
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
@@ -27,7 +27,7 @@ const RegisterForm = () => {
     try {
       const response = await userRegister(
         username,
-        national_id,
+        patientId,
         password,
         first_name,
         last_name,
@@ -74,13 +74,13 @@ const RegisterForm = () => {
         </div>
 
         <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">national_id</label>
+          <label className="cs_input_label cs_heading_color">patientId</label>
           <input
             type="text"
             className="cs_form_field"
             placeholder="(123) 456 - 789"
-            onChange={(e) => setNational_id(e.target.value)}
-            value={national_id}
+            onChange={(e) => setpatientId(e.target.value)}
+            value={patientId}
           />
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
