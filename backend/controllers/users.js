@@ -82,6 +82,7 @@ const login = (req, res) => {
                 message: `Valid login credentials`,
                 userId: result.rows[0].id,
                 role: result.rows[0].role,
+                patientId:result.rows[0].patientid
               });
             } else {
               throw Error;

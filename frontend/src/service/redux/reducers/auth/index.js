@@ -7,6 +7,7 @@ export const authSlice = createSlice({
     userId: localStorage.getItem("userId") || null,
     isLoggedIn: false,
     showNotification: false,
+    patientId:''
   },
 
   reducers: {
@@ -34,10 +35,14 @@ export const authSlice = createSlice({
       state.showNotification = !state.showNotification;
       console.log(state.showNotification)
     },
+    setPatientId: (state,action) => {
+      state.patientId = action.payload;
+      console.log(state.patientId)
+    },
   },
 });
 
-export const { setLogin, setLogout, setUserId, setNotification } =
+export const { setLogin, setLogout, setUserId, setNotification,setPatientId } =
   authSlice.actions;
 
 export default authSlice.reducer;

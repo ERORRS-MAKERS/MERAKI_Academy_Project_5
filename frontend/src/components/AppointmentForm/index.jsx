@@ -40,7 +40,7 @@ export default function AppointmentForm() {
     setLoading(true);
     setError(null);
     setSendNotify(true)
-  try {
+   try {
       await bookAppointment(
         user_id,
         department_id,
@@ -54,7 +54,7 @@ export default function AppointmentForm() {
     } finally {
       setLoading(false);
     }
-  }; 
+  };  
 
   return (
     <>

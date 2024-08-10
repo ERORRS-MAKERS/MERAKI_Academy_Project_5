@@ -8,6 +8,9 @@ import ScrollUp from "../ScrollUp/ScrollUp";
 
 export default function UserProfile() {
   const userId = useSelector((state) => state.auth.userId);
+  const isLoggedIn=useSelector((state) => state.auth.isLoggedIn);
+  const patientId=useSelector((state) => state.auth.patientId);
+  let subTitle=isLoggedIn? `Patient ID :- ${patientId}`:'Welcome to our family'
   pageTitle("User-profile");
   return (
     <>
@@ -16,7 +19,7 @@ export default function UserProfile() {
         bgUrl="/images/pricing_plan/banner_bg.svg"
         imgUrl="/images/pricing_plan/banner_img.png"
         title="Welcome To Pro Health"
-        subTitle="Welcome to our family"
+        subTitle={subTitle}
       />
       <Section
         topMd={185}
