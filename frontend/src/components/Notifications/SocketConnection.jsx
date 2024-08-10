@@ -23,7 +23,6 @@ const Connection = () => {
       setSocket(socketInit({ user_id, token }));
     }
     socket?.on("connect", () => {
-      console.log("hello from frontend");
       setIsConnected(true);
     });
     socket?.on("connect_error", (error) => {

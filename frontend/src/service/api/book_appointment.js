@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { SendEmail } from './EmailJsApi';
+//import { SendEmail } from './EmailJsApi';
 
 
 export const bookAppointment = async (user_id, department_id, time, notes,department_name) => {
@@ -14,7 +14,7 @@ export const bookAppointment = async (user_id, department_id, time, notes,depart
    let name = userDetails.data.result.first_name
     let email=userDetails.data.result.email
   
-  SendEmail(department_name,time,name,email)
+  //SendEmail(department_name,time,name,email)
   return response.data;
 
   } catch (error) {
