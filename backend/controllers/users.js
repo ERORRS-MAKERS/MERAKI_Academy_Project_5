@@ -52,7 +52,12 @@ const login = (req, res) => {
     });
   }
 
-  const query = `SELECT * FROM users WHERE email = $1`;
+  const query = `
+  SELECT users.*, roles.role 
+  FROM users 
+  JOIN roles ON users.role_id = roles.id 
+  WHERE email = $1
+`;
   const data = [email.toLowerCase()];
   pool
     .query(query, data)
@@ -64,7 +69,7 @@ const login = (req, res) => {
             const payload = {
               userId: result.rows[0].id,
               country: result.rows[0].country,
-              role: result.rows[0].role_id,
+              role: result.rows[0].role,
             };
             const options = { expiresIn: '1d' };
             const secret = process.env.SECRET;
@@ -75,7 +80,10 @@ const login = (req, res) => {
                 success: true,
                 message: `Valid login credentials`,
                 userId: result.rows[0].id,
-                patientId: result.rows[0].patientid,
+
+                role: result.rows[0].role,
+                patientId:result.rows[0].patientid
+
               });
             } else {
               throw Error;

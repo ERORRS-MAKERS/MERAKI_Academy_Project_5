@@ -7,7 +7,8 @@ export const notificationSlice = createSlice({
     department_name: '',
     user_id: '',
     notes: '',
-    department_id:''
+    department_id:'',
+    notifications:[]
   },
 
   reducers: {
@@ -20,11 +21,16 @@ export const notificationSlice = createSlice({
 
 
     },
+    setNotify: (state, action) => {
+      state.notifications=action.payload.allMesgs
+      console.log(state.notifications)
+
+  },
 
   
   },
 });
 
-export const { setData } = notificationSlice.actions;
+export const { setData,setNotify } = notificationSlice.actions;
 
 export default notificationSlice.reducer;

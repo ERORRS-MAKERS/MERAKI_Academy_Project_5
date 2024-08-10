@@ -53,7 +53,9 @@ export default function AppointmentForm() {
     } finally {
       setLoading(false);
     }
+
   };
+
 
   return (
     <>

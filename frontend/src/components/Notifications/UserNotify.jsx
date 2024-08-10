@@ -1,17 +1,22 @@
 import React, { useState, useEffect } from "react";
 import IconBoxStyle11 from "../IconBox/IconBoxStyle11";
 import Spacing from "../Spacing";
-import { useDispatch ,useSelector} from "react-redux";
-import { setNotification } from "../../service/redux/reducers/auth/index";
+import { useSelector, useDispatch } from "react-redux";
+import { setNotify } from "../../service/redux/reducers/notificationData/index";
 
 const UserNotify = ({ socket, user_id }) => {
+  const { notifications } = useSelector((state) => {
+    return {
+      notifications: state.notification.notifications,
+    };
+  });
+  const dispatch = useDispatch();
   const { showNotification } = useSelector((state) => {
     return {
       showNotification: state.auth.showNotification,
     };
   });
 
-  const dispatch = useDispatch();
   const [allMesgs, setAllMesgs] = useState([]);
 
   useEffect(() => {
@@ -24,13 +29,16 @@ const UserNotify = ({ socket, user_id }) => {
   const reciveMsg = (data) => {
     console.log(data);
     setAllMesgs([...allMesgs, data]);
+    dispatch(setNotify({allMesgs}));
   };
-  return (<>
-    {showNotification && <>
+  return (
+    <>
+      {showNotification && (
+        <>
           <Spacing md="35" lg="35" xl="35" />
           <hr />
-          {( allMesgs.length > 0) &&
-            allMesgs.map((message, i) => {
+          {notifications.length > 0 &&
+            notifications.map((message, i) => {
               return (
                 <>
                   <Spacing md="30" lg="30" xl="30" />
@@ -42,12 +50,10 @@ const UserNotify = ({ socket, user_id }) => {
                 </>
               );
             })}
-     
-   
-    </>}
-    
-    
-    </>);
+        </>
+      )}
+    </>
+  );
 };
 
 export default UserNotify;
