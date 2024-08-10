@@ -178,7 +178,7 @@ export default function Header({ logoSrc, variant }) {
                     </svg>
                   )}
 
-                  {showNotification && <SocketConnection />}
+                   <SocketConnection />
                 </div>
               </div>
             </div>
