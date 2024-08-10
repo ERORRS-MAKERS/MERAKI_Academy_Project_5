@@ -1,7 +1,7 @@
 import { Icon } from '@iconify/react';
 import React, { useState, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useLoaderData, Await } from 'react-router-dom';
@@ -10,11 +10,10 @@ import Loading from '../Pages/Loading';
 import { format } from 'date-fns';
 import { bookAppointment } from '../../service/api/book_appointment';
 import DoctorsConnection from '../Notifications/DoctorsConnection';
-import {setData} from '../../service/redux/reducers/notificationData/index'
-
+import { setData } from '../../service/redux/reducers/notificationData/index';
 
 export default function AppointmentForm() {
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const user_id = useSelector((store) => store.auth.userId);
   const doctorLoggedIn = useSelector((store) => store.doctor.isLoggedIn);
@@ -26,7 +25,7 @@ export default function AppointmentForm() {
   const [department_id, setDepartment_id] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const [sendNotify,setSendNotify]=useState(false)
+  const [sendNotify, setSendNotify] = useState(false);
 
   const [department_name, setDepartmentName] = useState();
 
@@ -34,13 +33,13 @@ export default function AppointmentForm() {
   const time = formattedDate + ' ' + selectedTime + ':00';
 
   const handleSubmit = async (e) => {
-    dispatch(setData({time,department_name,user_id,notes,department_id}))
-    console.log(department_name)
+    dispatch(setData({ time, department_name, user_id, notes, department_id }));
+    console.log(department_name);
     e.preventDefault();
     setLoading(true);
     setError(null);
-    setSendNotify(true)
-   try {
+    setSendNotify(true);
+    try {
       await bookAppointment(
         user_id,
         department_id,
@@ -54,7 +53,9 @@ export default function AppointmentForm() {
     } finally {
       setLoading(false);
     }
-  };  
+
+  };
+
 
   return (
     <>
@@ -110,7 +111,7 @@ export default function AppointmentForm() {
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
         <div className="col-lg-12">
-          <label className="cs_input_label cs_heading_color">
+          <label className="cs_input_label cs_heading_color h2">
             Reason for Visit
           </label>
           <div className="cs_radio_group">
@@ -164,7 +165,9 @@ export default function AppointmentForm() {
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
         <div className="col-lg-12">
-          <label className="cs_input_label cs_heading_color">Department</label>
+          <label className="cs_input_label cs_heading_color h2">
+            Department
+          </label>
           <div className="cs_radio_group">
             <Suspense fallback={<p>Departments Loading...</p>}>
               <Await
@@ -173,7 +176,11 @@ export default function AppointmentForm() {
               >
                 {(results) => {
                   return results.data.result?.map((item, index) => (
-                    <div className="cs_radio_wrap" key={index}>
+                    <div
+                      className="cs_radio_wrap"
+                      style={{ width: '350px' }}
+                      key={index}
+                    >
                       <input
                         className="cs_radio_input"
                         type="radio"
@@ -182,7 +189,7 @@ export default function AppointmentForm() {
                         defaultValue={item.department_name}
                         onClick={(e) => {
                           setDepartmentName(item.department_name);
-                          
+
                           setDepartment_id(item.id);
                         }}
                       />
@@ -209,7 +216,7 @@ export default function AppointmentForm() {
             </i>
           </button>
         </div>
-      {sendNotify&&  <DoctorsConnection/>}
+        {sendNotify && <DoctorsConnection />}
       </form>
     </>
   );

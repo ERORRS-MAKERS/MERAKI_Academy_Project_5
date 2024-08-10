@@ -92,8 +92,8 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
           className="container"
           style={{ display: 'flex', justifyContent: 'space-around' }}
         >
-           <div style={{ width: '400px', height: '400px' }}>
-            <h3>Departments Statics</h3>
+          <div style={{ width: '100%', height: '400px' }}>
+            <h3>Departments Appointments</h3>
             <ResponsivePie
               data={data}
               margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -136,33 +136,9 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
                 },
               ]}
               fill={fillData}
-              legends={[
-                {
-                  anchor: 'bottom',
-                  direction: 'row',
-                  justify: false,
-                  translateX: 0,
-                  translateY: 56,
-                  itemsSpacing: 0,
-                  itemWidth: 100,
-                  itemHeight: 18,
-                  itemTextColor: '#999',
-                  itemDirection: 'left-to-right',
-                  itemOpacity: 1,
-                  symbolSize: 18,
-                  symbolShape: 'circle',
-                  effects: [
-                    {
-                      on: 'hover',
-                      style: {
-                        itemTextColor: '#000',
-                      },
-                    },
-                  ],
-                },
-              ]}
+              legends={[]}
             />
-          </div> 
+          </div>
           <div
             style={{
               display: 'flex',

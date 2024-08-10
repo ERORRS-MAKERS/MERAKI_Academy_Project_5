@@ -11,7 +11,6 @@ const RegisterForm = () => {
   const navigate = useNavigate();
 
   const [username, setUername] = useState('');
-  const [patientId, setpatientId] = useState('');
   const [password, setPassword] = useState('');
   const [first_name, setFirst_name] = useState('');
   const [last_name, setLast_name] = useState('');
@@ -27,7 +26,6 @@ const RegisterForm = () => {
     try {
       const response = await userRegister(
         username,
-        patientId,
         password,
         first_name,
         last_name,
@@ -61,8 +59,8 @@ const RegisterForm = () => {
       {error && <ErrorPage message={error} />}
 
       <form className="row" onSubmit={handleSubmit}>
-        <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">username</label>
+        <div className="col-lg-12">
+          <label className="cs_input_label cs_heading_color">User Name</label>
           <input
             type="text"
             className="cs_form_field"
@@ -74,23 +72,11 @@ const RegisterForm = () => {
         </div>
 
         <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">patientId</label>
+          <label className="cs_input_label cs_heading_color">First Name</label>
           <input
             type="text"
             className="cs_form_field"
-            placeholder="(123) 456 - 789"
-            onChange={(e) => setpatientId(e.target.value)}
-            value={patientId}
-          />
-          <div className="cs_height_42 cs_height_xl_25" />
-        </div>
-
-        <div className="col-lg-12">
-          <label className="cs_input_label cs_heading_color">first_name </label>
-          <input
-            type="text"
-            className="cs_form_field"
-            placeholder="123456-7890-0987"
+            placeholder="First Name"
             onChange={(e) => setFirst_name(e.target.value)}
             value={first_name}
           />
@@ -98,11 +84,11 @@ const RegisterForm = () => {
         </div>
 
         <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">last_name</label>
+          <label className="cs_input_label cs_heading_color">Last Name</label>
           <input
             type="text"
             className="cs_form_field"
-            placeholder="David John"
+            placeholder="Last Name"
             value={last_name}
             onChange={(e) => setLast_name(e.target.value)}
           />
@@ -110,11 +96,11 @@ const RegisterForm = () => {
         </div>
 
         <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">age</label>
+          <label className="cs_input_label cs_heading_color">Age</label>
           <input
             type="number"
             className="cs_form_field"
-            placeholder="David John"
+            placeholder="30 Years"
             value={age}
             onChange={(e) => setAge(e.target.value)}
           />
@@ -122,23 +108,23 @@ const RegisterForm = () => {
         </div>
 
         <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">email</label>
+          <label className="cs_input_label cs_heading_color">Email</label>
           <input
             type="email"
             className="cs_form_field"
-            placeholder="David John"
+            placeholder="David@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="cs_height_42 cs_height_xl_25" />
         </div>
 
-        <div className="col-lg-6">
-          <label className="cs_input_label cs_heading_color">password</label>
+        <div className="col-lg-12">
+          <label className="cs_input_label cs_heading_color">Password</label>
           <input
             type="password"
             className="cs_form_field"
-            placeholder="David John"
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

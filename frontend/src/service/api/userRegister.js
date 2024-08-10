@@ -1,8 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const userRegister = async (
   username,
-  patientId,
   password,
   first_name,
   last_name,
@@ -10,9 +9,8 @@ export const userRegister = async (
   email
 ) => {
   try {
-    const response = await axios.post("http://localhost:5000/users/register", {
+    const response = await axios.post('http://localhost:5000/users/register', {
       username,
-      patientId,
       password,
       first_name,
       last_name,

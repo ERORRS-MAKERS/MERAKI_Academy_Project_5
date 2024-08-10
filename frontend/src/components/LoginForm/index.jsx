@@ -1,12 +1,16 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setLogin, setUserId,setPatientId } from "../../service/redux/reducers/auth/index";
-import ErrorPage from "../Pages/ErrorPage";
-import Loading from "../Pages/Loading";
-import { GoogleLogin } from "@react-oauth/google";
-import { userLogin, guestLogin } from "../../service/api/userLogin";
-import Spacing from "../Spacing";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import {
+  setLogin,
+  setUserId,
+  setPatientId,
+} from '../../service/redux/reducers/auth/index';
+import ErrorPage from '../Pages/ErrorPage';
+import Loading from '../Pages/Loading';
+import { GoogleLogin } from '@react-oauth/google';
+import { userLogin, guestLogin } from '../../service/api/userLogin';
+import Spacing from '../Spacing';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -24,10 +28,10 @@ const Form = () => {
 
     try {
       const results = await userLogin(email, password);
-      console.log(results)
+      console.log(results);
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
-      dispatch(setPatientId(results.patientId))
+      dispatch(setPatientId(results.patientId));
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Login failed');
@@ -44,6 +48,7 @@ const Form = () => {
       const results = await guestLogin();
       dispatch(setLogin(results));
       dispatch(setUserId(results.userId));
+      dispatch(setPatientId(results.patientId));
       navigate(`/user/profile/${results.userId}`);
     } catch (err) {
       setError(err.message || 'Guest login failed');
@@ -185,12 +190,12 @@ const Form = () => {
           </div>
         </div>
         <Spacing md="20" lg="50" />
-         <div className="col-lg-12">
+        <div className="col-lg-12">
           <GoogleLogin
             onSuccess={handleGoogleLogin}
             onError={handleLoginFailure}
           />
-        </div> 
+        </div>
       </form>
     </>
   );
