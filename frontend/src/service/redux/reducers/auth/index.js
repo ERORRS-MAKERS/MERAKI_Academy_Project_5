@@ -1,26 +1,27 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
 export const authSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState: {
-    token: localStorage.getItem("token") || null,
-    userId: localStorage.getItem("userId") || null,
-    role: localStorage.getItem("role") || null,
+    token: localStorage.getItem('token') || null,
+    userId: localStorage.getItem('userId') || null,
+    role: localStorage.getItem('role') || null,
     isLoggedIn: false,
     showNotification: false,
-    patientId: "",
+    patientId: '',
   },
 
   reducers: {
     setLogin: (state, action) => {
-      localStorage.setItem("token", action.payload.token);
-      localStorage.setItem("userId", action.payload.userId);
-      localStorage.setItem("role", action.payload.role);
+      localStorage.setItem('token', action.payload.token);
+      localStorage.setItem('userId', action.payload.userId);
+      localStorage.setItem('role', action.payload.role);
 
       state.token = action.payload.token;
       state.userId = action.payload.userId;
       state.role = action.payload.role;
       state.isLoggedIn = true;
+      state.patientId = action.payload.patientId;
       // state.isLoggedIn = action.payload.success;
     },
 

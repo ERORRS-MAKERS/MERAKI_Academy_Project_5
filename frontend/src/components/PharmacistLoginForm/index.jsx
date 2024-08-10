@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLogin, setPharmacistId } from '../../service/redux/reducers/pharmacist/index';
+import {
+  setLogin,
+  setPharmacistId,
+} from '../../service/redux/reducers/pharmacist/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 
-import  {pharmacistLogin}  from '../../service/api/userLogin';
+import { pharmacistLogin } from '../../service/api/userLogin';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -27,7 +30,6 @@ const Form = () => {
       dispatch(setPharmacistId(results.pharmacistId));
       navigate(`/pharmacy`);
       console.log(results);
-      
     } catch (err) {
       setError(err.message || 'Login failed');
     } finally {
@@ -37,7 +39,16 @@ const Form = () => {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && (
+        <Loading
+          customStyle={{
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+          }}
+        />
+      )}
       {error && <ErrorPage message={error} />}
       <form className="row" onSubmit={handleLogin}>
         <div className="col-lg-12">

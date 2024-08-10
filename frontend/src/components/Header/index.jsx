@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import DropDown from "./DropDown";
-import SocialWidget from "../Widget/SocialWidget";
-import Newsletter from "../Widget/Newsletter";
-import IconBoxStyle11 from "../IconBox/IconBoxStyle11";
-import Spacing from "../Spacing";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import DropDown from './DropDown';
+import SocialWidget from '../Widget/SocialWidget';
+import Newsletter from '../Widget/Newsletter';
+import IconBoxStyle11 from '../IconBox/IconBoxStyle11';
+import Spacing from '../Spacing';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   setLogin,
   setLogout,
   setNotification,
-} from "../../service/redux/reducers/auth/index";
-import { setDoctorLogout } from "../../service/redux/reducers/doctorsAuth/index";
-import SocketConnection from "../Notifications/SocketConnection";
+} from '../../service/redux/reducers/auth/index';
+import { setDoctorLogout } from '../../service/redux/reducers/doctorsAuth/index';
+import SocketConnection from '../Notifications/SocketConnection';
 
 export default function Header({ logoSrc, variant }) {
   const dispatch = useDispatch();
@@ -33,9 +33,9 @@ export default function Header({ logoSrc, variant }) {
     const handleScroll = () => {
       setIsSticky(window.scrollY > 0);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -43,8 +43,8 @@ export default function Header({ logoSrc, variant }) {
     <>
       <header
         className={`cs_site_header cs_style1 cs_sticky_header ${
-          mobileToggle ? "cs_mobile_toggle_active" : ""
-        } ${variant} ${isSticky ? "cs_active_sticky" : ""}`}
+          mobileToggle ? 'cs_mobile_toggle_active' : ''
+        } ${variant} ${isSticky ? 'cs_active_sticky' : ''}`}
       >
         <div className="cs_main_header">
           <div className="container">
@@ -57,7 +57,7 @@ export default function Header({ logoSrc, variant }) {
                   <nav className="cs_nav">
                     <ul
                       className={`cs_nav_list ${
-                        mobileToggle ? "cs_active" : ""
+                        mobileToggle ? 'cs_active' : ''
                       }`}
                     >
                       <li>
@@ -98,7 +98,7 @@ export default function Header({ logoSrc, variant }) {
                     </ul>
                     <span
                       className={`cs_menu_toggle ${
-                        mobileToggle ? "cs_toggle_active" : ""
+                        mobileToggle ? 'cs_toggle_active' : ''
                       }`}
                       onClick={() => setMobileToggle(!mobileToggle)}
                     >
@@ -109,7 +109,7 @@ export default function Header({ logoSrc, variant }) {
                   <nav className="cs_nav">
                     <ul
                       className={`cs_nav_list ${
-                        mobileToggle ? "cs_active" : ""
+                        mobileToggle ? 'cs_active' : ''
                       }`}
                     >
                       <li>
@@ -126,7 +126,7 @@ export default function Header({ logoSrc, variant }) {
                   <nav className="cs_nav">
                     <ul
                       className={`cs_nav_list ${
-                        mobileToggle ? "cs_active" : ""
+                        mobileToggle ? 'cs_active' : ''
                       }`}
                     >
                       <li>
@@ -149,7 +149,7 @@ export default function Header({ logoSrc, variant }) {
                     </ul>
                     <span
                       className={`cs_menu_toggle ${
-                        mobileToggle ? "cs_toggle_active" : ""
+                        mobileToggle ? 'cs_toggle_active' : ''
                       }`}
                       onClick={() => setMobileToggle(!mobileToggle)}
                     >
@@ -178,7 +178,7 @@ export default function Header({ logoSrc, variant }) {
                     </svg>
                   )}
 
-                   <SocketConnection />
+                  {showNotification && <SocketConnection />}
                 </div>
               </div>
             </div>

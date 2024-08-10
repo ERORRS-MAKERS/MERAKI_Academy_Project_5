@@ -28,10 +28,10 @@ WHERE prescription.user_id = ($1);`;
 };
 
 const getPrescriptionByNationalId = (req, res) => {
-  const id = req.params.national_id;
-  const query = `SELECT users.first_name,users.last_name,national_id,prescription.* 
+  const id = req.params.patientid;
+  const query = `SELECT users.first_name,users.last_name,patientid,prescription.* 
   FROM prescription
-  INNER JOIN users ON users.id=prescription.user_id WHERE users.national_id=($1)`;
+  INNER JOIN users ON users.id=prescription.user_id WHERE users.patientid=($1)`;
   const data = [id];
 
   pool
@@ -40,7 +40,7 @@ const getPrescriptionByNationalId = (req, res) => {
       if (result.rows.length !== 0) {
         res.status(200).json({
           success: true,
-          message: `The reports with national_id: ${id}`,
+          message: `The reports with patientid: ${id}`,
           result: result.rows,
         });
       } else {

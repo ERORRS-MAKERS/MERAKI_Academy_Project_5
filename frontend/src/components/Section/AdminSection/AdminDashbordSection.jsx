@@ -148,12 +148,12 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
             }}
           >
             <div>
-              <div class="card">
-                <p class="time-text">
+              <div className="card">
+                <p className="time-text">
                   <span>{usersCount}</span>
-                  <span class="time-sub-text"></span>
+                  <span className="time-sub-text"></span>
                 </p>
-                <p class="day-text">Happy Patient</p>
+                <p className="day-text">Happy Patient</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="2em"
@@ -169,12 +169,12 @@ const AdminDashbordSections = ({ userId, sectionTitle }) => {
               </div>
             </div>
             <div>
-              <div class="card">
-                <p class="time-text">
+              <div className="card">
+                <p className="time-text">
                   <span>{doctorsCount}</span>
-                  <span class="time-sub-text"></span>
+                  <span className="time-sub-text"></span>
                 </p>
-                <p class="day-text">Professional Doctors</p>
+                <p className="day-text">Professional Doctors</p>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="2em"
