@@ -108,7 +108,11 @@ const DoctorsRequestForm = () => {
               >
                 {(results) => {
                   return results.data.result?.map((item, index) => (
-                    <div className="cs_radio_wrap" key={index}>
+                    <div
+                      className="cs_radio_wrap"
+                      key={index}
+                      style={{ width: '350px' }}
+                    >
                       <input
                         className="cs_radio_input"
                         type="radio"

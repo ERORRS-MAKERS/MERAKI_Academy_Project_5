@@ -10,7 +10,7 @@ const {
 const prescriptionRouter = express.Router();
 
 prescriptionRouter.get('/:id', getAllPrescription);
-prescriptionRouter.get('/search_1/:national_id', getPrescriptionByNationalId);
+prescriptionRouter.get('/search_1/:patientid', getPrescriptionByNationalId);
 prescriptionRouter.post('/', SendPrescriptionRequest);
 prescriptionRouter.put('/search/:id', updatePrescriptionStatus);
 

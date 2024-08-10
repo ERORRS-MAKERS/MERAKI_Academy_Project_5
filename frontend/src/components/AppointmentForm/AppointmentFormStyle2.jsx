@@ -5,11 +5,14 @@ import { useDispatch } from 'react-redux';
 
 export default function AppointmentFormStyle2() {
   const dispatch = useDispatch();
-  const [national_id, setNational_id] = useState(null);
+  const [patientid, setpatientid] = useState(null);
 
-  const saveData = async (e, national_id) => {
+  const saveData = async (e, patientid) => {
     e.preventDefault();
-    const data = await prescriptions(national_id);
+    const data = await prescriptions(patientid);
+    console.log(data);
+    console.log(patientid);
+
     dispatch(setPrescriptions(data));
   };
 
@@ -20,12 +23,12 @@ export default function AppointmentFormStyle2() {
           <img src="/images/home_4/appointment_icon_2.svg" alt="Icon" />
         </div>
         <div className="cs_appointment_form_field_right">
-          <label>Patient National Id</label>
+          <label>Patient Id</label>
           <input
             type="text"
             placeholder="123456789"
             onChange={(e) => {
-              setNational_id(e.target.value);
+              setpatientid(e.target.value);
             }}
           />
         </div>
@@ -33,7 +36,7 @@ export default function AppointmentFormStyle2() {
 
       <button
         className="cs_btn cs_style_1 w-100"
-        onClick={(e) => saveData(e, national_id)}
+        onClick={(e) => saveData(e, patientid)}
       >
         <span>Find Prescriptions</span>
         <i>
