@@ -1,7 +1,9 @@
-import React from 'react';
-import parse from 'html-react-parser';
-import VideoModal from '../VideoModal';
-import { Link } from 'react-router-dom';
+import React from "react";
+import parse from "html-react-parser";
+import VideoModal from "../VideoModal";
+// import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function Hero({
   title,
@@ -14,6 +16,18 @@ export default function Hero({
   btnText,
   btnUrl,
 }) {
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  const navigate = useNavigate();
+
+  const handleBookingClick = () => {
+    if (isLoggedIn) {
+      navigate(btnUrl);
+    } else {
+      alert("Please log in to book an appointment.");
+      navigate("/login");
+    }
+  };
+
   return (
     <section className="cs_hero cs_style_1">
       <div
@@ -54,13 +68,16 @@ export default function Hero({
               </div>
             ))}
             <div className="cs_hero_info_col">
-              <Link to={btnUrl} className="cs_btn cs_style_1">
+              <button
+                onClick={handleBookingClick}
+                className="cs_btn cs_style_1"
+              >
                 <span>{btnText}</span>
                 <i>
                   <img src="/images/icons/arrow_white.svg" alt="Icon" />
                   <img src="/images/icons/arrow_white.svg" alt="Icon" />
                 </i>
-              </Link>
+              </button>
             </div>
           </div>
         </div>
