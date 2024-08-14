@@ -1,21 +1,22 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
-    token: localStorage.getItem('token') || null,
-    userId: localStorage.getItem('userId') || null,
-    role: localStorage.getItem('role') || null,
+    token: localStorage.getItem("token") || null,
+    userId: localStorage.getItem("userId") || null,
+    role: localStorage.getItem("role") || null,
     isLoggedIn: false,
     showNotification: false,
-    patientId: '',
+    patientId: localStorage.getItem("patientId") || "",
   },
 
   reducers: {
     setLogin: (state, action) => {
-      localStorage.setItem('token', action.payload.token);
-      localStorage.setItem('userId', action.payload.userId);
-      localStorage.setItem('role', action.payload.role);
+      localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("userId", action.payload.userId);
+      localStorage.setItem("role", action.payload.role);
+      localStorage.setItem("patientId", action.payload.patientId);
 
       state.token = action.payload.token;
       state.userId = action.payload.userId;
@@ -34,6 +35,7 @@ export const authSlice = createSlice({
       state.userId = null;
       state.role = null;
       state.isLoggedIn = false;
+      state.patientId = "";
       localStorage.clear();
       state.showNotification = false;
     },
@@ -43,6 +45,7 @@ export const authSlice = createSlice({
     },
     setPatientId: (state, action) => {
       state.patientId = action.payload;
+      localStorage.setItem("patientId", action.payload);
       console.log(state.patientId);
     },
   },

@@ -11,9 +11,10 @@ function App() {
     const token = localStorage.getItem("token");
     const userId = localStorage.getItem("userId");
     const role = localStorage.getItem("role");
+    const patientId = localStorage.getItem("patientId");
 
-    if (token && userId && role) {
-      dispatch(setLogin({ token, userId, role }));
+    if (token && userId && role && patientId) {
+      dispatch(setLogin({ token, userId, role, patientId }));
     }
   }, [dispatch]);
 
