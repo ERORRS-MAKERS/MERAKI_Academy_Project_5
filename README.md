@@ -75,12 +75,42 @@ Now the app is ready to use
 
 - You can log in as a patient to view medical reports and make an appointment.
 
+  
 ## ⛏️ Built Using <a name = "built_using"></a>
 
-- [PostgreSQL](https://www.postgresql.org/download/) - Database
+- [Neon](https://neon.tech/) - Database
 - [Express JS](https://expressjs.com/) - Server Framework
-- [React JS](https://https://reactjs.org/) - Web Framework
+- [React JS](https://reactjs.org/) - Web Framework
 - [Node JS](https://nodejs.org/en/) - Server Environment
+
+### Other Notable Dependencies
+
+- [Axios](https://axios-http.com/) - HTTP Client for making requests
+- [Bcryptjs](https://github.com/dcodeIO/bcrypt.js) - Library for hashing passwords
+- [Cors](https://expressjs.com/en/resources/middleware/cors.html) - Middleware for enabling CORS
+- [Dotenv](https://github.com/motdotla/dotenv) - Module for loading environment variables
+- [Google Auth Library](https://github.com/googleapis/google-auth-library-nodejs) - OAuth2 Client for Google APIs
+- [JSON Web Token](https://github.com/auth0/node-jsonwebtoken) - For signing and verifying tokens
+- [PostgreSQL](https://www.postgresql.org/) (pg) - Database client for PostgreSQL
+- [Socket.io](https://socket.io/) - Library for real-time communication
+
+### Frontend Libraries & Frameworks
+
+- [Bootstrap](https://getbootstrap.com/) - CSS Framework for responsive design
+- [SASS Css](https://sass-lang.com/install/) - CSS Preprocessor
+- [Iconfy](https://icon-sets.iconify.design/) - Icon Library
+ - [Nivo](https://nivo.rocks/) - Data visualization library
+  - `@nivo/pie`
+- [Redux Toolkit](https://redux-toolkit.js.org/) - State management
+- [React Router](https://reactrouter.com/) - Routing library for React
+- [Redux Persist](https://github.com/rt2zz/redux-persist) - Persist and rehydrate a redux store
+
+### Additional Tools
+
+- [EmailJS](https://www.emailjs.com/) - Email service integration
+- [JWT Decode](https://github.com/auth0/jwt-decode) - Decode JWT tokens
+- [React Oauth Google](https://github.com/MomenSherif/react-oauth) - OAuth integration for Google in React
+
 
 ## User Story <a name = "#user_story"></a>
 
