@@ -218,7 +218,11 @@ export default function ContactForm() {
                   >
                     {(results) => {
                       return results.data.result?.map((item, index) => (
-                        <div className="cs_radio_wrap" key={index}>
+                        <div
+                          className="cs_radio_wrap"
+                          key={index}
+                          style={{ width: '280px' }}
+                        >
                           <input
                             className="cs_radio_input"
                             type="radio"

@@ -4,7 +4,7 @@ import SectionHeading from '../../SectionHeading';
 import Team from '../../Team';
 
 export default function TeamSection({ sectionTitle, sectionTitleUp, data }) {
-     const teamData = data.slice(0,2)
+  const teamData = data.slice(0, 3);
   return (
     <div className="container">
       <SectionHeading title={sectionTitle} titleUp={sectionTitleUp} center />
