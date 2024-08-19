@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { setLogin, setUserId } from '../../service/redux/reducers/auth/index';
+import {
+  setLogin,
+  setUserId,
+  setPatientId,
+} from '../../service/redux/reducers/auth/index';
 import ErrorPage from '../Pages/ErrorPage';
 import Loading from '../Pages/Loading';
 import { userRegister } from '../../service/api/userRegister';
@@ -34,9 +38,10 @@ const RegisterForm = () => {
       );
 
       console.log(response);
-      dispatch(setLogin(response));
-      dispatch(setUserId(response.userId));
-      navigate('/');
+      // dispatch(setLogin(response));
+      // dispatch(setUserId(response.userId));
+      // dispatch(setPatientId(response.patientId));
+      navigate(`/login`);
     } catch (err) {
       setError(err.message || 'Registration failed');
     } finally {
