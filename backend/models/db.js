@@ -1,6 +1,7 @@
-const { Pool } = require("pg");
-const connectionString =
-  "postgresql://Project_3_v05_owner:huvgdKWJ62LZ@ep-solitary-glitter-a1ga27pc.ap-southeast-1.aws.neon.tech/Error%27s-Maker%27s?sslmode=require";
+const { Pool } = require('pg');
+require('dotenv').config();
+
+const connectionString = '' || process.env.DB_URL;
 const pool = new Pool({
   connectionString,
 });
