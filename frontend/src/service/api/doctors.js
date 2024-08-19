@@ -1,6 +1,8 @@
 import axios from 'axios';
 
 export const doctorsLoader = async () => {
-  const results = axios.get('http://127.0.0.1:5000/doctors');
+  const results = axios.get(
+    'https://prohealth-errors-maker-team.onrender.com/doctors'
+  );
   return { results };
 };

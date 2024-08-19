@@ -3,7 +3,7 @@ import axios from 'axios';
 export const addPrescriptions = async (data) => {
   try {
     const response = await axios.post(
-      `http://127.0.0.1:5000/prescription/`,
+      `https://prohealth-errors-maker-team.onrender.com/prescription/`,
       data
     );
     return response.data;

@@ -2,6 +2,8 @@ import axios from 'axios';
 
 export const userPrescriptionLoader = async ({ params }) => {
   const { userId } = params;
-  const results = axios.get(`http://127.0.0.1:5000/prescription/${userId}`);
+  const results = axios.get(
+    `https://prohealth-errors-maker-team.onrender.com/prescription/${userId}`
+  );
   return { results };
 };

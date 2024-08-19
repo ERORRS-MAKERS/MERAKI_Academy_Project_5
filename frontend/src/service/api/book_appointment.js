@@ -9,15 +9,18 @@ export const bookAppointment = async (
   department_name
 ) => {
   try {
-    const response = await axios.post('http://127.0.0.1:5000/appointments/', {
-      user_id,
-      department_id,
-      time,
-      notes,
-    });
+    const response = await axios.post(
+      'https://prohealth-errors-maker-team.onrender.com/appointments/',
+      {
+        user_id,
+        department_id,
+        time,
+        notes,
+      }
+    );
 
     const userDetails = await axios.get(
-      `http://127.0.0.1:5000/users/${user_id}`
+      `https://prohealth-errors-maker-team.onrender.com/users/${user_id}`
     );
     let name = userDetails.data.result.first_name;
     let email = userDetails.data.result.email;

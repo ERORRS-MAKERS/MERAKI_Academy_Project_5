@@ -3,7 +3,7 @@ import axios from 'axios';
 export const updateAppointment = async (appointment_id, new_time) => {
   try {
     const response = await axios.put(
-      `http://127.0.0.1:5000/appointments/${appointment_id}`,
+      `https://prohealth-errors-maker-team.onrender.com/appointments/${appointment_id}`,
       { time: new_time }
     );
     console.log(response);

@@ -1,11 +1,14 @@
-import axios from "axios";
+import axios from 'axios';
 
 export const userLogin = async (email, password) => {
   try {
-    const response = await axios.post("http://localhost:5000/users/login", {
-      email,
-      password,
-    });
+    const response = await axios.post(
+      'https://prohealth-errors-maker-team.onrender.com/users/login',
+      {
+        email,
+        password,
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response.data;
@@ -15,7 +18,7 @@ export const userLogin = async (email, password) => {
 export const doctorLogin = async (email, password) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/users/doctor/login",
+      'https://prohealth-errors-maker-team.onrender.com/users/doctor/login',
       {
         email,
         password,
@@ -30,7 +33,7 @@ export const doctorLogin = async (email, password) => {
 export const pharmacistLogin = async (email, password) => {
   try {
     const response = await axios.post(
-      "http://localhost:5000/users/pharmacist/login",
+      'https://prohealth-errors-maker-team.onrender.com/users/pharmacist/login',
       {
         email,
         password,
@@ -44,10 +47,13 @@ export const pharmacistLogin = async (email, password) => {
 
 export const guestLogin = async (email, password) => {
   try {
-    const response = await axios.post("http://localhost:5000/users/login", {
-      email: "guest@example.com",
-      password: "123456",
-    });
+    const response = await axios.post(
+      'https://prohealth-errors-maker-team.onrender.com/users/login',
+      {
+        email: 'guest@example.com',
+        password: '123456',
+      }
+    );
     return response.data;
   } catch (error) {
     throw error.response.data;

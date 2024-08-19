@@ -73,13 +73,16 @@ const Form = () => {
       const token = credentialResponse.credential;
       console.log(token);
 
-      const response = await fetch('http://localhost:5000/users/google-login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ token }),
-      });
+      const response = await fetch(
+        'https://prohealth-errors-maker-team.onrender.com/users/google-login',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ token }),
+        }
+      );
 
       const data = await response.json();
 

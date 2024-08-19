@@ -1,11 +1,15 @@
 import axios from 'axios';
 
 export const usersLoader = async () => {
-  const results = await axios.get('http://127.0.0.1:5000/users/userstotal');
+  const results = await axios.get(
+    'https://prohealth-errors-maker-team.onrender.com/users/userstotal'
+  );
   return { results };
 };
 
 export const doctorsLoader = async () => {
-  const results = await axios.get('http://127.0.0.1:5000/doctors');
+  const results = await axios.get(
+    'https://prohealth-errors-maker-team.onrender.com/doctors'
+  );
   return { results };
 };
